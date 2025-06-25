@@ -1,6 +1,6 @@
 # Lazzerex Portfolio 🚀
 
-Welcome to my personal portfolio website! This is a modern, interactive showcase of my work as a University Student and (Perhaps) Game Creator.
+Welcome to my personal portfolio website! This is a modern, interactive showcase of my work as a University Student and (Maybe) Game Creator.
 
 **Visit Site**: [https://lazzerex.github.io](https://lazzerex.github.io)
 
