@@ -31,9 +31,415 @@ function initializeApp() {
         initializeCursorTrail();
         initializeIntersectionObserver();
         initializeButtonEffects();
+        initializeAboutSection();
     }, 2850);
 }
 
+
+function initializeEnhancedAbout() {
+    // Typing animation for roles
+    initializeTypingRoles();
+    
+    // Initialize skill highlights
+    initializeSkillHighlights();
+    
+    // Initialize fun facts interactions
+    initializeFunFacts();
+    
+    // Initialize learning progress animation
+    initializeLearningProgress();
+    
+    // Initialize timeline animation
+    initializeTimeline();
+    
+    // Initialize interactive text elements
+    initializeInteractiveText();
+}
+
+// Typing animation for different roles
+function initializeTypingRoles() {
+    const typingElement = document.getElementById('typing-roles');
+    if (!typingElement) return;
+    
+    const roles = [
+        'full-stack developer',
+        'game creator',
+        'problem solver',
+        'technology enthusiast',
+        'open source contributor'
+    ];
+    
+    let currentRole = 0;
+    let currentChar = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+    
+    function typeRole() {
+        const currentText = roles[currentRole];
+        
+        if (isDeleting) {
+            typingElement.textContent = currentText.substring(0, currentChar - 1);
+            currentChar--;
+            typeSpeed = 50;
+        } else {
+            typingElement.textContent = currentText.substring(0, currentChar + 1);
+            currentChar++;
+            typeSpeed = 100;
+        }
+        
+        if (!isDeleting && currentChar === currentText.length) {
+            typeSpeed = 2000; // Pause at end
+            isDeleting = true;
+        } else if (isDeleting && currentChar === 0) {
+            isDeleting = false;
+            currentRole = (currentRole + 1) % roles.length;
+            typeSpeed = 500; // Pause before typing next role
+        }
+        
+        setTimeout(typeRole, typeSpeed);
+    }
+    
+    // Start typing animation
+    setTimeout(typeRole, 1000);
+}
+
+// Skill highlights with tooltips
+function initializeSkillHighlights() {
+    const skillHighlights = document.querySelectorAll('.skill-highlight');
+    
+    skillHighlights.forEach(skill => {
+        skill.addEventListener('click', function() {
+            const skillType = this.getAttribute('data-skill');
+            
+            // Create ripple effect
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(59, 130, 246, 0.6)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.left = '50%';
+            ripple.style.top = '50%';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.marginLeft = '-10px';
+            ripple.style.marginTop = '-10px';
+            
+            this.style.position = 'relative';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Show skill info (you could expand this with more detailed tooltips)
+            console.log(`Clicked on ${skillType} expertise!`);
+        });
+    });
+}
+
+// Fun facts interactions
+function initializeFunFacts() {
+    const factItems = document.querySelectorAll('.fact-item');
+    
+    const factDetails = {
+        games: {
+            detail: "From classic arcade games to modern indie titles!",
+            icon: "🕹️"
+        },
+        commits: {
+            detail: "Every commit tells a story of progress!",
+            icon: "📈"
+        },
+        coffee: {
+            detail: "The fuel of every great developer!",
+            icon: "☕"
+        },
+        learning: {
+            detail: "Always curious, always growing!",
+            icon: "🧠"
+        }
+    };
+    
+    factItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const factType = this.getAttribute('data-fact');
+            const detail = factDetails[factType];
+            
+            if (detail) {
+                // Create temporary tooltip
+                const tooltip = document.createElement('div');
+                tooltip.style.position = 'absolute';
+                tooltip.style.background = 'var(--bg-primary)';
+                tooltip.style.border = '1px solid var(--border-color)';
+                tooltip.style.borderRadius = '8px';
+                tooltip.style.padding = '12px 16px';
+                tooltip.style.boxShadow = 'var(--shadow-medium)';
+                tooltip.style.zIndex = '1000';
+                tooltip.style.fontSize = '0.875rem';
+                tooltip.style.color = 'var(--text-secondary)';
+                tooltip.style.whiteSpace = 'nowrap';
+                tooltip.textContent = `${detail.icon} ${detail.detail}`;
+                
+                // Position tooltip
+                const rect = this.getBoundingClientRect();
+                tooltip.style.left = (rect.left + rect.width / 2) + 'px';
+                tooltip.style.top = (rect.top - 40) + 'px';
+                tooltip.style.transform = 'translateX(-50%)';
+                
+                document.body.appendChild(tooltip);
+                
+                // Animate in
+                tooltip.style.opacity = '0';
+                tooltip.style.animation = 'fadeIn 0.3s ease forwards';
+                
+                // Remove after 2 seconds
+                setTimeout(() => {
+                    tooltip.style.animation = 'fadeOut 0.3s ease forwards';
+                    setTimeout(() => {
+                        if (tooltip.parentNode) {
+                            tooltip.parentNode.removeChild(tooltip);
+                        }
+                    }, 300);
+                }, 2000);
+            }
+            
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            }, 100);
+        });
+    });
+}
+
+// Learning progress animation
+function initializeLearningProgress() {
+    const progressBars = document.querySelectorAll('.progress-bar');
+    let animated = false;
+    
+    function animateProgress() {
+        if (animated) return;
+        animated = true;
+        
+        progressBars.forEach((bar, index) => {
+            setTimeout(() => {
+                const progress = bar.style.getPropertyValue('--progress');
+                bar.style.setProperty('--progress', '0%');
+                
+                setTimeout(() => {
+                    bar.style.setProperty('--progress', progress);
+                }, 100);
+            }, index * 200);
+        });
+    }
+    
+    // Trigger animation when section comes into view
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgress();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(aboutSection);
+    }
+}
+
+// Timeline animation
+function initializeTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    timelineItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        item.style.transition = 'all 0.6s ease';
+        
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+        }, index * 200 + 500);
+    });
+}
+
+// Interactive text elements
+function initializeInteractiveText() {
+    // GitHub link interaction
+    const githubLinks = document.querySelectorAll('.github-link');
+    githubLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create flying GitHub icon
+            const icon = document.createElement('i');
+            icon.className = 'fab fa-github';
+            icon.style.position = 'fixed';
+            icon.style.fontSize = '2rem';
+            icon.style.color = 'var(--accent-color)';
+            icon.style.pointerEvents = 'none';
+            icon.style.zIndex = '9999';
+            
+            const rect = this.getBoundingClientRect();
+            icon.style.left = (rect.left + rect.width / 2) + 'px';
+            icon.style.top = (rect.top + rect.height / 2) + 'px';
+            icon.style.transform = 'translate(-50%, -50%) scale(0)';
+            icon.style.animation = 'githubFly 1s ease-out forwards';
+            
+            document.body.appendChild(icon);
+            
+            setTimeout(() => {
+                if (icon.parentNode) {
+                    icon.parentNode.removeChild(icon);
+                }
+                // You could redirect to GitHub here
+                // window.open('https://github.com/lazzerex', '_blank');
+            }, 1000);
+        });
+    });
+    
+    // Emoji word interactions
+    const emojiWords = document.querySelectorAll('.emoji-word');
+    emojiWords.forEach(word => {
+        word.addEventListener('mouseenter', function() {
+            this.style.animation = 'bounce 0.6s ease';
+        });
+        
+        word.addEventListener('animationend', function() {
+            this.style.animation = '';
+        });
+    });
+    
+    // Code snippet interactions
+    const codeSnippets = document.querySelectorAll('.code-snippet-inline');
+    codeSnippets.forEach(snippet => {
+        snippet.addEventListener('click', function() {
+            const originalText = this.textContent;
+            const functions = ['clean()', 'documented()', 'optimized()', 'tested()', 'scalable()'];
+            const randomFunction = functions[Math.floor(Math.random() * functions.length)];
+            
+            this.textContent = randomFunction;
+            this.style.background = 'var(--accent-color)';
+            this.style.color = 'white';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.background = '';
+                this.style.color = '';
+            }, 1000);
+        });
+    });
+}
+
+// Digital Labs link enhanced interaction
+function initializeDigitalLabsLink() {
+    const labsLink = document.querySelector('.digital-labs-link');
+    if (!labsLink) return;
+    
+    labsLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Create particle burst effect
+        const particles = [];
+        const colors = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'];
+        
+        for (let i = 0; i < 12; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '6px';
+            particle.style.height = '6px';
+            particle.style.borderRadius = '50%';
+            particle.style.background = colors[i % colors.length];
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '9999';
+            
+            const rect = this.getBoundingClientRect();
+            particle.style.left = (rect.left + rect.width / 2) + 'px';
+            particle.style.top = (rect.top + rect.height / 2) + 'px';
+            
+            const angle = (i / 12) * Math.PI * 2;
+            const velocity = 150;
+            const vx = Math.cos(angle) * velocity;
+            const vy = Math.sin(angle) * velocity;
+            
+            particle.style.animation = `particleBurst 0.8s ease-out forwards`;
+            particle.style.setProperty('--vx', vx + 'px');
+            particle.style.setProperty('--vy', vy + 'px');
+            
+            document.body.appendChild(particle);
+            particles.push(particle);
+        }
+        
+        // Clean up particles
+        setTimeout(() => {
+            particles.forEach(particle => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            });
+        }, 800);
+        
+        // Show enhanced tooltip or navigate to games section
+        setTimeout(() => {
+            const gamesSection = document.getElementById('games');
+            if (gamesSection) {
+                gamesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 500);
+    });
+}
+
+// Add CSS animations for the JavaScript interactions
+function addAboutAnimationStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+        
+        @keyframes githubFly {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); }
+            50% { transform: translate(-50%, -80px) scale(1.5) rotate(180deg); }
+            100% { transform: translate(-50%, -120px) scale(0) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes particleBurst {
+            0% { 
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(var(--vx), var(--vy)) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize all about section interactions
+function initializeAboutSection() {
+    initializeEnhancedAbout();
+    initializeDigitalLabsLink();
+    addAboutAnimationStyles();
+}
 
 function showLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
@@ -701,7 +1107,7 @@ console.log("📊 Stats:", developer.getStats());`;
             
             // Clear output when switching tabs
             if (outputContent) {
-                outputContent.innerHTML = '<div style="color: #6b7280; font-style: italic;">Click the play button to run the code...</div>';
+                outputContent.innerHTML = '<div style="color: #6b7280; font-style: italic;">Click the compile button to run the code...</div>';
             }
             
             // Switch between code examples
@@ -718,7 +1124,7 @@ console.log("📊 Stats:", developer.getStats());`;
     
     // Set initial output message
     if (outputContent) {
-        outputContent.innerHTML = '<div style="color: #6b7280; font-style: italic;">Click the play button to run the code...</div>';
+        outputContent.innerHTML = '<div style="color: #6b7280; font-style: italic;">Click the compile button to run the code...</div>';
     }
 }
 

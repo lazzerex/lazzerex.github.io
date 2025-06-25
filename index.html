@@ -109,41 +109,208 @@
 
     <main class="main-content">
         <div class="container">
-            <section id="about" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">Passionate about creating digital experiences that matter</p>
-                </div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <div class="interactive-text">
-                            <p>I'm currently a university student whose dream is to become full-stack developer in the
-                                future. I believe that the best games and applications transcend time. Through
-                                <strong><a class="highlight-on-hover" href="https://digital-labs-nine.vercel.app/"
-                                        target="_blank">Lazzerex Digital Labs</a></strong>, I reimagine beloved classics
-                                with modern technology, creating experiences that honor the past while embracing the
-                                future.</p>
+           <section id="about" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Passionate about creating digital experiences that matter</p>
+        </div>
+        
+        <div class="about-layout">
+            <!-- Left side - Main content with interactive elements -->
+            <div class="about-main">
+                <div class="about-card interactive-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-code"></i>
+                    </div>
+                    <div class="about-text-content">
+                        <div class="text-block">
+                            <p>I'm currently a <span class="highlight-text">university student</span> whose dream is to become a <span class="typing-text" id="typing-roles"></span> in the future. I believe that the best games and applications transcend time.</p>
+                        </div>
+                        
+                        <div class="text-block">
+                            <p>Through <a href="#" class="digital-labs-link">
+                                <span class="labs-text">Lazzerex Digital Labs:</span>
+                                <div class="labs-tooltip">
+                                    <div class="tooltip-content">
+                                        <strong>My Digital Playground</strong>
+                                        <p>Where I reimagine classic games with modern technology</p>
+                                        <div class="tooltip-stats">
+                                            <span>🎮 6 Games Live</span>
+                                            <span>⚡ 15+ Projects</span>
+                                            <span>💻 Full Stack</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>- I reimagine beloved classics with modern technology, creating experiences that honor the past while embracing the future.</p>
+                        </div>
 
-                            <p>My approach combines technical expertise with a deep understanding of user experience,
-                                ensuring that every solution I build delivers both <strong class="emoji-hover"
-                                    data-emoji="💫">value</strong> and <strong class="emoji-hover"
-                                    data-emoji="🎮">enjoyment</strong>.</p>
+                        <div class="text-block">
+                            <p>My approach combines <span class="skill-highlight" data-skill="technical">technical expertise</span> with a deep understanding of <span class="skill-highlight" data-skill="ux">user experience</span>, ensuring that every solution I build delivers both <span class="emoji-word" data-emoji="💫">value</span> and <span class="emoji-word" data-emoji="🎮">enjoyment</span>.</p>
                         </div>
                     </div>
-                    <div class="about-text">
-                        <div class="interactive-text">
-                            <p>When I'm not coding, I enjoy contributing to open source projects, experimenting with new
-                                technologies, and building tools that solve real-world problems. I believe in writing
-                                <span class="code-snippet">clean(), documented()</span> code and following established
-                                patterns that make collaboration seamless.</p>
+                </div>
 
-                            <p>I'm passionate about making technology accessible and creating games that are not just
-                                entertaining, but <span class="highlight-on-hover">meaningful to everyone</span> who
-                                plays them.</p>
+                <div class="about-card interactive-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="about-text-content">
+                        <div class="text-block">
+                            <p>When I'm not coding, I enjoy contributing to <span class="github-link">open source projects</span>, experimenting with new technologies, and building tools that solve real-world problems.</p>
+                        </div>
+                        
+                        <div class="text-block">
+                            <p>I believe in writing <span class="code-snippet-inline">clean()</span>, <span class="code-snippet-inline">documented()</span> code and following established patterns that make collaboration seamless.</p>
+                        </div>
+
+                        <div class="text-block">
+                            <p>I'm passionate about making technology accessible and creating games that are not just entertaining, but <span class="meaningful-text">meaningful to everyone</span> who plays them.</p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Right side - Interactive elements and stats -->
+            <div class="about-sidebar">
+                <!-- Personal info card -->
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-avatar">
+                            <span>LX</span>
+                            <div class="status-indicator"></div>
+                        </div>
+                        <div class="info-details">
+                            <h3>Lazzerex</h3>
+                            <p class="status-text">🟢 Available for projects</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">🎓 Status</span>
+                            <span class="stat-value">University Student</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">🎯 Focus</span>
+                            <span class="stat-value">Full-Stack Development</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">🌍 Location</span>
+                            <span class="stat-value">Building the Future</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">☕ Fuel</span>
+                            <span class="stat-value">Coffee & Creativity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Journey timeline -->
+                <div class="journey-card">
+                    <h4>My Journey</h4>
+                    <div class="timeline">
+                        <div class="timeline-item future">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Future</span>
+                                <p>Senior Full-Stack Developer</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Now</span>
+                                <p>Building Lazzerex Digital Labs</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2024</span>
+                                <p>Launched 6 interactive games</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2023</span>
+                                <p>Started university & coding journey</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Fun facts -->
+                <div class="fun-facts-card">
+                    <h4>Fun Facts</h4>
+                    <div class="facts-grid">
+                        <div class="fact-item" data-fact="games">
+                            <div class="fact-icon">🎮</div>
+                            <div class="fact-text">
+                                <span class="fact-number">40+</span>
+                                <span class="fact-label">Games Played</span>
+                            </div>
+                        </div>
+                        <div class="fact-item" data-fact="commits">
+                            <div class="fact-icon">💻</div>
+                            <div class="fact-text">
+                                <span class="fact-number">500+</span>
+                                <span class="fact-label">Commits</span>
+                            </div>
+                        </div>
+                        <div class="fact-item" data-fact="coffee">
+                            <div class="fact-icon">☕</div>
+                            <div class="fact-text">
+                                <span class="fact-number">∞</span>
+                                <span class="fact-label">Cups of Coffee</span>
+                            </div>
+                        </div>
+                        <div class="fact-item" data-fact="learning">
+                            <div class="fact-icon">📚</div>
+                            <div class="fact-text">
+                                <span class="fact-number">24/7</span>
+                                <span class="fact-label">Learning Mode</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current focus -->
+                <div class="focus-card">
+                    <h4>Currently Learning</h4>
+                    <div class="learning-items">
+                        <div class="learning-item">
+                            <div class="learning-progress">
+                                <div class="progress-bar" style="--progress: 75%"></div>
+                            </div>
+                            <span>Advanced React Patterns</span>
+                        </div>
+                        <div class="learning-item">
+                            <div class="learning-progress">
+                                <div class="progress-bar" style="--progress: 60%"></div>
+                            </div>
+                            <span>Rust Programming</span>
+                        </div>
+                        <div class="learning-item">
+                            <div class="learning-progress">
+                                <div class="progress-bar" style="--progress: 85%"></div>
+                            </div>
+                            <span>Game Development</span>
+                        </div>
+                        <div class="learning-item">
+                            <div class="learning-progress">
+                                <div class="progress-bar" style="--progress: 70%"></div>
+                            </div>
+                            <span>System Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
             <section id="games" class="section">
                 <div class="section-header">
