@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -52,7 +52,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Loading Screen */
+
 .loading-screen {
     position: fixed;
     top: 0;
@@ -128,7 +128,7 @@ html {
     }
 }
 
-/* Cursor Trail */
+
 #cursor-trail {
     position: fixed;
     top: 0;
@@ -156,7 +156,7 @@ html {
     }
 }
 
-/* Floating Particles */
+
 #particles-container {
     position: fixed;
     top: 0;
@@ -186,7 +186,7 @@ html {
     }
 }
 
-/* Navigation */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -279,7 +279,7 @@ html {
     transform: rotate(180deg);
 }
 
-/* Scroll Progress */
+
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -291,7 +291,7 @@ html {
     transition: width 0.1s ease;
 }
 
-/* Hero Section */
+
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -403,7 +403,7 @@ html {
     }
 }
 
-/* Typography Animations */
+
 .typewriter {
     font-size: 2.75rem;
     font-weight: 700;
@@ -524,7 +524,7 @@ html {
     font-weight: 600;
 }
 
-/* Stats Counter */
+
 .stats-container {
     display: flex;
     justify-content: center;
@@ -556,7 +556,7 @@ html {
     margin-top: 4px;
 }
 
-/* CTA Buttons */
+
 .cta-buttons {
     display: flex;
     gap: 1rem;
@@ -609,7 +609,7 @@ html {
     pointer-events: none;
 }
 
-/* Scroll Indicator */
+
 .scroll-indicator {
     position: absolute;
     bottom: 2rem;
@@ -640,7 +640,7 @@ html {
     }
 }
 
-/* Main Content */
+
 .main-content {
     background: var(--bg-primary);
     padding: 80px 0;
@@ -696,7 +696,7 @@ html {
     margin: 0 auto;
 }
 
-/* Interactive Text Elements */
+
 .highlight-on-hover {
     position: relative;
     cursor: pointer;
@@ -751,7 +751,7 @@ html {
     transform: scale(1.05);
 }
 
-/* Filter Tabs */
+
 .filter-tabs {
     display: flex;
     justify-content: center;
@@ -777,7 +777,7 @@ html {
     color: white;
 }
 
-/* Project Cards */
+
 .grid {
     display: grid;
     gap: 24px;
@@ -995,7 +995,7 @@ html {
     color: var(--accent-color);
 }
 
-/* Project Tabs */
+
 .project-tabs {
     display: flex;
     justify-content: center;
@@ -1041,7 +1041,7 @@ html {
     }
 }
 
-/* Skills Section */
+
 .skills-interactive {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1126,7 +1126,7 @@ html {
     }
 }
 
-/* Code Demo */
+
 .code-demo {
     margin-top: 60px;
     background: var(--bg-primary);
@@ -1232,7 +1232,7 @@ html {
     line-height: 1.5;
 }
 
-/* Contact Section */
+
 .contact-section {
     background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
@@ -1394,7 +1394,7 @@ html {
     left: 100%;
 }
 
-/* Preview Modal */
+
 .preview-modal {
     position: fixed;
     top: 0;
@@ -1482,7 +1482,7 @@ html {
     line-height: 1.6;
 }
 
-/* Back to Top */
+
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -1515,7 +1515,7 @@ html {
     box-shadow: var(--shadow-heavy);
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .container {
         padding: 0 16px;
@@ -1670,7 +1670,7 @@ html {
     }
 }
 
-/* Animation Classes */
+
 .fade-in {
     animation: fadeInUp 0.6s ease forwards;
 }
@@ -1722,7 +1722,7 @@ html {
     }
 }
 
-/* Game Filter Animations */
+
 .game-card.hidden {
     opacity: 0;
     transform: scale(0.8);
@@ -1734,7 +1734,7 @@ html {
     transform: scale(1);
 }
 
-/* Scroll Animations */
+
 .reveal {
     opacity: 0;
     transform: translateY(50px);

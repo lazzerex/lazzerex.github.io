@@ -1,20 +1,19 @@
-// Global Variables and State
 let currentTheme = 'light';
 let isScrolling = false;
 let particles = [];
 let animationId;
 
-// Initialize everything when DOM is loaded
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
-// Main initialization function
+
 function initializeApp() {
-    // Show loading screen first
+    
     showLoadingScreen();
     
-    // Initialize all components
+    
     setTimeout(() => {
         hideLoadingScreen();
         initializeParticles();
@@ -35,7 +34,7 @@ function initializeApp() {
     }, 2000);
 }
 
-// Loading Screen
+
 function showLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
@@ -53,7 +52,7 @@ function hideLoadingScreen() {
     }
 }
 
-// Floating Particles System
+
 function initializeParticles() {
     const container = document.getElementById('particles-container');
     if (!container) return;
@@ -66,7 +65,7 @@ function initializeParticles() {
         particle.style.opacity = Math.random() * 0.5 + 0.1;
         container.appendChild(particle);
 
-        // Remove particle after animation
+        
         setTimeout(() => {
             if (particle.parentNode) {
                 particle.parentNode.removeChild(particle);
@@ -74,16 +73,16 @@ function initializeParticles() {
         }, 15000);
     }
 
-    // Create initial particles
+    
     for (let i = 0; i < 5; i++) {
         setTimeout(() => createParticle(), i * 1000);
     }
 
-    // Continue creating particles
+    
     setInterval(createParticle, 3000);
 }
 
-// Cursor Trail Effect
+
 function initializeCursorTrail() {
     const trail = document.getElementById('cursor-trail');
     if (!trail) return;
@@ -109,7 +108,7 @@ function initializeCursorTrail() {
             }
         }
 
-        // Remove dot after animation
+        
         setTimeout(() => {
             if (dot.parentNode) {
                 dot.parentNode.removeChild(dot);
@@ -118,13 +117,13 @@ function initializeCursorTrail() {
     });
 }
 
-// Navigation
+
 function initializeNavigation() {
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     let lastScrollTop = 0;
 
-    // Smooth scrolling for navigation links
+    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -141,7 +140,7 @@ function initializeNavigation() {
         });
     });
 
-    // Hide/show navbar on scroll
+    
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
@@ -153,11 +152,10 @@ function initializeNavigation() {
         
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         
-        // Update active navigation link
         updateActiveNavLink();
     });
 
-    // Update active navigation link based on scroll position
+    
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
         const scrollPosition = window.scrollY + 100;
@@ -178,12 +176,12 @@ function initializeNavigation() {
     }
 }
 
-// Theme Toggle
+
 function initializeThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     if (!themeToggle) return;
 
-    // Load saved theme
+    
     const savedTheme = localStorage.getItem('theme') || 'light';
     currentTheme = savedTheme;
     document.documentElement.setAttribute('data-theme', currentTheme);
@@ -204,27 +202,27 @@ function initializeThemeToggle() {
     }
 }
 
-// Scroll Effects
+
 function initializeScrollEffects() {
     const scrollProgress = document.getElementById('scroll-progress');
     const scrollIndicator = document.getElementById('scroll-indicator');
     const backToTop = document.getElementById('back-to-top');
 
-    // Update scroll progress
+    
     window.addEventListener('scroll', function() {
         if (scrollProgress) {
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             scrollProgress.style.width = scrolled + '%';
         }
 
-        // Hide scroll indicator after scrolling
+        
         if (scrollIndicator && window.scrollY > 100) {
             scrollIndicator.style.opacity = '0';
         } else if (scrollIndicator) {
             scrollIndicator.style.opacity = '0.7';
         }
 
-        // Show/hide back to top button
+    
         if (backToTop) {
             if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
@@ -234,7 +232,7 @@ function initializeScrollEffects() {
         }
     });
 
-    // Scroll indicator click
+    
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', function() {
             const aboutSection = document.getElementById('about');
@@ -244,7 +242,7 @@ function initializeScrollEffects() {
         });
     }
 
-    // Back to top click
+    
     if (backToTop) {
         backToTop.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -252,7 +250,7 @@ function initializeScrollEffects() {
     }
 }
 
-// Typewriter Effect
+
 function initializeTypewriter() {
     const titleElement = document.getElementById('main-title');
     if (!titleElement) return;
@@ -266,18 +264,18 @@ function initializeTypewriter() {
             index++;
             setTimeout(typeWriter, 150);
         } else {
-            // Remove cursor after typing is complete
+            
             setTimeout(() => {
                 titleElement.style.borderRight = 'none';
             }, 1000);
         }
     }
 
-    // Start typewriter effect
+    
     setTimeout(typeWriter, 500);
 }
 
-// Animated Counters
+
 function initializeCounters() {
     const statItems = document.querySelectorAll('.stat-item');
     let animated = false;
@@ -302,7 +300,7 @@ function initializeCounters() {
         });
     }
 
-    // Trigger animation when stats come into view
+   
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -314,7 +312,7 @@ function initializeCounters() {
     statItems.forEach(item => observer.observe(item));
 }
 
-// Game Filters
+
 function initializeFilters() {
     const filterTabs = document.querySelectorAll('.filter-tab');
     const gameCards = document.querySelectorAll('.game-card');
@@ -323,11 +321,11 @@ function initializeFilters() {
         tab.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
             
-            // Update active tab
+        
             filterTabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
 
-            // Filter games
+            
             gameCards.forEach(card => {
                 const category = card.getAttribute('data-category');
                 
@@ -343,14 +341,14 @@ function initializeFilters() {
     });
 }
 
-// Game Cards Interactions
+
 function initializeGameCards() {
     const playButtons = document.querySelectorAll('.play-btn');
     const demoButtons = document.querySelectorAll('.demo-btn');
     const visitButtons = document.querySelectorAll('.visit-btn');
     const githubButtons = document.querySelectorAll('.github-btn');
 
-    // Play buttons
+    
     playButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -361,7 +359,7 @@ function initializeGameCards() {
         });
     });
 
-    // Demo buttons
+    
     demoButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -370,7 +368,7 @@ function initializeGameCards() {
         });
     });
 
-    // Visit buttons
+  
     visitButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -381,7 +379,7 @@ function initializeGameCards() {
         });
     });
 
-    // GitHub buttons
+    
     githubButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -392,7 +390,7 @@ function initializeGameCards() {
         });
     });
 
-    // Add hover effects to cards
+    
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -406,7 +404,7 @@ function initializeGameCards() {
     });
 }
 
-// Create particle effects on card hover
+
 function createCardParticles(card) {
     const iconContainer = card.querySelector('.project-icon-container');
     if (!iconContainer) return;
@@ -435,7 +433,7 @@ function createCardParticles(card) {
     }
 }
 
-// Project Tabs
+
 function initializeProjectTabs() {
     const tabs = document.querySelectorAll('.project-tab');
     const contents = document.querySelectorAll('.tab-content');
@@ -444,11 +442,11 @@ function initializeProjectTabs() {
         tab.addEventListener('click', function() {
             const targetTab = this.getAttribute('data-tab');
 
-            // Update active tab
+            
             tabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
 
-            // Show target content
+            
             contents.forEach(content => {
                 content.classList.remove('active');
             });
@@ -461,7 +459,7 @@ function initializeProjectTabs() {
     });
 }
 
-// Skill Bars Animation
+
 function initializeSkillBars() {
     const skillItems = document.querySelectorAll('.skill-item');
     let skillsAnimated = false;
@@ -481,7 +479,7 @@ function initializeSkillBars() {
         });
     }
 
-    // Trigger animation when skills section comes into view
+   
     const skillsSection = document.getElementById('skills');
     if (skillsSection) {
         const observer = new IntersectionObserver((entries) => {
@@ -494,11 +492,11 @@ function initializeSkillBars() {
         observer.observe(skillsSection);
     }
 
-    // Add hover effects to skill categories
+    
     const skillCategories = document.querySelectorAll('.skill-category');
     skillCategories.forEach(category => {
         category.addEventListener('click', function() {
-            // Add a pulse effect
+            
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
@@ -507,7 +505,7 @@ function initializeSkillBars() {
     });
 }
 
-// Interactive Code Demo
+
 function initializeCodeDemo() {
     const runButton = document.getElementById('run-code');
     const codeContent = document.getElementById('code-content');
@@ -516,7 +514,7 @@ function initializeCodeDemo() {
 
     if (!codeContent || !outputContent) return;
 
-    // Sample code to display
+  
     const sampleCode = `const developer = {
   name: "Lazzerex",
   skills: ["Next.js", "React", "Laravel", "Rust"],
@@ -545,16 +543,16 @@ developer.createProject().forEach(project =>
 );
 console.log("📊 Stats:", developer.getStats());`;
 
-    // Display code with syntax highlighting
+    
     function displayCode() {
         const lines = sampleCode.split('\n');
         codeContent.innerHTML = syntaxHighlight(sampleCode);
         
-        // Generate line numbers
+        
         lineNumbers.innerHTML = lines.map((_, i) => i + 1).join('\n');
     }
 
-    // Simple syntax highlighting
+    
     function syntaxHighlight(code) {
         return code
             .replace(/\b(const|let|var|function|return|if|else|for|while|class)\b/g, '<span style="color: #569cd6;">$1</span>')
@@ -565,7 +563,7 @@ console.log("📊 Stats:", developer.getStats());`;
             .replace(/\b(\d+)\b/g, '<span style="color: #b5cea8;">$1</span>');
     }
 
-    // Run code simulation
+    
     if (runButton) {
         runButton.addEventListener('click', function() {
             this.style.color = '#00ff00';
@@ -573,7 +571,7 @@ console.log("📊 Stats:", developer.getStats());`;
                 this.style.color = '';
             }, 200);
 
-            // Simulate code execution
+            
             outputContent.innerHTML = '';
             const outputs = [
                 '🚀 Developer Profile:',
@@ -598,7 +596,7 @@ console.log("📊 Stats:", developer.getStats());`;
         });
     }
 
-    // Initialize code display
+   
     displayCode();
 }
 
@@ -609,7 +607,7 @@ function initializeContactForm() {
     
     if (!form) return;
 
-    // Add floating label effects
+    
     inputs?.forEach(input => {
         input.addEventListener('focus', function() {
             this.parentElement.classList.add('focused');
@@ -621,36 +619,36 @@ function initializeContactForm() {
             }
         });
 
-        // Check if input has value on load
+        
         if (input.value) {
             input.parentElement.classList.add('focused');
         }
     });
 
-    // Handle form submission
+   
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const submitBtn = this.querySelector('.submit-btn');
         const originalText = submitBtn.innerHTML;
         
-        // Show loading state
+        
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
 
-        // Simulate form submission
+       
         setTimeout(() => {
             submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
             submitBtn.style.background = '#10b981';
             
-            // Reset form
+        
             setTimeout(() => {
                 form.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
                 submitBtn.style.background = '';
                 
-                // Remove focused classes
+                
                 inputs?.forEach(input => {
                     input.parentElement.classList.remove('focused');
                 });
@@ -658,7 +656,7 @@ function initializeContactForm() {
         }, 1500);
     });
 
-    // Add contact item click handlers
+    
     const contactItems = document.querySelectorAll('.contact-item');
     contactItems.forEach(item => {
         item.addEventListener('click', function() {
@@ -676,7 +674,7 @@ function initializeContactForm() {
                     break;
             }
 
-            // Add click animation
+            
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
@@ -685,7 +683,7 @@ function initializeContactForm() {
     });
 }
 
-// Game Preview Modal
+
 function showGamePreview(gameType) {
     const modal = document.getElementById('preview-modal');
     const title = document.getElementById('preview-title');
@@ -693,7 +691,6 @@ function showGamePreview(gameType) {
     
     if (!modal || !title || !content) return;
 
-    // Game preview data
     const previews = {
         minesweeper: {
             title: 'NeoSweeper Preview',
@@ -825,7 +822,7 @@ function showGamePreview(gameType) {
     }
 }
 
-// Close preview modal
+
 function closePreviewModal() {
     const modal = document.getElementById('preview-modal');
     if (modal) {
@@ -833,7 +830,7 @@ function closePreviewModal() {
     }
 }
 
-// Initialize modal close handlers
+
 function initializeModal() {
     const closeBtn = document.getElementById('close-preview');
     const modal = document.getElementById('preview-modal');
@@ -850,7 +847,7 @@ function initializeModal() {
         });
     }
 
-    // Close modal with Escape key
+  
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closePreviewModal();
@@ -858,7 +855,7 @@ function initializeModal() {
     });
 }
 
-// Intersection Observer for scroll animations
+
 function initializeIntersectionObserver() {
     const observerOptions = {
         threshold: 0.1,
@@ -870,7 +867,7 @@ function initializeIntersectionObserver() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Add staggered animation for grid items
+                
                 const gridItems = entry.target.querySelectorAll('.project-card, .skill-category');
                 gridItems.forEach((item, index) => {
                     setTimeout(() => {
@@ -882,18 +879,18 @@ function initializeIntersectionObserver() {
         });
     }, observerOptions);
 
-    // Observe all sections
+    
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => observer.observe(section));
 }
 
-// Button Effects
+
 function initializeButtonEffects() {
     const buttons = document.querySelectorAll('.cta-button');
     
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-            // Create ripple effect
+            
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
@@ -920,7 +917,7 @@ function initializeButtonEffects() {
         });
     });
 
-    // CTA button actions
+    
     const exploreBtn = document.getElementById('explore-btn');
     const projectsBtn = document.getElementById('projects-btn');
 
@@ -943,7 +940,7 @@ function initializeButtonEffects() {
     }
 }
 
-// Add CSS for ripple animation
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes ripple {
@@ -955,12 +952,12 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Initialize modal when DOM is ready
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeModal();
 });
 
-// Performance optimization: Throttle scroll events
+
 function throttle(func, limit) {
     let inThrottle;
     return function() {
@@ -974,10 +971,10 @@ function throttle(func, limit) {
     }
 }
 
-// Preload critical images and resources
+
 function preloadResources() {
     const criticalImages = [
-        // Add any critical images here
+        
     ];
     
     criticalImages.forEach(src => {
@@ -986,12 +983,12 @@ function preloadResources() {
     });
 }
 
-// Call preload on page load
+
 window.addEventListener('load', preloadResources);
 
-// Handle window resize for responsive adjustments
+
 window.addEventListener('resize', throttle(function() {
-    // Recalculate animations and layouts if needed
+    
     const particles = document.querySelectorAll('.particle');
     if (window.innerWidth <= 768) {
         particles.forEach(particle => particle.style.display = 'none');
