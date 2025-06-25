@@ -1,2 +1,2 @@
 # lazzerex.github.io
-My personal github page.
+My personal website.
