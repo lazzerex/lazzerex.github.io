@@ -512,9 +512,9 @@ function initializeCodeDemo() {
     const outputContent = document.querySelector('.output-content');
     const lineNumbers = document.querySelector('.line-numbers');
 
-    if (!codeContent || !outputContent) return;
+    if (!codeContent || !outputContent || !lineNumbers) return;
 
-  
+    // Sample code to display
     const sampleCode = `const developer = {
   name: "Lazzerex",
   skills: ["Next.js", "React", "Laravel", "Rust"],
@@ -543,61 +543,183 @@ developer.createProject().forEach(project =>
 );
 console.log("📊 Stats:", developer.getStats());`;
 
-    
-    function displayCode() {
-        const lines = sampleCode.split('\n');
-        codeContent.innerHTML = syntaxHighlight(sampleCode);
-        
-        
-        lineNumbers.innerHTML = lines.map((_, i) => i + 1).join('\n');
-    }
+    // Skills JSON for second tab
+    const skillsJson = `{
+  "frontend": {
+    "nextjs": 90,
+    "react": 85,
+    "vue": 75,
+    "tailwind": 80
+  },
+  "backend": {
+    "laravel": 85,
+    "nodejs": 80,
+    "rust": 70,
+    "python": 75
+  },
+  "database": {
+    "mysql": 85,
+    "firebase": 80,
+    "postgresql": 75,
+    "vercel": 90
+  },
+  "totalExperience": "5+ years",
+  "activeProjects": 15,
+  "completedGames": 6
+}`;
 
-    
-    function syntaxHighlight(code) {
+    // Enhanced syntax highlighting
+    function syntaxHighlight(code, isJson = false) {
+        if (isJson) {
+            return code
+                .replace(/"([^"]*)":/g, '<span class="property">"$1"</span>:')
+                .replace(/:\s*"([^"]*)"/g, ': <span class="string">"$1"</span>')
+                .replace(/:\s*(\d+)/g, ': <span class="number">$1</span>')
+                .replace(/:\s*(true|false|null)/g, ': <span class="keyword">$1</span>');
+        }
+
         return code
-            .replace(/\b(const|let|var|function|return|if|else|for|while|class)\b/g, '<span style="color: #569cd6;">$1</span>')
-            .replace(/\b(true|false|null|undefined)\b/g, '<span style="color: #569cd6;">$1</span>')
-            .replace(/"([^"]*)"/g, '<span style="color: #ce9178;">"$1"</span>')
-            .replace(/`([^`]*)`/g, '<span style="color: #ce9178;">`$1`</span>')
-            .replace(/\/\/(.*)/g, '<span style="color: #6a9955;">//$1</span>')
-            .replace(/\b(\d+)\b/g, '<span style="color: #b5cea8;">$1</span>');
+            // Keywords
+            .replace(/\b(const|let|var|function|return|if|else|for|while|class|new|this)\b/g, '<span class="keyword">$1</span>')
+            // Booleans and null
+            .replace(/\b(true|false|null|undefined)\b/g, '<span class="keyword">$1</span>')
+            // Strings
+            .replace(/"([^"]*)"/g, '<span class="string">"$1"</span>')
+            .replace(/`([^`]*)`/g, '<span class="string">`$1`</span>')
+            .replace(/'([^']*)'/g, '<span class="string">\'$1\'</span>')
+            // Comments
+            .replace(/\/\/(.*)/g, '<span class="comment">//$1</span>')
+            // Numbers
+            .replace(/\b(\d+)\b/g, '<span class="number">$1</span>')
+            // Methods
+            .replace(/\.(\w+)\(/g, '.<span class="method">$1</span>(')
+            // Console methods
+            .replace(/\bconsole\./g, '<span class="method">console</span>.')
+            .replace(/\blog\b(?=\()/g, '<span class="method">log</span>')
+            .replace(/\bmap\b(?=\()/g, '<span class="method">map</span>')
+            .replace(/\bforEach\b(?=\()/g, '<span class="method">forEach</span>');
     }
 
-    
+    // Display code with line numbers
+    function displayCode(code, isJson = false) {
+        const lines = code.split('\n');
+        
+        // Generate line numbers
+        const lineNumbersText = lines.map((_, index) => (index + 1).toString()).join('\n');
+        lineNumbers.textContent = lineNumbersText;
+        
+        // Display code with syntax highlighting
+        codeContent.innerHTML = syntaxHighlight(code, isJson);
+    }
+
+    // Run code simulation
     if (runButton) {
+        let isRunning = false;
+        
         runButton.addEventListener('click', function() {
-            this.style.color = '#00ff00';
-            setTimeout(() => {
-                this.style.color = '';
-            }, 200);
+            if (isRunning) return;
+            isRunning = true;
 
+            // Store original content and clear it
+            const originalContent = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            this.style.color = '#fbbf24';
             
+            // Clear previous output
             outputContent.innerHTML = '';
-            const outputs = [
-                '🚀 Developer Profile:',
-                'Lazzerex',
-                '💡 Creating projects...',
-                '  Building with Next.js!',
-                '  Building with React!',
-                '  Building with Laravel!',
-                '  Building with Rust!',
-                '📊 Stats: { projects: 15, gamesLive: 6, totalPlays: "40+" }'
-            ];
+            
+            // Check which tab is active
+            const activeTab = document.querySelector('.tab.active');
+            const isJsonTab = activeTab && activeTab.textContent.includes('skills.json');
+            
+            let outputs;
+            if (isJsonTab) {
+                outputs = [
+                    { text: '📁 Loading skills.json...', delay: 200, color: '#60a5fa' },
+                    { text: '✅ File parsed successfully', delay: 300, color: '#34d399' },
+                    { text: '🔍 Analyzing skill levels...', delay: 400, color: '#fbbf24' },
+                    { text: '📊 Frontend average: 82.5%', delay: 500, color: '#a78bfa' },
+                    { text: '📊 Backend average: 77.5%', delay: 600, color: '#a78bfa' },
+                    { text: '📊 Database average: 82.5%', delay: 700, color: '#a78bfa' },
+                    { text: '🎯 Overall expertise: Senior Level', delay: 800, color: '#34d399' },
+                    { text: '💼 Ready for production projects!', delay: 900, color: '#34d399' }
+                ];
+            } else {
+                outputs = [
+                    { text: '🚀 Developer Profile:', delay: 200, color: '#60a5fa' },
+                    { text: 'Lazzerex', delay: 300, color: '#ffffff' },
+                    { text: '💡 Creating projects...', delay: 400, color: '#fbbf24' },
+                    { text: '  Building with Next.js!', delay: 500, color: '#34d399' },
+                    { text: '  Building with React!', delay: 600, color: '#34d399' },
+                    { text: '  Building with Laravel!', delay: 700, color: '#34d399' },
+                    { text: '  Building with Rust!', delay: 800, color: '#34d399' },
+                    { text: '📊 Stats: { projects: 15, gamesLive: 6, totalPlays: "40+" }', delay: 1000, color: '#a78bfa' }
+                ];
+            }
 
+            let totalDelay = 0;
             outputs.forEach((output, index) => {
+                totalDelay += output.delay;
                 setTimeout(() => {
                     const line = document.createElement('div');
-                    line.textContent = output;
+                    line.textContent = output.text;
+                    line.style.color = output.color || '#00ff00';
                     line.style.opacity = '0';
-                    line.style.animation = 'fadeIn 0.3s ease forwards';
+                    line.style.transform = 'translateX(-10px)';
+                    line.style.transition = 'all 0.3s ease';
+                    line.style.marginBottom = '2px';
                     outputContent.appendChild(line);
-                }, index * 200);
+                    
+                    // Animate in
+                    setTimeout(() => {
+                        line.style.opacity = '1';
+                        line.style.transform = 'translateX(0)';
+                    }, 50);
+                    
+                    // Auto-scroll to bottom
+                    outputContent.scrollTop = outputContent.scrollHeight;
+                }, totalDelay);
             });
+
+            // Reset button after execution
+            setTimeout(() => {
+                this.innerHTML = originalContent; // Restore original content
+                this.style.color = '';
+                isRunning = false;
+            }, totalDelay + 500);
         });
     }
 
-   
-    displayCode();
+    // Tab switching functionality
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Clear output when switching tabs
+            if (outputContent) {
+                outputContent.innerHTML = '<div style="color: #6b7280; font-style: italic;">Click the play button to run the code...</div>';
+            }
+            
+            // Switch between code examples
+            if (this.textContent.includes('skills.json')) {
+                displayCode(skillsJson, true);
+            } else {
+                displayCode(sampleCode, false);
+            }
+        });
+    });
+
+    // Initialize with JavaScript code
+    displayCode(sampleCode, false);
+    
+    // Set initial output message
+    if (outputContent) {
+        outputContent.innerHTML = '<div style="color: #6b7280; font-style: italic;">Click the play button to run the code...</div>';
+    }
 }
 
 // Contact Form

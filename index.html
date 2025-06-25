@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lazzerex - Full Stack Developer & Game Creator</title>
+    <title>Lazzerex - Future Full Stack Developer & Game Creator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Cursor trail effect -->
     <div id="cursor-trail"></div>
-    
+
     <!-- Floating particles -->
     <div id="particles-container"></div>
-    
+
     <!-- Loading screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
@@ -57,7 +59,9 @@
         <div class="container">
             <div class="profile-section">
                 <div class="profile-img" id="profile-img">
-                    <div class="profile-inner">LX</div>
+                    <div class="profile-inner">
+                        <img src="images/my-avatar.jpg" alt="Lazzerex" class="profile-avatar">
+                    </div>
                     <div class="profile-rings">
                         <div class="ring ring-1"></div>
                         <div class="ring ring-2"></div>
@@ -65,9 +69,11 @@
                     </div>
                 </div>
                 <h1 class="typewriter" id="main-title"></h1>
-                <p class="title glitch-text" data-text="Full Stack Developer & Game Creator">Full Stack Developer & Game Creator</p>
-                <p class="intro fade-in-text">Building scalable digital experiences that blend modern technology with classic gaming nostalgia. Creator of <span class="highlight">Lazzerex Digital Labs</span>.</p>
-                
+                <p class="title glitch-text" data-text="Full Stack Developer & Game Creator">Future Full Stack Developer & Game
+                    Creator</p>
+                <p class="intro fade-in-text">Building scalable digital experiences that blend modern technology with
+                    classic gaming nostalgia. Creator of <span class="highlight">Lazzerex Digital Labs</span>.</p>
+
                 <div class="stats-container">
                     <div class="stat-item" data-count="15">
                         <div class="stat-number">0</div>
@@ -94,7 +100,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Scroll indicator -->
         <div class="scroll-indicator" id="scroll-indicator">
             <div class="scroll-arrow">
@@ -113,16 +119,29 @@
                 <div class="about-content">
                     <div class="about-text">
                         <div class="interactive-text">
-                            <p>I'm currently a university student whose dream is to become full-stack developer in the future. I believe that the best games and applications transcend time. Through <strong><a class="highlight-on-hover" href="https://digital-labs-nine.vercel.app/" target="_blank">Lazzerex Digital Labs</a></strong>, I reimagine beloved classics with modern technology, creating experiences that honor the past while embracing the future.</p>
-                            
-                            <p>My approach combines technical expertise with a deep understanding of user experience, ensuring that every solution I build delivers both <strong class="emoji-hover" data-emoji="💫">value</strong> and <strong class="emoji-hover" data-emoji="🎮">enjoyment</strong>.</p>
+                            <p>I'm currently a university student whose dream is to become full-stack developer in the
+                                future. I believe that the best games and applications transcend time. Through
+                                <strong><a class="highlight-on-hover" href="https://digital-labs-nine.vercel.app/"
+                                        target="_blank">Lazzerex Digital Labs</a></strong>, I reimagine beloved classics
+                                with modern technology, creating experiences that honor the past while embracing the
+                                future.</p>
+
+                            <p>My approach combines technical expertise with a deep understanding of user experience,
+                                ensuring that every solution I build delivers both <strong class="emoji-hover"
+                                    data-emoji="💫">value</strong> and <strong class="emoji-hover"
+                                    data-emoji="🎮">enjoyment</strong>.</p>
                         </div>
                     </div>
                     <div class="about-text">
                         <div class="interactive-text">
-                            <p>When I'm not coding, I enjoy contributing to open source projects, experimenting with new technologies, and building tools that solve real-world problems. I believe in writing <span class="code-snippet">clean(), documented()</span> code and following established patterns that make collaboration seamless.</p>
-                            
-                            <p>I'm passionate about making technology accessible and creating games that are not just entertaining, but <span class="highlight-on-hover">meaningful to everyone</span> who plays them.</p>
+                            <p>When I'm not coding, I enjoy contributing to open source projects, experimenting with new
+                                technologies, and building tools that solve real-world problems. I believe in writing
+                                <span class="code-snippet">clean(), documented()</span> code and following established
+                                patterns that make collaboration seamless.</p>
+
+                            <p>I'm passionate about making technology accessible and creating games that are not just
+                                entertaining, but <span class="highlight-on-hover">meaningful to everyone</span> who
+                                plays them.</p>
                         </div>
                     </div>
                 </div>
@@ -131,17 +150,18 @@
             <section id="games" class="section">
                 <div class="section-header">
                     <h2 class="section-title">Featured Games</h2>
-                    <p class="section-subtitle">Modern reimaginations of classic games, playable directly in your browser</p>
-                    
+                    <p class="section-subtitle">Modern reimaginations of classic games, playable directly in your
+                        browser</p>
+
                     <!-- Game filter -->
                     <div class="filter-tabs" id="game-filter">
                         <button class="filter-tab active" data-filter="all">All Games</button>
-                        <button class="filter-tab" data-filter="puzzle">Puzzle</button>
+                        <!-- <button class="filter-tab" data-filter="puzzle">Puzzle</button>
                         <button class="filter-tab" data-filter="card">Card</button>
-                        <button class="filter-tab" data-filter="skill">Skill</button>
+                        <button class="filter-tab" data-filter="skill">Skill</button> -->
                     </div>
                 </div>
-                
+
                 <div class="games-grid" id="games-grid">
                     <div class="project-card game-card" data-category="puzzle" data-game="neosweeper">
                         <div class="card-glow"></div>
@@ -150,7 +170,8 @@
                             <div class="icon-particles"></div>
                         </div>
                         <h3>NeoSweeper <span class="badge pulse">Live</span></h3>
-                        <p>Modern twist on classic minesweeper with enhanced visuals, smooth animations, and intelligent gameplay mechanics.</p>
+                        <p>Modern twist on classic minesweeper with enhanced visuals, smooth animations, and intelligent
+                            gameplay mechanics.</p>
                         <div class="tech-stack">
                             <span class="tech-pill">Next.js</span>
                             <span class="tech-pill">React</span>
@@ -175,7 +196,8 @@
                             <div class="icon-particles"></div>
                         </div>
                         <h3>NeoSudoku <span class="badge pulse">Live</span></h3>
-                        <p>Intelligent number puzzle game featuring multiple difficulty levels, smart hint system, and elegant design.</p>
+                        <p>Intelligent number puzzle game featuring multiple difficulty levels, smart hint system, and
+                            elegant design.</p>
                         <div class="tech-stack">
                             <span class="tech-pill">Next.js</span>
                             <span class="tech-pill">React</span>
@@ -200,7 +222,8 @@
                             <div class="icon-particles"></div>
                         </div>
                         <h3>Neo2048 <span class="badge pulse">Live</span></h3>
-                        <p>Reimagined sliding block puzzle with smooth animations, responsive controls, and satisfying visual feedback.</p>
+                        <p>Reimagined sliding block puzzle with smooth animations, responsive controls, and satisfying
+                            visual feedback.</p>
                         <div class="tech-stack">
                             <span class="tech-pill">Next.js</span>
                             <span class="tech-pill">React</span>
@@ -225,7 +248,8 @@
                             <div class="icon-particles"></div>
                         </div>
                         <h3>NeoSolitaire <span class="badge pulse">Live</span></h3>
-                        <p>Modern solitaire card game with sleek design, fluid animations, and intuitive drag-and-drop mechanics.</p>
+                        <p>Modern solitaire card game with sleek design, fluid animations, and intuitive drag-and-drop
+                            mechanics.</p>
                         <div class="tech-stack">
                             <span class="tech-pill">Next.js</span>
                             <span class="tech-pill">React</span>
@@ -250,7 +274,8 @@
                             <div class="icon-particles"></div>
                         </div>
                         <h3>MemoMix <span class="badge pulse">Live</span></h3>
-                        <p>Memory challenge game with dynamic patterns, progressive difficulty, and engaging visual design.</p>
+                        <p>Memory challenge game with dynamic patterns, progressive difficulty, and engaging visual
+                            design.</p>
                         <div class="tech-stack">
                             <span class="tech-pill">Next.js</span>
                             <span class="tech-pill">React</span>
@@ -275,7 +300,8 @@
                             <div class="icon-particles"></div>
                         </div>
                         <h3>WordRush <span class="badge pulse">Live</span></h3>
-                        <p>Interactive typing test web application featuring real-time WPM tracking and accuracy measurement.</p>
+                        <p>Interactive typing test web application featuring real-time WPM tracking and accuracy
+                            measurement.</p>
                         <div class="tech-stack">
                             <span class="tech-pill">Next.js</span>
                             <span class="tech-pill">React</span>
@@ -300,7 +326,7 @@
                     <h2 class="section-title">Projects & Tools</h2>
                     <p class="section-subtitle">Practical solutions and development tools</p>
                 </div>
-                
+
                 <div class="project-tabs">
                     <button class="project-tab active" data-tab="apps">Web Apps</button>
                     <button class="project-tab" data-tab="tools">Dev Tools</button>
@@ -316,7 +342,8 @@
                                     <i class="project-icon fas fa-laptop"></i>
                                 </div>
                                 <h3>LapInsight <span class="badge pulse">Live</span></h3>
-                                <p>Comprehensive laptop comparison platform with advanced filtering and real-time price tracking.</p>
+                                <p>Comprehensive laptop comparison platform with advanced filtering and real-time price
+                                    tracking.</p>
                                 <div class="tech-stack">
                                     <span class="tech-pill">Next.js</span>
                                     <span class="tech-pill">Firebase</span>
@@ -336,7 +363,8 @@
                                     <i class="project-icon fas fa-tasks"></i>
                                 </div>
                                 <h3>TaskFlow</h3>
-                                <p>Full-featured task management system with collaborative workspaces and team coordination.</p>
+                                <p>Full-featured task management system with collaborative workspaces and team
+                                    coordination.</p>
                                 <div class="tech-stack">
                                     <span class="tech-pill">Laravel</span>
                                     <span class="tech-pill">MySQL</span>
@@ -360,13 +388,15 @@
                                     <i class="project-icon fas fa-folder-open"></i>
                                 </div>
                                 <h3>File Organizer</h3>
-                                <p>Fast, efficient command-line tool written in Rust for organizing files by type, date, or custom rules.</p>
+                                <p>Fast, efficient command-line tool written in Rust for organizing files by type, date,
+                                    or custom rules.</p>
                                 <div class="tech-stack">
                                     <span class="tech-pill">Rust</span>
                                     <span class="tech-pill">CLI Tool</span>
                                 </div>
                                 <div class="card-actions">
-                                    <button class="github-btn" data-url="https://github.com/lazzerex/forg-file-organizer">
+                                    <button class="github-btn"
+                                        data-url="https://github.com/lazzerex/forg-file-organizer">
                                         <i class="fab fa-github"></i>
                                         View Code
                                     </button>
@@ -402,7 +432,8 @@
                                     <i class="project-icon fas fa-laptop-code"></i>
                                 </div>
                                 <h3>Portfolio Architect</h3>
-                                <p>Modern portfolio template system with dynamic content loading and interactive elements.</p>
+                                <p>Modern portfolio template system with dynamic content loading and interactive
+                                    elements.</p>
                                 <div class="tech-stack">
                                     <span class="tech-pill">Alpine.js</span>
                                     <span class="tech-pill">Laravel</span>
@@ -425,7 +456,7 @@
                     <h2 class="section-title">Skills & Technologies</h2>
                     <p class="section-subtitle">Interactive showcase of my technical expertise</p>
                 </div>
-                
+
                 <div class="skills-interactive">
                     <div class="skill-category" data-category="frontend">
                         <div class="category-header">
@@ -533,7 +564,7 @@
                         <div class="editor-header">
                             <div class="editor-tabs">
                                 <div class="tab active">portfolio.js</div>
-                                <div class="tab">skills.json</div>
+                                
                             </div>
                             <div class="editor-controls">
                                 <i class="fas fa-play" id="run-code"></i>
@@ -559,30 +590,30 @@
                 <h2 class="section-title">Let's Connect</h2>
                 <p class="section-subtitle">Ready to collaborate? Let's build something amazing together!</p>
             </div>
-            
+
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item" data-contact="email">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Email (To Be Added)</h3>
-                            <p>lazzerex@example.com</p>
+                        <div class="">
+                            <h3>Email</h3>
+                            <p>nambinh236@gmail.com</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item" data-contact="github">
                         <div class="contact-icon">
                             <i class="fab fa-github"></i>
                         </div>
-                        <div class="contact-details">
+                        <div class="">
                             <h3>GitHub</h3>
                             <p>github.com/lazzerex</p>
                         </div>
                     </div>
-                    
-                    <div class="contact-item" data-contact="linkedin">
+
+                    <!-- <div class="contact-item" data-contact="linkedin">
                         <div class="contact-icon">
                             <i class="fab fa-linkedin"></i>
                         </div>
@@ -590,7 +621,7 @@
                             <h3>LinkedIn</h3>
                             <p>Connect with me</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="quick-contact">
@@ -598,15 +629,15 @@
                     <form class="contact-form" id="contact-form">
                         <div class="form-group">
                             <input type="text" id="name" placeholder="Your Name" required>
-                            <label for="name">Name</label>
+
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" placeholder="Your Email" required>
-                            <label for="email">Email</label>
+
                         </div>
                         <div class="form-group">
                             <textarea id="message" placeholder="Your Message" required></textarea>
-                            <label for="message">Message</label>
+
                         </div>
                         <button type="submit" class="submit-btn">
                             <span>Send Message</span>
@@ -642,4 +673,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
