@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Professional Portfolio</title>
+    <title>Lazzerex - Full Stack Developer & Game Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -42,14 +44,14 @@
             height: 120px;
             border-radius: 50%;
             margin: 0 auto 24px;
-            background: #f3f4f6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: 3px solid #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 36px;
-            color: #6b7280;
+            color: white;
             font-weight: 600;
         }
 
@@ -73,7 +75,31 @@
             color: #4b5563;
             line-height: 1.8;
             max-width: 500px;
-            margin: 0 auto;
+            margin: 0 auto 32px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 4px;
         }
 
         .main-content {
@@ -111,15 +137,15 @@
 
         .grid {
             display: grid;
-            gap: 40px;
-        }
-
-        .two-column {
-            grid-template-columns: 1fr 1fr;
+            gap: 24px;
         }
 
         .three-column {
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        .two-column {
+            grid-template-columns: 1fr 1fr;
         }
 
         .about-content {
@@ -139,14 +165,65 @@
             margin-bottom: 24px;
         }
 
-        .about-text p:last-child {
-            margin-bottom: 0;
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #d1d5db;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .tech-pill {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid #e5e7eb;
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .skill-category {
@@ -183,50 +260,6 @@
             border-color: #d1d5db;
         }
 
-        .project-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 32px;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: #d1d5db;
-            transform: translateY(-2px);
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #111827;
-            margin-bottom: 12px;
-        }
-
-        .project-card p {
-            color: #6b7280;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .tech-tag {
-            background: #f9fafb;
-            color: #374151;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            border: 1px solid #f3f4f6;
-        }
-
         .contact-section {
             background: #f9fafb;
             border-top: 1px solid #e5e7eb;
@@ -261,6 +294,8 @@
             background: #f9fafb;
             border-color: #d1d5db;
             transform: translateY(-1px);
+            text-decoration: none;
+            color: #374151;
         }
 
         .cta-section {
@@ -280,11 +315,54 @@
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.2s ease;
+            margin: 0 8px;
         }
 
         .cta-button:hover {
             background: #1f2937;
             transform: translateY(-1px);
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .cta-button.outline {
+            background: transparent;
+            color: #111827;
+            border: 2px solid #111827;
+        }
+
+        .cta-button.outline:hover {
+            background: #111827;
+            color: #ffffff;
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            position: relative;
+        }
+
+        .coming-soon::after {
+            content: "Coming Soon";
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #fbbf24;
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
         }
 
         @media (max-width: 768px) {
@@ -335,6 +413,15 @@
             .project-card {
                 padding: 24px;
             }
+
+            .stats-container {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .cta-button {
+                margin: 8px 4px;
+            }
         }
     </style>
 </head>
@@ -342,10 +429,25 @@
     <header>
         <div class="container">
             <div class="profile-section">
-                <div class="profile-img">YN</div>
-                <h1>Your Name</h1>
-                <p class="title">Senior Software Engineer</p>
-                <p class="intro">Building scalable solutions and crafting exceptional user experiences with modern technologies and clean, maintainable code.</p>
+                <div class="profile-img">LX</div>
+                <h1>Lazzerex</h1>
+                <p class="title">Full Stack Developer & Game Creator</p>
+                <p class="intro">Building scalable digital experiences that blend modern technology with classic gaming nostalgia. Creator of Lazzerex Digital Labs.</p>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projects Built</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Games Live</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">Games Played</div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -354,96 +456,217 @@
         <div class="container">
             <section class="section">
                 <div class="section-header">
-                    <h2>About</h2>
-                    <p class="section-subtitle">Passionate about technology and dedicated to creating meaningful digital experiences</p>
+                    <h2>About Me</h2>
+                    <p class="section-subtitle">Passionate about creating digital experiences that matter</p>
                 </div>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>I'm a software engineer with over 5 years of experience developing web applications and systems that solve real-world problems. I specialize in full-stack development with a focus on performance, scalability, and user experience.</p>
+                        <p>I'm a full-stack developer who believes that the best games and applications transcend time. Through <strong>Lazzerex Digital Labs</strong>, I reimagine beloved classics with modern technology, creating experiences that honor the past while embracing the future.</p>
                         
-                        <p>My approach combines technical expertise with a deep understanding of business needs, ensuring that every solution I build delivers value and drives results.</p>
+                        <p>My approach combines technical expertise with a deep understanding of user experience, ensuring that every solution I build delivers both value and enjoyment.</p>
                     </div>
                     <div class="about-text">
-                        <p>When I'm not coding, I enjoy contributing to open source projects, mentoring junior developers, and staying current with emerging technologies and industry best practices.</p>
+                        <p>When I'm not coding, I enjoy contributing to open source projects, experimenting with new technologies, and building tools that solve real-world problems. I believe in writing clean, documented code and following established patterns that make collaboration seamless.</p>
                         
-                        <p>I believe in writing clean, documented code and following established patterns that make maintenance and collaboration seamless.</p>
+                        <p>I'm passionate about making technology accessible and creating games that are not just entertaining, but meaningful to everyone who plays them.</p>
                     </div>
                 </div>
             </section>
 
             <section class="section">
                 <div class="section-header">
-                    <h2>Skills</h2>
-                    <p class="section-subtitle">Technologies and tools I use to bring ideas to life</p>
+                    <h2>Featured Games</h2>
+                    <p class="section-subtitle">Modern reimaginations of classic games, playable directly in your browser</p>
+                </div>
+                <div class="grid three-column">
+                    <a href="https://neo-sweeper.vercel.app/" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-bomb" style="color: #ef4444;"></i>
+                        <h3>NeoSweeper <span class="badge">Live</span></h3>
+                        <p>Modern twist on classic minesweeper with enhanced visuals, smooth animations, and intelligent gameplay mechanics that make the experience more intuitive and enjoyable.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">CSS3</span>
+                        </div>
+                    </a>
+
+                    <a href="https://neo-sudoku.vercel.app/" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-border-all" style="color: #3b82f6;"></i>
+                        <h3>NeoSudoku <span class="badge">Live</span></h3>
+                        <p>Intelligent number puzzle game featuring multiple difficulty levels, smart hint system, and elegant design that makes solving puzzles a delightful experience.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">Algorithm</span>
+                        </div>
+                    </a>
+
+                    <a href="https://neo-2048.vercel.app/" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-superscript" style="color: #10b981;"></i>
+                        <h3>Neo2048 <span class="badge">Live</span></h3>
+                        <p>Reimagined sliding block puzzle with smooth animations, responsive controls, and satisfying visual feedback that enhances the classic 2048 experience.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">Animations</span>
+                        </div>
+                    </a>
+
+                    <a href="https://neo-solitaire.vercel.app/" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-diamond" style="color: #8b5cf6;"></i>
+                        <h3>NeoSolitaire <span class="badge">Live</span></h3>
+                        <p>Modern solitaire card game with sleek design, fluid animations, and intuitive drag-and-drop mechanics that bring the classic card game to life.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">Game Logic</span>
+                        </div>
+                    </a>
+
+                    <a href="https://memomix.vercel.app/" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-shuffle" style="color: #f59e0b;"></i>
+                        <h3>MemoMix <span class="badge">Live</span></h3>
+                        <p>Memory challenge game with dynamic patterns, progressive difficulty, and engaging visual design that tests and improves cognitive abilities.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">Memory Game</span>
+                        </div>
+                    </a>
+
+                    <a href="https://word-rush-six.vercel.app/" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-keyboard" style="color: #ec4899;"></i>
+                        <h3>WordRush <span class="badge">Live</span></h3>
+                        <p>Interactive typing test web application featuring real-time WPM tracking, accuracy measurement, and progressive difficulty to improve typing skills.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">Real-time</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Web Applications</h2>
+                    <p class="section-subtitle">Practical solutions that solve real-world problems</p>
+                </div>
+                <div class="grid three-column">
+                    <a href="https://lap-insight-sigma.vercel.app/" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-laptop" style="color: #9333ea;"></i>
+                        <h3>LapInsight <span class="badge">Live</span></h3>
+                        <p>Comprehensive laptop comparison platform with advanced filtering, real-time price tracking, and detailed analytics to help users find the perfect device for their needs.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">Firebase</span>
+                            <span class="tech-pill">REST API</span>
+                            <span class="tech-pill">Analytics</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/lazzerex/task-flow" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-tasks" style="color: #3b82f6;"></i>
+                        <h3>TaskFlow</h3>
+                        <p>Full-featured task management system with priority levels, due dates, collaborative workspaces, and team coordination features built with Laravel.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Laravel</span>
+                            <span class="tech-pill">MySQL</span>
+                            <span class="tech-pill">Tailwind CSS</span>
+                            <span class="tech-pill">Collaboration</span>
+                        </div>
+                    </a>
+
+                    <div class="project-card coming-soon">
+                        <i class="project-icon fas fa-calendar-alt" style="color: #059669;"></i>
+                        <h3>EventFlow</h3>
+                        <p>Smart event management platform with automated scheduling, attendee tracking, real-time analytics, and seamless integration for organizing any type of event.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Vue.js</span>
+                            <span class="tech-pill">Express</span>
+                            <span class="tech-pill">PostgreSQL</span>
+                            <span class="tech-pill">Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Development Projects</h2>
+                    <p class="section-subtitle">Open source tools and experimental projects</p>
+                </div>
+                <div class="grid three-column">
+                    <a href="https://github.com/lazzerex/portfolio-layout" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-laptop-code" style="color: #10b981;"></i>
+                        <h3>Portfolio Architect</h3>
+                        <p>Modern portfolio template system with dynamic content loading, interactive elements, and responsive design powered by Laravel and Alpine.js.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Alpine.js</span>
+                            <span class="tech-pill">Laravel</span>
+                            <span class="tech-pill">Tailwind CSS</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/lazzerex/forg-file-organizer" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-folder-open" style="color: #ef4444;"></i>
+                        <h3>File Organizer</h3>
+                        <p>Fast, efficient command-line tool written in Rust for organizing files by type, date, or custom rules. Perfect for cleaning up messy directories automatically.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Rust</span>
+                            <span class="tech-pill">CLI Tool</span>
+                            <span class="tech-pill">File System</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/lazzerex/ferris-lang" target="_blank" class="project-card">
+                        <i class="project-icon fas fa-file-code" style="color: #787575;"></i>
+                        <h3>Ferris Language</h3>
+                        <p>Simple programming language interpreter written in Rust for educational purposes, featuring basic syntax and the ability to run scripts directly in the terminal.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Rust</span>
+                            <span class="tech-pill">Interpreter</span>
+                            <span class="tech-pill">Programming Language</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Skills & Technologies</h2>
+                    <p class="section-subtitle">Tools and technologies I use to bring ideas to life</p>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-category">
                         <h3>Frontend</h3>
                         <div class="skill-list">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">TypeScript</span>
                             <span class="skill-tag">Next.js</span>
-                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">React</span>
                             <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">Alpine.js</span>
+                            <span class="skill-tag">CSS3</span>
                         </div>
                     </div>
                     <div class="skill-category">
-                        <h3>Backend</h3>
+                        <h3>Backend & Systems</h3>
                         <div class="skill-list">
+                            <span class="skill-tag">Laravel</span>
                             <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
                             <span class="skill-tag">Python</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">Rust</span>
                         </div>
                     </div>
                     <div class="skill-category">
-                        <h3>Tools & Platform</h3>
+                        <h3>Database & Cloud</h3>
                         <div class="skill-list">
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">CI/CD</span>
-                            <span class="skill-tag">Kubernetes</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <div class="section-header">
-                    <h2>Featured Projects</h2>
-                    <p class="section-subtitle">A selection of recent work that showcases my skills and experience</p>
-                </div>
-                <div class="grid three-column">
-                    <div class="project-card">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution built with React and Node.js, featuring real-time inventory management, payment processing, and analytics dashboard.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Stripe API</span>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Task Management System</h3>
-                        <p>A collaborative project management tool with real-time updates, file sharing, and team communication features. Built for scalability and performance.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Analytics Dashboard</h3>
-                        <p>A comprehensive data visualization platform that processes millions of data points to provide actionable business insights through interactive charts and reports.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Docker</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">Vercel</span>
+                            <span class="skill-tag">Redis</span>
                         </div>
                     </div>
                 </div>
@@ -455,39 +678,43 @@
         <div class="container">
             <div class="section-header">
                 <h2>Let's Connect</h2>
-                <p class="section-subtitle">Always interested in discussing new opportunities and innovative projects</p>
+                <p class="section-subtitle">Interested in collaboration, gaming, or just want to chat about tech?</p>
             </div>
             <div class="contact-grid">
-                <a href="mailto:your.email@example.com" class="contact-link">
-                    <span>📧</span>
-                    <span>Email</span>
-                </a>
-                <a href="https://github.com/yourusername" class="contact-link">
-                    <span>⚡</span>
+                <a href="https://github.com/lazzerex" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i>
                     <span>GitHub</span>
                 </a>
-                <a href="https://linkedin.com/in/yourprofile" class="contact-link">
-                    <span>💼</span>
+                <a href="mailto:your.email@example.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
                     <span>LinkedIn</span>
                 </a>
-                <a href="tel:+1234567890" class="contact-link">
-                    <span>📱</span>
-                    <span>Phone</span>
+                <a href="https://twitter.com/yourusername" target="_blank" class="contact-link">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
                 </a>
             </div>
             <div class="cta-section">
-                <a href="mailto:your.email@example.com" class="cta-button">
+                <a href="https://github.com/lazzerex" target="_blank" class="cta-button">
+                    <i class="fas fa-code"></i>
+                    <span>View All Projects</span>
+                </a>
+                <a href="mailto:your.email@example.com" class="cta-button outline">
+                    <i class="fas fa-paper-plane"></i>
                     <span>Get In Touch</span>
-                    <span>→</span>
                 </a>
             </div>
         </div>
     </section>
 
     <script>
-        // Smooth scroll behavior for internal links
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // Add intersection observer for fade-in animations
+            
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -502,7 +729,7 @@
                 });
             }, observerOptions);
 
-            // Add fade-in animation to sections
+            
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
                 section.style.opacity = '0';
@@ -511,14 +738,17 @@
                 observer.observe(section);
             });
 
-            // Add subtle hover effects to project cards
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.borderColor = '#d1d5db';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.borderColor = '#e5e7eb';
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             });
         });
