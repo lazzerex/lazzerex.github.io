@@ -31,7 +31,7 @@ function initializeApp() {
         initializeCursorTrail();
         initializeIntersectionObserver();
         initializeButtonEffects();
-    }, 2000);
+    }, 2850);
 }
 
 
