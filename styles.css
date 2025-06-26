@@ -157,6 +157,7 @@ html {
 }
 
 
+
 #particles-container {
     position: fixed;
     top: 0;
@@ -405,7 +406,7 @@ html {
 }
 
 
-.typewriter {
+/* .typewriter {
     font-size: 2.75rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -415,9 +416,9 @@ html {
     white-space: nowrap;
     border-right: 3px solid var(--accent-color);
     animation: typing 3s steps(20) forwards, blink 1s infinite;
-}
+} */
 
-@keyframes typing {
+/* @keyframes typing {
     from {
         width: 0;
     }
@@ -433,7 +434,7 @@ html {
     51%, 100% {
         border-color: transparent;
     }
-}
+} */
 
 .glitch-text {
     position: relative;
@@ -2212,27 +2213,28 @@ html {
 .info-avatar {
     width: 50px;
     height: 50px;
-    background: var(--gradient-accent);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: 600;
     position: relative;
+    overflow: hidden;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    transition: all var(--transition-medium);
 }
 
-.status-indicator {
+/* .status-indicator {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
+    bottom: 5px;
+    right: 5px;
     width: 12px;
     height: 12px;
     background: #10b981;
     border-radius: 50%;
     border: 2px solid white;
     animation: pulse 2s infinite;
-}
+} */
 
 .info-details h3 {
     font-size: 1.125rem;
@@ -2460,4 +2462,68 @@ html {
     .tooltip-content {
         min-width: 200px;
     }
+}
+
+/*-----about me avatar------*/
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-medium);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.info-avatar:hover .avatar-image {
+    transform: scale(1.05);
+}
+
+
+
+
+.info-avatar:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    border-color: var(--accent-color);
+}
+
+.link-github {
+    display: flex;
+    gap: 2rem;
+}
+
+.link-github {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.link-github:hover,
+.link-github.active {
+    color: var(--accent-color);
+}
+
+.link-github::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width var(--transition-fast);
+}
+
+.link-github:hover::after,
+.link-github.active::after {
+    width: 100%;
+}
+
+
+.project-card, .tool-item, .experiment-card {
+    animation: none !important;
+    transition: all 0.3s ease !important;
 }

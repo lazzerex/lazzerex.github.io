@@ -529,7 +529,7 @@ function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     let lastScrollTop = 0;
 
-    
+    // Navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -537,7 +537,7 @@ function initializeNavigation() {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80;
+                const offsetTop = targetSection.offsetTop - 94; // Navbar height (74) + padding (20)
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -546,7 +546,7 @@ function initializeNavigation() {
         });
     });
 
-    
+    // Scroll behavior for navbar
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
@@ -561,10 +561,10 @@ function initializeNavigation() {
         updateActiveNavLink();
     });
 
-    
+    // Update active nav link
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
-        const scrollPosition = window.scrollY + 100;
+        const scrollPosition = window.scrollY + 94; // Navbar height + padding
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -581,6 +581,9 @@ function initializeNavigation() {
         });
     }
 }
+
+
+
 
 
 function initializeThemeToggle() {
@@ -662,23 +665,47 @@ function initializeTypewriter() {
     if (!titleElement) return;
 
     const text = 'Lazzerex';
+    const cursor = '|';
     let index = 0;
+    let showCursor = true;
+    
+    titleElement.textContent = '';
+    titleElement.style.color = 'var(--text-primary)';
+
+    function updateDisplay() {
+        const currentText = text.substring(0, index);
+        const cursorChar = showCursor ? `<span style="color: var(--accent-color); animation: none;">${cursor}</span>` : '<span style="opacity: 0;">|</span>';
+        titleElement.innerHTML = currentText + cursorChar;
+    }
 
     function typeWriter() {
         if (index < text.length) {
-            titleElement.textContent += text.charAt(index);
             index++;
+            updateDisplay();
             setTimeout(typeWriter, 150);
         } else {
             
             setTimeout(() => {
-                titleElement.style.borderRight = 'none';
-            }, 1000);
+                titleElement.textContent = text;
+            }, 2000);
         }
     }
 
     
-    setTimeout(typeWriter, 500);
+    function blinkLoop() {
+        showCursor = !showCursor;
+        updateDisplay();
+        
+        if (index < text.length || titleElement.textContent.includes('|')) {
+            setTimeout(blinkLoop, 500);
+        }
+    }
+
+    // Start both animations
+    setTimeout(() => {
+        blinkLoop();
+        typeWriter();
+    }, 800);
 }
 
 
@@ -1418,7 +1445,7 @@ function initializeButtonEffects() {
     
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-            
+            // Ripple effect code stays the same...
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
@@ -1445,7 +1472,7 @@ function initializeButtonEffects() {
         });
     });
 
-    
+    // Updated button navigation with consistent offset
     const exploreBtn = document.getElementById('explore-btn');
     const projectsBtn = document.getElementById('projects-btn');
 
@@ -1453,7 +1480,11 @@ function initializeButtonEffects() {
         exploreBtn.addEventListener('click', function() {
             const gamesSection = document.getElementById('games');
             if (gamesSection) {
-                gamesSection.scrollIntoView({ behavior: 'smooth' });
+                const offsetTop = gamesSection.offsetTop - 94; // Navbar height + padding
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
             }
         });
     }
@@ -1462,12 +1493,15 @@ function initializeButtonEffects() {
         projectsBtn.addEventListener('click', function() {
             const projectsSection = document.getElementById('projects');
             if (projectsSection) {
-                projectsSection.scrollIntoView({ behavior: 'smooth' });
+                const offsetTop = projectsSection.offsetTop - 94; // Navbar height + padding
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
             }
         });
     }
 }
-
 
 const style = document.createElement('style');
 style.textContent = `
