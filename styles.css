@@ -1201,10 +1201,6 @@ html {
     justify-content: center;
 }
 
-.editor-controls i:hover {
-    background: #007acc;
-    transform: scale(1.1);
-}
 
 .editor-content {
     display: flex;
