@@ -15,7 +15,7 @@ function initializeApp() {
     setTimeout(() => {
         hideLoadingScreen();
         
-        // Force re-enable scrolling here
+        
         document.body.classList.remove('loading-active');
         document.body.style.overflow = '';
         document.body.style.position = '';

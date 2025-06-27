@@ -15,14 +15,14 @@
     
 <div id="page-cover" class="page-cover">
     <div class="cover-content">
-        <!-- Optional: Add a simple logo or loading indicator -->
+        
         <div class="cover-logo">LX</div>
         <div class="cover-spinner"></div>
     </div>
 </div>
 
 <style>
-/* Prevent scrolling while loading */
+/* prevent scrolling while loading */
 body.loading-active {
     overflow: hidden;
     height: 100vh;
@@ -37,11 +37,7 @@ body.loading-active {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-    /* Alternative backgrounds you can try:
-    background: rgba(0, 0, 0, 0.95); /* Black with slight transparency */
-    /* background: blur(20px) rgba(10, 10, 26, 0.9); /* Blurry dark */
-    /* background: #0a0a0a; /* Pure black */
-    z-index: 999999; /* Higher than your loading screen */
+    z-index: 999999; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,7 +85,7 @@ body.loading-active {
     100% { transform: rotate(360deg); }
 }
 
-/* Hide the cover on mobile if needed */
+/* hide the cover on mobile if needed */
 @media (max-width: 768px) {
     .cover-logo {
         font-size: 2rem;
@@ -102,28 +98,27 @@ body.loading-active {
 </style>
 
 <script>
-// Simple script to hide the cover after 1 second and manage scroll prevention
 document.addEventListener('DOMContentLoaded', function() {
     const pageCover = document.getElementById('page-cover');
     
-    // Prevent scrolling immediately when page loads
+    
     document.body.classList.add('loading-active');
     
     if (pageCover) {
         setTimeout(function() {
             pageCover.classList.add('fade-out');
             
-            // Remove the cover completely after fade animation
+            
             setTimeout(function() {
                 if (pageCover.parentNode) {
                     pageCover.parentNode.removeChild(pageCover);
                 }
-            }, 500); // Wait for fade transition
-        }, 1000); // Hide after 1 second
+            }, 500); 
+        }, 1000);
     }
 });
 
-// Global functions to control scrolling (use these in your existing loading functions)
+
 window.preventScrolling = function() {
     document.body.classList.add('loading-active');
 };
