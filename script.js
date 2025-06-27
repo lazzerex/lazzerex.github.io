@@ -1657,6 +1657,7 @@ function handleContactMethod(methodType, element) {
         // Reset button after delay
         setTimeout(() => {
             resetMethodButton(button, methodType);
+            resetMethodIcon(icon);
         }, 2000);
     }, 500);
 }
@@ -1696,7 +1697,7 @@ function openGitHubEnhanced() {
 function copyDiscordEnhanced() {
     const discordHandle = 'rubiachaaaan'; // Replace with your Discord
     copyToClipboardEnhanced(discordHandle);
-    showEnhancedNotification(`💬 Discord handle copied: ${discordHandle}`, 'success');
+    showEnhancedNotification(`💬 Discord copied: ${discordHandle}`, 'success');
 }
 
 function copyEmailEnhanced() {
@@ -1708,7 +1709,7 @@ function copyEmailEnhanced() {
 function copyToClipboardEnhanced(text) {
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(() => {
-            triggerCopySuccess();
+          // triggerCopySuccess();
         });
     } else {
         const textArea = document.createElement('textarea');
@@ -1957,3 +1958,8 @@ function initializeContactSection() {
 document.addEventListener('DOMContentLoaded', function() {
     initializeContactSection();
 });
+
+function resetMethodIcon(icon) {
+    icon.style.transform = 'scale(1) rotate(0deg)';
+    icon.style.transition = 'all 0.3s ease'; // Smooth transition back
+}
