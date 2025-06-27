@@ -15,21 +15,33 @@
     
 <div id="page-cover" class="page-cover">
     <div class="cover-content">
-        
+        <!-- Optional: Add a simple logo or loading indicator -->
         <div class="cover-logo">LX</div>
         <div class="cover-spinner"></div>
     </div>
 </div>
 
 <style>
+/* Prevent scrolling while loading */
+body.loading-active {
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+}
+
 .page-cover {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); 
-    z-index: 999999; 
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    /* Alternative backgrounds you can try:
+    background: rgba(0, 0, 0, 0.95); /* Black with slight transparency */
+    /* background: blur(20px) rgba(10, 10, 26, 0.9); /* Blurry dark */
+    /* background: #0a0a0a; /* Pure black */
+    z-index: 999999; /* Higher than your loading screen */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,9 +102,12 @@
 </style>
 
 <script>
-// Simple script to hide the cover after 1 second
+// Simple script to hide the cover after 1 second and manage scroll prevention
 document.addEventListener('DOMContentLoaded', function() {
     const pageCover = document.getElementById('page-cover');
+    
+    // Prevent scrolling immediately when page loads
+    document.body.classList.add('loading-active');
     
     if (pageCover) {
         setTimeout(function() {
@@ -107,6 +122,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000); // Hide after 1 second
     }
 });
+
+// Global functions to control scrolling (use these in your existing loading functions)
+window.preventScrolling = function() {
+    document.body.classList.add('loading-active');
+};
+
+window.allowScrolling = function() {
+    document.body.classList.remove('loading-active');
+};
 </script>
     <!-- Cursor trail effect -->
     <div id="cursor-trail"></div>

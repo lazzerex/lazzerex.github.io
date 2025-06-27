@@ -10,12 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function initializeApp() {
-    
     showLoadingScreen();
-    
     
     setTimeout(() => {
         hideLoadingScreen();
+        
+        // Force re-enable scrolling here
+        document.body.classList.remove('loading-active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        
         initializeParticles();
         initializeNavigation();
         initializeThemeToggle();
@@ -32,7 +36,7 @@ function initializeApp() {
         initializeIntersectionObserver();
         initializeButtonEffects();
         initializeAboutSection();
-    }, 2850);
+    }, 7850);
 }
 
 
@@ -451,10 +455,9 @@ function showLoadingScreen() {
 function hideLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
-        loadingScreen.classList.add('hidden');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+        loadingScreen.style.display = 'none';
+        
+        allowScrolling();
     }
 }
 
