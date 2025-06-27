@@ -1,0 +1,493 @@
+/* 
+ * Awesome Loading Animation Styles
+ * Separate CSS file for Lazzerex Portfolio Loading Animation
+ */
+
+/* Main Loading Screen */
+.awesome-loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.awesome-loading-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Background Particles */
+.awesome-bg-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.awesome-bg-particles .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(59, 130, 246, 0.6);
+    border-radius: 50%;
+}
+
+/* Main Loading Container */
+.awesome-loading-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Logo Animation */
+.awesome-logo-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.awesome-logo-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid transparent;
+    border-radius: 50%;
+}
+
+.awesome-logo-circle-1 {
+    width: 120px;
+    height: 120px;
+    border-color: #3b82f6;
+}
+
+.awesome-logo-circle-2 {
+    width: 90px;
+    height: 90px;
+    border-color: #8b5cf6;
+}
+
+.awesome-logo-circle-3 {
+    width: 60px;
+    height: 60px;
+    border-color: #10b981;
+}
+
+.awesome-logo-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+}
+
+/* Code Container */
+.awesome-code-container {
+    position: relative;
+    width: 400px;
+    height: 120px;
+    background: rgba(15, 15, 15, 0.8);
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.awesome-code-header {
+    height: 30px;
+    background: rgba(45, 45, 48, 0.8);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+}
+
+.awesome-code-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.awesome-code-dot.red { 
+    background: #ff5f57; 
+}
+
+.awesome-code-dot.yellow { 
+    background: #ffbd2e; 
+}
+
+.awesome-code-dot.green { 
+    background: #28ca42; 
+}
+
+.awesome-code-content {
+    padding: 16px;
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #d4d4d4;
+}
+
+.awesome-code-line {
+    margin-bottom: 4px;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+/* Syntax Highlighting */
+.awesome-code-content .keyword { 
+    color: #569cd6; 
+    font-weight: bold;
+}
+
+.awesome-code-content .string { 
+    color: #ce9178; 
+}
+
+.awesome-code-content .variable { 
+    color: #9cdcfe; 
+}
+
+.awesome-code-content .comment { 
+    color: #6a9955; 
+    font-style: italic;
+}
+
+/* Progress Bar */
+.awesome-progress-container {
+    width: 300px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.awesome-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
+    border-radius: 3px;
+    position: relative;
+    transition: width 0.3s ease;
+}
+
+.awesome-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: translateX(-100%);
+    animation: awesomeShimmer 1.5s infinite;
+}
+
+@keyframes awesomeShimmer {
+    0% { 
+        transform: translateX(-100%); 
+    }
+    100% { 
+        transform: translateX(200%); 
+    }
+}
+
+/* Loading Text */
+.awesome-loading-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(20px);
+    text-align: center;
+    max-width: 400px;
+}
+
+.awesome-loading-percentage {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transform: scale(0.8);
+    text-align: center;
+}
+
+/* Floating Elements */
+.awesome-floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.awesome-floating-element {
+    position: absolute;
+    opacity: 0;
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px currentColor);
+}
+
+.awesome-floating-element.code { 
+    color: #3b82f6; 
+    top: 20%; 
+    left: 10%;
+}
+
+.awesome-floating-element.design { 
+    color: #8b5cf6; 
+    top: 60%; 
+    right: 15%;
+}
+
+.awesome-floating-element.game { 
+    color: #10b981; 
+    bottom: 30%; 
+    left: 20%;
+}
+
+.awesome-floating-element:nth-child(4) {
+    color: #3b82f6;
+    top: 30%;
+    right: 20%;
+}
+
+.awesome-floating-element:nth-child(5) {
+    color: #8b5cf6;
+    bottom: 20%;
+    right: 30%;
+}
+
+.awesome-floating-element:nth-child(6) {
+    color: #10b981;
+    top: 10%;
+    left: 60%;
+}
+
+/* Pulse Animation for Loading Elements */
+@keyframes awesomePulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+.awesome-loading-percentage {
+    animation: awesomePulse 2s ease-in-out infinite;
+}
+
+/* Glow Effects */
+.awesome-logo-circle {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.awesome-code-container {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .awesome-loading-container {
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .awesome-code-container {
+        width: 90%;
+        max-width: 350px;
+        height: 110px;
+    }
+
+    .awesome-code-content {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+
+    .awesome-progress-container {
+        width: 250px;
+    }
+
+    .awesome-logo-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .awesome-logo-circle-1 { 
+        width: 100px; 
+        height: 100px; 
+    }
+
+    .awesome-logo-circle-2 { 
+        width: 75px; 
+        height: 75px; 
+    }
+
+    .awesome-logo-circle-3 { 
+        width: 50px; 
+        height: 50px; 
+    }
+
+    .awesome-logo-text {
+        font-size: 1.5rem;
+    }
+
+    .awesome-loading-percentage {
+        font-size: 1.5rem;
+    }
+
+    .awesome-loading-text {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .awesome-floating-element {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .awesome-loading-container {
+        gap: 25px;
+    }
+
+    .awesome-code-container {
+        width: 95%;
+        height: 100px;
+    }
+
+    .awesome-code-content {
+        font-size: 0.75rem;
+        padding: 10px;
+    }
+
+    .awesome-progress-container {
+        width: 200px;
+    }
+
+    .awesome-logo-container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .awesome-logo-circle-1 { 
+        width: 80px; 
+        height: 80px; 
+    }
+
+    .awesome-logo-circle-2 { 
+        width: 60px; 
+        height: 60px; 
+    }
+
+    .awesome-logo-circle-3 { 
+        width: 40px; 
+        height: 40px; 
+    }
+
+    .awesome-logo-text {
+        font-size: 1.2rem;
+    }
+
+    .awesome-loading-percentage {
+        font-size: 1.2rem;
+    }
+
+    .awesome-loading-text {
+        font-size: 0.9rem;
+    }
+
+    .awesome-floating-element {
+        font-size: 1.2rem;
+    }
+}
+
+/* Dark theme compatibility */
+@media (prefers-color-scheme: dark) {
+    .awesome-loading-screen {
+        background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+    }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .awesome-loading-screen,
+    .awesome-loading-container,
+    .awesome-logo-circle,
+    .awesome-logo-text,
+    .awesome-code-line,
+    .awesome-floating-element,
+    .awesome-progress-bar {
+        animation: none !important;
+        transition: opacity 0.3s ease !important;
+    }
+    
+    .awesome-progress-bar::after {
+        animation: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .awesome-loading-screen {
+        background: #000000;
+    }
+    
+    .awesome-logo-circle-1 {
+        border-color: #ffffff;
+    }
+    
+    .awesome-logo-circle-2 {
+        border-color: #ffffff;
+    }
+    
+    .awesome-logo-circle-3 {
+        border-color: #ffffff;
+    }
+    
+    .awesome-logo-text {
+        background: #ffffff;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .awesome-loading-text {
+        color: #ffffff;
+    }
+    
+    .awesome-progress-bar {
+        background: #ffffff;
+    }
+}
