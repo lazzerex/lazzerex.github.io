@@ -12,6 +12,106 @@
 </head>
 
 <body>
+    <!-- Add this RIGHT AFTER your <body> tag, before everything else -->
+<div id="page-cover" class="page-cover">
+    <div class="cover-content">
+        <!-- Optional: Add a simple logo or loading indicator -->
+        <div class="cover-logo">LX</div>
+        <div class="cover-spinner"></div>
+    </div>
+</div>
+
+<style>
+.page-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    /* Alternative backgrounds you can try:
+    background: rgba(0, 0, 0, 0.95); /* Black with slight transparency */
+    /* background: blur(20px) rgba(10, 10, 26, 0.9); /* Blurry dark */
+    /* background: #0a0a0a; /* Pure black */
+    z-index: 999999; /* Higher than your loading screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-out;
+}
+
+.page-cover.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cover-content {
+    text-align: center;
+    color: white;
+}
+
+.cover-logo {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: coverPulse 2s ease-in-out infinite;
+}
+
+.cover-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(59, 130, 246, 0.3);
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: coverSpin 1s linear infinite;
+}
+
+@keyframes coverPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes coverSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hide the cover on mobile if needed */
+@media (max-width: 768px) {
+    .cover-logo {
+        font-size: 2rem;
+    }
+    .cover-spinner {
+        width: 30px;
+        height: 30px;
+    }
+}
+</style>
+
+<script>
+// Simple script to hide the cover after 1 second
+document.addEventListener('DOMContentLoaded', function() {
+    const pageCover = document.getElementById('page-cover');
+    
+    if (pageCover) {
+        setTimeout(function() {
+            pageCover.classList.add('fade-out');
+            
+            // Remove the cover completely after fade animation
+            setTimeout(function() {
+                if (pageCover.parentNode) {
+                    pageCover.parentNode.removeChild(pageCover);
+                }
+            }, 500); // Wait for fade transition
+        }, 1000); // Hide after 1 second
+    }
+});
+</script>
     <!-- Cursor trail effect -->
     <div id="cursor-trail"></div>
 
@@ -19,7 +119,7 @@
     <div id="particles-container"></div>
 
     <!-- Loading screen -->
-    <div id="loading-screen" class="loading-screen">
+    <!-- <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="code-animation">
                 <div class="code-line">&lt;developer&gt;</div>
@@ -31,7 +131,7 @@
                 <div class="loading-progress"></div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
