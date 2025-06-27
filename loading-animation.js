@@ -7,10 +7,7 @@ class AwesomeLoader {
     constructor() {
         this.progress = 0;
         this.loadingTexts = [
-            "Initializing awesome experience...",
-            "Loading creative components...",
-            "Preparing interactive elements...",
-            "Compiling digital magic...",
+            
             "Almost ready to explore..."
         ];
         this.currentTextIndex = 0;
