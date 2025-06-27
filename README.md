@@ -7,6 +7,7 @@ Welcome to my personal portfolio website! This is a modern, interactive showcase
 ## 🌟 Features
 
 - **Interactive Design**: Modern UI with smooth animations, particle effects, and dynamic visual elements
+- **Cinematic Loading Experience**: Stunning loading animation powered by Anime.js with rotating circles, floating elements, and smooth transitions
 - **Game Portfolio**: Showcase of browser-based games including NeoSweeper, NeoSudoku, Neo2048, NeoSolitaire, MemoMix, and WordRush
 - **Project Gallery**: Display of web applications, development tools, and experimental projects
 - **Skills Visualization**: Interactive skill bars and code editor simulation
@@ -38,31 +39,9 @@ Welcome to my personal portfolio website! This is a modern, interactive showcase
 ## 🛠️ Tech Stack
 
 ### Frontend
-- Next.js & React
-- Vue.js
-- Tailwind CSS
 - Vanilla JavaScript
 - HTML5 & CSS3
-
-### Backend
-- Laravel (PHP)
-- Node.js
-- Rust
-- Python
-
-### Database & Cloud
-- MySQL
-- PostgreSQL
-- Firebase
-- Vercel
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Modern web browser
-- Node.js (for development)
-- Git
-
+- **Anime.js** - For animations and loading effects
 
 ## ✨ Interactive Features
 
@@ -73,18 +52,20 @@ Welcome to my personal portfolio website! This is a modern, interactive showcase
 - Theme toggle
 
 ### Visual Effects
+- **Advanced Loading Animation**: Multi-layered loading screen with particle systems and rotating elements
 - Particle system
 - Cursor trail effects
-- Animated loading screen
 - Interactive hover states
 - Glitch text effects
 
 ### Animations
+- **Anime.js Integration**: Professional-grade animations throughout the experience
 - Typewriter effect for titles
 - Counter animations for statistics
 - Skill bar progression
 - Card hover effects
 - Button particle effects
+- Timeline-based loading sequences
 
 ## 🎨 Customization
 
@@ -105,7 +86,7 @@ The portfolio is fully responsive and optimized for:
 ## 🔧 Performance
 
 - Optimized images and assets
-- Efficient CSS animations
+- Efficient CSS animations enhanced with Anime.js
 - Lazy loading for better performance
 - Progressive enhancement
 - SEO-friendly structure
@@ -118,9 +99,8 @@ This portfolio is deployed on GitHub Pages and automatically updates when change
 
 ## 📧 Contact
 
-- **Email**: lazzerex@example.com (To Be Added)
+- **Email**: nambinh236@gmail.com 
 - **GitHub**: [github.com/lazzerex](https://github.com/lazzerex)
-- **Digital Labs**: [Lazzerex Digital Labs](https://digital-labs-nine.vercel.app/)
 
 ## 🤝 Contributing
 
@@ -136,10 +116,12 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
+- **[Anime.js](https://animejs.com/)** - Lightweight JavaScript animation library for creating the stunning loading animations and smooth UI transitions
 - Font Awesome for icons
 - Google Fonts for typography
 - Inspiration from modern web design trends
 - The amazing developer community
+
 
 ---
 
