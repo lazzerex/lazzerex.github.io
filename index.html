@@ -39,7 +39,7 @@
                 <span class="logo-text">LX</span>
             </div>
             <div class="nav-links">
-                <a href="https://github.com/lazzerex" target="_blank" class="link-github" >My Github</a>
+                <a href="https://github.com/lazzerex" target="_blank" class="link-github">My Github</a>
                 <a href="#about" class="nav-link" data-section="about">About</a>
                 <!-- <a href="#games" class="nav-link" data-section="games">Games</a> -->
                 <a href="#projects" class="nav-link" data-section="projects">Games</a>
@@ -158,7 +158,8 @@
                                             understanding of <span class="skill-highlight" data-skill="ux">user
                                                 experience</span>, ensuring that every solution I build delivers both
                                             <span class="emoji-word" data-emoji="💫">value</span> and <span
-                                                class="emoji-word" data-emoji="🎮">enjoyment</span>.</p>
+                                                class="emoji-word" data-emoji="🎮">enjoyment</span>.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -704,7 +705,7 @@
                                     <div class="skill-progress"></div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -770,64 +771,73 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Ready to collaborate? Let's build something amazing together!</p>
-            </div>
 
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item" data-contact="email">
-                        <div class="contact-icon">
+
+            <div class="contact-hub">
+                <h3>Let's Connect!</h3>
+                <p class="contact-intro">Ready to collaborate? Choose your preferred way to reach out:</p>
+
+                <div class="contact-methods">
+                    <div class="contact-method" data-method="email">
+                        <div class="method-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="">
-                            <h3>Email</h3>
-                            <p>nambinh236@gmail.com</p>
+                        <div class="method-info">
+                            <h4>Email Me</h4>
+                            <p>Quick response guaranteed</p>
+                            <button class="method-btn" onclick="copyEmailEnhanced()">
+                                <span>nambinh236@gmail.com</span>
+                                <i class="fas fa-copy"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="contact-item" data-contact="github">
-                        <div class="contact-icon">
+                    <div class="contact-method" data-method="github">
+                        <div class="method-icon">
                             <i class="fab fa-github"></i>
                         </div>
-                        <div class="">
-                            <h3>GitHub</h3>
-                            <p>github.com/lazzerex</p>
+                        <div class="method-info">
+                            <h4>GitHub</h4>
+                            <p>Check out my code</p>
+                            <button class="method-btn" onclick="openGitHub()">
+                                <span>@lazzerex</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- <div class="contact-item" data-contact="linkedin">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
+                    <!-- <div class="contact-method" data-method="linkedin">
+            <div class="method-icon">
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="method-info">
+                <h4>LinkedIn</h4>
+                <p>Professional networking</p>
+                <button class="method-btn" onclick="openLinkedIn()">
+                    <span>Connect with me</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+        </div> -->
+
+                    <div class="contact-method" data-method="discord">
+                        <div class="method-icon">
+                            <i class="fab fa-discord"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>LinkedIn (To Be Added)</h3>
-                            <p>Connect with me</p>
+                        <div class="method-info">
+                            <h4>Discord</h4>
+                            <p>Casual chat</p>
+                            <button class="method-btn" onclick="copyDiscord()">
+                                <span>rubiachaaaan</span>
+                                <i class="fas fa-copy"></i>
+                            </button>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
-                <div class="quick-contact">
-                    <h3>Quick Message</h3>
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
-
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email" required>
-
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Your Message" required></textarea>
-
-                        </div>
-                        <button type="submit" class="submit-btn">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+                <div class="contact-cta">
+                    <p>🚀 <strong>Open to opportunities!</strong> Always excited to discuss new projects and
+                        collaborations.</p>
                 </div>
             </div>
         </div>

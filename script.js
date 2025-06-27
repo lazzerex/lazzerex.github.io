@@ -1558,3 +1558,402 @@ window.addEventListener('resize', throttle(function() {
         particles.forEach(particle => particle.style.display = 'block');
     }
 }, 250));
+
+function initializeEnhancedContactHub() {
+    initializeContactMethodAnimations();
+    initializeAdvancedCopyFunctionality();
+    initializeContactHubAnimations();
+    initializeMethodHoverEffects();
+}
+
+
+function initializeContactMethodAnimations() {
+    const contactMethods = document.querySelectorAll('.contact-method');
+    
+    contactMethods.forEach((method, index) => {
+        method.addEventListener('click', function(e) {
+            const methodType = this.getAttribute('data-method');
+            
+            
+            createRippleEffect(this, e);
+            
+            
+            this.style.transform = 'translateY(-4px) scale(0.96)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-4px) scale(1.02)';
+            }, 150);
+            
+            
+            handleContactMethod(methodType, this);
+        });
+        
+        
+        method.style.animationDelay = `${index * 0.1 + 0.1}s`;
+    });
+}
+
+
+function createRippleEffect(element, event) {
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    
+    const ripple = document.createElement('div');
+    ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.3);
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+        animation: ripple 0.6s ease-out;
+        pointer-events: none;
+        z-index: 1;
+    `;
+    
+    element.style.position = 'relative';
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        if (ripple.parentNode) {
+            ripple.parentNode.removeChild(ripple);
+        }
+    }, 600);
+}
+
+// Enhanced contact method handling
+function handleContactMethod(methodType, element) {
+    const icon = element.querySelector('.method-icon');
+    const button = element.querySelector('.method-btn');
+    
+    // Animate icon
+    icon.style.transform = 'scale(1.2) rotate(10deg)';
+    setTimeout(() => {
+        icon.style.transform = 'scale(1.1) rotate(5deg)';
+    }, 200);
+    
+    // Animate button
+    button.style.background = '#10b981';
+    button.innerHTML = '<i class="fas fa-check"></i> <span>Processing...</span>';
+    
+    setTimeout(() => {
+        switch(methodType) {
+            case 'email':
+                copyEmailEnhanced(); 
+                button.innerHTML = '<i class="fas fa-copy"></i> <span>Copied!</span>';
+                break;
+            case 'github':
+                openGitHubEnhanced();
+                button.innerHTML = '<i class="fab fa-github"></i> <span>Opening GitHub...</span>';
+                break;
+            case 'discord':
+                copyDiscordEnhanced();
+                button.innerHTML = '<i class="fas fa-copy"></i> <span>Copied!</span>';
+                break;
+        }
+        
+        // Reset button after delay
+        setTimeout(() => {
+            resetMethodButton(button, methodType);
+        }, 2000);
+    }, 500);
+}
+
+// Reset method button to original state
+function resetMethodButton(button, methodType) {
+    const originalContent = {
+        email: '<span>nambinh236@gmail.com</span><i class="fas fa-copy"></i>',
+        github: '<span>@lazzerex</span><i class="fas fa-external-link-alt"></i>',
+        discord: '<span>rubiachaaaan</span><i class="fas fa-copy"></i>'
+    };
+    
+    button.style.background = '';
+    button.innerHTML = originalContent[methodType];
+}
+
+
+
+
+function openGitHubEnhanced() {
+    window.open('https://github.com/lazzerex', '_blank');
+    showEnhancedNotification('🐙 Opening GitHub profile in new tab...', 'info');
+    
+    
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'contact_method_click', {
+            method: 'github'
+        });
+    }
+}
+
+// function openLinkedInEnhanced() {
+//     window.open('https://linkedin.com/in/lazzerex', '_blank');
+//     showEnhancedNotification('💼 Opening LinkedIn profile for professional networking...', 'info');
+// }
+
+function copyDiscordEnhanced() {
+    const discordHandle = 'rubiachaaaan'; // Replace with your Discord
+    copyToClipboardEnhanced(discordHandle);
+    showEnhancedNotification(`💬 Discord handle copied: ${discordHandle}`, 'success');
+}
+
+function copyEmailEnhanced() {
+    const email = 'nambinh236@gmail.com'; 
+    copyToClipboardEnhanced(email);
+    showEnhancedNotification(`📧 Email copied: ${email}`, 'success');
+}
+// Enhanced copy functionality with better feedback
+function copyToClipboardEnhanced(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            triggerCopySuccess();
+        });
+    } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            document.execCommand('copy');
+            //triggerCopySuccess();
+        } catch (err) {
+            console.error('Copy failed', err);
+        }
+        
+        document.body.removeChild(textArea);
+    }
+}
+
+
+
+
+function triggerCopySuccess() {
+    // Add a subtle copy success animation to the page
+    const copyIndicator = document.createElement('div');
+    copyIndicator.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    copyIndicator.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #10b981;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        z-index: 10001;
+        animation: copyPulse 1s ease-out;
+        pointer-events: none;
+    `;
+    
+    document.body.appendChild(copyIndicator);
+    
+    setTimeout(() => {
+        if (copyIndicator.parentNode) {
+            copyIndicator.parentNode.removeChild(copyIndicator);
+        }
+    }, 1000);
+}
+
+// Enhanced notification system
+function showEnhancedNotification(message, type = 'info', duration = 4000) {
+    const notification = document.createElement('div');
+    notification.className = `enhanced-notification notification-${type}`;
+    
+    const icons = {
+        success: '✅',
+        info: 'ℹ️',
+        warning: '⚠️',
+        error: '❌'
+    };
+    
+    notification.innerHTML = `
+        <div class="notification-icon">${icons[type] || '💬'}</div>
+        <div class="notification-content">${message}</div>
+        <button class="notification-close">&times;</button>
+    `;
+    
+    const colors = {
+        success: '#10b981',
+        info: '#3b82f6',
+        warning: '#f59e0b',
+        error: '#ef4444'
+    };
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${colors[type]};
+        color: white;
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        font-weight: 500;
+        transform: translateX(400px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: 350px;
+        backdrop-filter: blur(10px);
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Close button functionality
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn.style.cssText = `
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 0;
+        margin-left: auto;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+    `;
+    
+    closeBtn.addEventListener('click', () => {
+        removeNotification(notification);
+    });
+    
+    closeBtn.addEventListener('mouseenter', () => {
+        closeBtn.style.opacity = '1';
+    });
+    
+    closeBtn.addEventListener('mouseleave', () => {
+        closeBtn.style.opacity = '0.8';
+    });
+    
+    // Auto remove
+    setTimeout(() => {
+        removeNotification(notification);
+    }, duration);
+}
+
+function removeNotification(notification) {
+    notification.style.transform = 'translateX(400px)';
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 400);
+}
+
+// Contact hub entrance animations
+function initializeContactHubAnimations() {
+    const contactHub = document.querySelector('.contact-hub');
+    if (!contactHub) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    observer.observe(contactHub);
+}
+
+// Method hover effects
+function initializeMethodHoverEffects() {
+    const methods = document.querySelectorAll('.contact-method');
+    
+    methods.forEach(method => {
+        const icon = method.querySelector('.method-icon');
+        
+        method.addEventListener('mouseenter', () => {
+            // Create floating particles effect
+            createFloatingParticles(icon);
+        });
+    });
+}
+
+function createFloatingParticles(element) {
+    const rect = element.getBoundingClientRect();
+    const particles = 3;
+    
+    for (let i = 0; i < particles; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            left: ${rect.left + rect.width / 2}px;
+            top: ${rect.top + rect.height / 2}px;
+            animation: floatParticle 1s ease-out forwards;
+        `;
+        
+        particle.style.setProperty('--random-x', `${(Math.random() - 0.5) * 100}px`);
+        particle.style.setProperty('--random-y', `${-Math.random() * 50 - 20}px`);
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+            }
+        }, 1000);
+    }
+}
+
+// Add particle animation CSS
+function addParticleAnimationCSS() {
+    if (document.getElementById('particle-animations')) return;
+    
+    const style = document.createElement('style');
+    style.id = 'particle-animations';
+    style.textContent = `
+        @keyframes floatParticle {
+            to {
+                transform: translate(var(--random-x), var(--random-y));
+                opacity: 0;
+            }
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes copyPulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize everything
+function initializeContactSection() {
+    addParticleAnimationCSS();
+    initializeEnhancedContactHub();
+}
+
+// Add to your main initialization
+document.addEventListener('DOMContentLoaded', function() {
+    initializeContactSection();
+});
