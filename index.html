@@ -12,121 +12,182 @@
 </head>
 
 <body>
-    
-<div id="page-cover" class="page-cover">
-    <div class="cover-content">
-        
-        <div class="cover-logo">LX</div>
-        <div class="cover-spinner"></div>
+
+    <div id="page-cover" class="page-cover">
+        <div class="cover-content">
+
+            <div class="cover-logo">LX</div>
+            <div class="cover-spinner"></div>
+        </div>
     </div>
-</div>
 
-<style>
-/* prevent scrolling while loading */
-body.loading-active {
-    overflow: hidden;
-    height: 100vh;
-    position: fixed;
-    width: 100%;
-}
+    <style>
+        /* prevent scrolling while loading */
+        body.loading-active {
+            overflow: hidden;
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+        }
 
-.page-cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-    z-index: 999999; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease-out;
-}
+        .page-cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
 
-.page-cover.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
+        .page-cover.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-.cover-content {
-    text-align: center;
-    color: white;
-}
+        .cover-content {
+            text-align: center;
+            color: white;
+        }
 
-.cover-logo {
-    font-size: 3rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #10b981);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 20px;
-    animation: coverPulse 2s ease-in-out infinite;
-}
+        .cover-logo {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: coverPulse 2s ease-in-out infinite;
+        }
 
-.cover-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(59, 130, 246, 0.3);
-    border-top: 3px solid #3b82f6;
-    border-radius: 50%;
-    margin: 0 auto;
-    animation: coverSpin 1s linear infinite;
-}
+        .cover-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: coverSpin 1s linear infinite;
+        }
 
-@keyframes coverPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.8; }
-}
+        @keyframes coverPulse {
 
-@keyframes coverSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
 
-/* hide the cover on mobile if needed */
-@media (max-width: 768px) {
-    .cover-logo {
-        font-size: 2rem;
-    }
-    .cover-spinner {
-        width: 30px;
-        height: 30px;
-    }
-}
-</style>
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const pageCover = document.getElementById('page-cover');
-    
-    
-    document.body.classList.add('loading-active');
-    
-    if (pageCover) {
-        setTimeout(function() {
-            pageCover.classList.add('fade-out');
-            
-            
-            setTimeout(function() {
-                if (pageCover.parentNode) {
-                    pageCover.parentNode.removeChild(pageCover);
-                }
-            }, 500); 
-        }, 1000);
-    }
-});
+        @keyframes coverSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* hide the cover on mobile if needed */
+        @media (max-width: 768px) {
+            .cover-logo {
+                font-size: 2rem;
+            }
+
+            .cover-spinner {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        .intro {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .fade-in-text {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight {
+            color: #007acc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .highlight:hover {
+            color: #005a99;
+            text-decoration: underline;
+        }
+
+        .external-link-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .highlight:hover .external-link-icon {
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pageCover = document.getElementById('page-cover');
 
 
-window.preventScrolling = function() {
-    document.body.classList.add('loading-active');
-};
+            document.body.classList.add('loading-active');
 
-window.allowScrolling = function() {
-    document.body.classList.remove('loading-active');
-};
-</script>
+            if (pageCover) {
+                setTimeout(function () {
+                    pageCover.classList.add('fade-out');
+
+
+                    setTimeout(function () {
+                        if (pageCover.parentNode) {
+                            pageCover.parentNode.removeChild(pageCover);
+                        }
+                    }, 500);
+                }, 1000);
+            }
+        });
+
+
+        window.preventScrolling = function () {
+            document.body.classList.add('loading-active');
+        };
+
+        window.allowScrolling = function () {
+            document.body.classList.remove('loading-active');
+        };
+    </script>
     <!-- Cursor trail effect -->
     <div id="cursor-trail"></div>
 
@@ -155,7 +216,8 @@ window.allowScrolling = function() {
                 <span class="logo-text">LX</span>
             </div>
             <div class="nav-links">
-                <a href="https://github.com/lazzerex" target="_blank" class="link-github">My Github</a>
+                <a href="https://lazzerex-blog.vercel.app/" target="_blank" class="link-github">Blog</a>
+                <a href="https://github.com/lazzerex" target="_blank" class="link-github">Github</a>
                 <a href="#about" class="nav-link" data-section="about">About</a>
                 <!-- <a href="#games" class="nav-link" data-section="games">Games</a> -->
                 <a href="#projects" class="nav-link" data-section="projects">Games</a>
@@ -187,9 +249,16 @@ window.allowScrolling = function() {
                 <h1 class="typewriter" id="main-title"></h1>
                 <p class="title glitch-text" data-text="Future Full Stack Developer & Game Creator">Future Full Stack
                     Developer & Game Creator</p>
-                <p class="intro fade-in-text">Building scalable digital experiences that blend modern technology with
-                    classic gaming nostalgia. Creator of <a class="highlight"
-                        href="https://digital-labs-nine.vercel.app/" target="_blank">Lazzerex Digital Labs</a>.</p>
+              <p class="intro fade-in-text">Building scalable digital experiences that blend modern technology with
+        classic gaming nostalgia. Creator of <a class="highlight"
+            href="https://digital-labs-nine.vercel.app/" target="_blank">Lazzerex Digital Labs
+            <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15,3 21,3 21,9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>.</p>
+                        
 
                 <div class="stats-container">
                     <div class="stat-item" data-count="15">
@@ -724,6 +793,7 @@ window.allowScrolling = function() {
                         </div>
                     </div>
 
+
                     <div class="tab-content" id="experiments-content">
                         <div class="grid three-column">
                             <div class="project-card experiment-card">
@@ -741,6 +811,28 @@ window.allowScrolling = function() {
                                 </div>
                                 <div class="card-actions">
                                     <button class="github-btn" data-url="https://github.com/lazzerex/portfolio-layout">
+                                        <i class="fab fa-github"></i>
+                                        View Code
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="project-card experiment-card">
+                                <div class="card-glow"></div>
+                                <div class="project-icon-container">
+                                    <i class="project-icon fas fa-chart-line"></i>
+                                </div>
+                                <h3>Math Visualizer</h3>
+                                <p>A high-performance mathematical visualization tool combining Python's computational
+                                    power with JavaScript's interactive capabilities.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">Python</span>
+                                    <span class="tech-pill">JavaScript</span>
+                                    <span class="tech-pill">Matplotlib</span>
+                                    <span class="tech-pill">NumPy</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="github-btn" data-url="https://github.com/lazzerex/math-visualizer">
                                         <i class="fab fa-github"></i>
                                         View Code
                                     </button>
