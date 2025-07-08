@@ -1,5 +1,11 @@
 // quotes.js - Collection of inspirational quotes for developers and creators
 const quotes = [
+
+
+    {
+        text: "To my future self right now, what kind of life are you living over there? To my current self now while I'm here, what should I do to keep on living?",
+        author: "Yuika「17 Sai no uta」"
+    },
     {
         text: "The sin of not knowing and the trap of knowing too much, let's start moving before we can't move anymore.",
         author: "Nanase Aikawa「Round ZERO~BLADE BRAVE」"
