@@ -47,12 +47,12 @@ body {
     overflow-x: hidden;
     transition: background-color var(--transition-medium), color var(--transition-medium);
 }
-
+.section {
+    scroll-margin-top: 100px;
+}
 html {
     scroll-behavior: smooth;
 }
-
-
 .loading-screen {
     position: fixed;
     top: 0;

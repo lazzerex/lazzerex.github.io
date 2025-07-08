@@ -1,0 +1,66 @@
+// quotes.js - Collection of inspirational quotes for developers and creators
+const quotes = [
+    {
+        text: "The sin of not knowing and the trap of knowing too much, let's start moving before we can't move anymore.",
+        author: "Nanase Aikawa「Round ZERO~BLADE BRAVE」"
+    },
+    {
+        text: "If we give up like that from the beginning, then what was the point of us being born?",
+        author: "Keyakizaka46「SILENT MAJORITY」"
+    },
+    {
+        text: "Are the best days over? Have the happy days disappeared? The shining moments are far away. I know I can't go back to the past. If I'm going to dream, it's better to dream about the future.",
+        author: "Sakurazaka46「Ikutsu no Koro ni Modoritai no ka?」"
+    },
+    {
+        text: "Keep running until the day comes when you are recognized.",
+        author: "Sakurazaka46「Munen」"
+    },
+    {
+        text: "One chilly December day, we were walking all the way. In truth, there was something I wanted to tell you. The cold, crisp wind felt good. We just walked in silence along the deciduous tree-lined path.",
+        author: "Sakurazaka46「TOKYO SNOW」"
+    },
+    {
+        text: "The cherry blossoms that make me think of you are blown by the wind and soar through my heart. If only they could stay in full bloom a little longer. No matter how much I love you, the seasons pass and they fall in an instant. That day, the cherry blossoms were in full bloom.",
+        author: "Sakurazaka46「Sakurazuki」"
+    }
+];
+
+// Function to get a random quote
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+}
+
+// Function to display quote in the designated element
+function displayQuote() {
+    const quoteElement = document.getElementById('dynamic-quote');
+    const quoteTextElement = document.getElementById('quote-text');
+    const quoteAuthorElement = document.getElementById('quote-author');
+    
+    if (quoteElement && quoteTextElement && quoteAuthorElement) {
+        const quote = getRandomQuote();
+        
+        // Add fade-out effect
+        quoteElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            quoteTextElement.textContent = `"${quote.text}"`;
+            quoteAuthorElement.textContent = `- ${quote.author}`;
+            
+            // Add fade-in effect
+            quoteElement.style.opacity = '1';
+        }, 300);
+    }
+}
+
+// Initialize quote when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Small delay to ensure all elements are rendered
+    setTimeout(displayQuote, 100);
+});
+
+// Export for potential use in other scripts
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { quotes, getRandomQuote, displayQuote };
+}

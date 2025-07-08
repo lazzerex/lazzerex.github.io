@@ -36,6 +36,7 @@ function initializeApp() {
         initializeIntersectionObserver();
         initializeButtonEffects();
         initializeAboutSection();
+        initializeQuotesAnimation();
     }, 7850);
 }
 
@@ -59,6 +60,366 @@ function initializeEnhancedAbout() {
     // Initialize interactive text elements
     initializeInteractiveText();
 }
+
+// Enhanced quotes section animation with Anime.js
+// Enhanced quotes section animation with Anime.js (without typing effect)
+function initializeQuotesAnimation() {
+    const quotesSection = document.querySelector('.quotes-section');
+    const quoteContainer = document.querySelector('.quote-container');
+    const quoteText = document.querySelector('.quote-text');
+    const quoteAuthor = document.querySelector('.quote-author');
+    const quoteIcon = document.querySelector('.quote-icon');
+    const quoteRefresh = document.querySelector('.quote-refresh');
+    
+    if (!quotesSection) return;
+    
+    // Set initial states
+    anime.set([quoteContainer, quoteText, quoteAuthor, quoteIcon, quoteRefresh], {
+        opacity: 0,
+        translateY: 50
+    });
+    
+    // Create intersection observer for scroll trigger
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateQuotesIn();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -10% 0px'
+    });
+    
+    observer.observe(quotesSection);
+    
+    function animateQuotesIn() {
+        // Create floating particles animation
+        createFloatingQuoteParticles();
+        
+        // Main timeline for quote animations
+        const tl = anime.timeline({
+            easing: 'easeOutExpo',
+            duration: 800
+        });
+        
+        // Animate container first
+        tl.add({
+            targets: quoteContainer,
+            opacity: [0, 1],
+            translateY: [80, 0],
+            scale: [0.8, 1],
+            rotate: [2, 0],
+            duration: 1000,
+            easing: 'easeOutElastic(1, .8)'
+        })
+        
+        // Animate quote icon
+        .add({
+            targets: quoteIcon,
+            opacity: [0, 1],
+            translateY: [30, 0],
+            scale: [0, 1],
+            rotate: [180, 0],
+            duration: 600,
+            easing: 'easeOutBack(1.7)'
+        }, '-=700')
+        
+        // Animate quote text (simple fade in)
+        .add({
+            targets: quoteText,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 800
+        }, '-=400')
+        
+        // Animate author
+        .add({
+            targets: quoteAuthor,
+            opacity: [0, 1],
+            translateY: [30, 0],
+            translateX: [20, 0],
+            duration: 600
+        }, '-=300')
+        
+        // Animate refresh button
+        .add({
+            targets: quoteRefresh,
+            opacity: [0, 1],
+            scale: [0, 1],
+            rotate: [360, 0],
+            duration: 500,
+            easing: 'easeOutBack(1.7)'
+        }, '-=400');
+        
+        // Add subtle hover animations
+        addQuoteHoverEffects();
+    }
+    
+    function createFloatingQuoteParticles() {
+        const particleCount = 15;
+        const container = quotesSection;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'quote-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 6 + 2}px;
+                height: ${Math.random() * 6 + 2}px;
+                background: rgba(59, 130, 246, ${Math.random() * 0.5 + 0.2});
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+            `;
+            
+            // Random position
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            
+            container.appendChild(particle);
+            
+            // Animate particles
+            anime({
+                targets: particle,
+                translateY: [
+                    { value: Math.random() * 100 - 50, duration: 2000 },
+                    { value: Math.random() * 100 - 50, duration: 2000 }
+                ],
+                translateX: [
+                    { value: Math.random() * 100 - 50, duration: 2500 },
+                    { value: Math.random() * 100 - 50, duration: 2500 }
+                ],
+                opacity: [
+                    { value: Math.random() * 0.8 + 0.2, duration: 1500 },
+                    { value: 0, duration: 1500 }
+                ],
+                scale: [
+                    { value: Math.random() * 1.5 + 0.5, duration: 2000 },
+                    { value: 0, duration: 1000 }
+                ],
+                rotate: Math.random() * 360,
+                easing: 'easeInOutSine',
+                loop: true,
+                direction: 'alternate',
+                delay: Math.random() * 2000
+            });
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 8000);
+        }
+    }
+    
+    function addQuoteHoverEffects() {
+        // Container hover effect
+        quoteContainer.addEventListener('mouseenter', () => {
+            anime({
+                targets: quoteContainer,
+                scale: 1.02,
+                rotateY: 2,
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+            
+            // Animate refresh button on container hover
+            anime({
+                targets: quoteRefresh,
+                rotate: 180,
+                scale: 1.1,
+                duration: 400,
+                easing: 'easeOutBack(1.7)'
+            });
+        });
+        
+        quoteContainer.addEventListener('mouseleave', () => {
+            anime({
+                targets: quoteContainer,
+                scale: 1,
+                rotateY: 0,
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+            
+            anime({
+                targets: quoteRefresh,
+                rotate: 0,
+                scale: 1,
+                duration: 400,
+                easing: 'easeOutBack(1.7)'
+            });
+        });
+    }
+}
+
+// Enhanced displayQuote function with animation (no typing)
+function displayQuote() {
+    const quoteElement = document.getElementById('dynamic-quote');
+    const quoteTextElement = document.getElementById('quote-text');
+    const quoteAuthorElement = document.getElementById('quote-author');
+    const quoteIcon = document.querySelector('.quote-icon');
+    const quoteRefresh = document.querySelector('.quote-refresh');
+    
+    if (quoteElement && quoteTextElement && quoteAuthorElement) {
+        const quote = getRandomQuote();
+        
+        // Animate out
+        anime({
+            targets: [quoteTextElement, quoteAuthorElement, quoteIcon],
+            opacity: 0,
+            translateY: -20,
+            duration: 300,
+            easing: 'easeInQuad',
+            complete: function() {
+                // Update text
+                quoteTextElement.textContent = `"${quote.text}"`;
+                quoteAuthorElement.textContent = `- ${quote.author}`;
+                
+                // Animate in with new quote
+                anime({
+                    targets: [quoteIcon, quoteTextElement, quoteAuthorElement],
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 500,
+                    delay: anime.stagger(100),
+                    easing: 'easeOutQuad'
+                });
+            }
+        });
+        
+        // Animate refresh button
+        anime({
+            targets: quoteRefresh,
+            rotate: 360,
+            scale: [1, 1.2, 1],
+            duration: 600,
+            easing: 'easeOutBack(1.7)'
+        });
+    }
+}
+
+// Add CSS for animations (simplified without typing styles)
+function addQuoteAnimationCSS() {
+    if (document.getElementById('quote-animations-css')) return;
+    
+    const style = document.createElement('style');
+    style.id = 'quote-animations-css';
+    style.textContent = `
+        .quotes-section {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .quote-particle {
+            will-change: transform, opacity;
+        }
+        
+        .quote-container {
+            will-change: transform;
+            transform-style: preserve-3d;
+        }
+        
+        .quote-refresh {
+            will-change: transform;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize quotes animations
+document.addEventListener('DOMContentLoaded', function() {
+    addQuoteAnimationCSS();
+    initializeQuotesAnimation();
+});
+
+// Enhanced displayQuote function with animation
+function displayQuote() {
+    const quoteElement = document.getElementById('dynamic-quote');
+    const quoteTextElement = document.getElementById('quote-text');
+    const quoteAuthorElement = document.getElementById('quote-author');
+    const quoteIcon = document.querySelector('.quote-icon');
+    const quoteRefresh = document.querySelector('.quote-refresh');
+    
+    if (quoteElement && quoteTextElement && quoteAuthorElement) {
+        const quote = getRandomQuote();
+        
+        // Animate out
+        anime({
+            targets: [quoteTextElement, quoteAuthorElement, quoteIcon],
+            opacity: 0,
+            translateY: -20,
+            duration: 300,
+            easing: 'easeInQuad',
+            complete: function() {
+                // Update text
+                quoteTextElement.textContent = `"${quote.text}"`;
+                quoteAuthorElement.textContent = `- ${quote.author}`;
+                
+                // Animate in with new quote
+                anime({
+                    targets: [quoteIcon, quoteTextElement, quoteAuthorElement],
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 500,
+                    delay: anime.stagger(100),
+                    easing: 'easeOutQuad'
+                });
+            }
+        });
+        
+        // Animate refresh button
+        anime({
+            targets: quoteRefresh,
+            rotate: 360,
+            scale: [1, 1.2, 1],
+            duration: 600,
+            easing: 'easeOutBack(1.7)'
+        });
+    }
+}
+
+// Add CSS for animations
+function addQuoteAnimationCSS() {
+    if (document.getElementById('quote-animations-css')) return;
+    
+    const style = document.createElement('style');
+    style.id = 'quote-animations-css';
+    style.textContent = `
+        @keyframes quoteBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .quotes-section {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .quote-particle {
+            will-change: transform, opacity;
+        }
+        
+        .quote-container {
+            will-change: transform;
+            transform-style: preserve-3d;
+        }
+        
+        .quote-refresh {
+            will-change: transform;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize quotes animations
+document.addEventListener('DOMContentLoaded', function() {
+    addQuoteAnimationCSS();
+    initializeQuotesAnimation();
+});
 
 // Typing animation for different roles
 function initializeTypingRoles() {
@@ -532,22 +893,31 @@ function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     let lastScrollTop = 0;
 
-    // Navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+    // Navigation links - replace the existing function
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+            // Get the actual navbar height dynamically
+            const navbar = document.getElementById('navbar');
+            const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
             
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 94; // Navbar height (74) + padding (20)
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
+            // Use a larger offset - increase this number if still not enough
+            const offset = navbarHeight + 50; // Try 80 or 100 if 60 isn't enough
+            
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     });
+});
 
     // Scroll behavior for navbar
     window.addEventListener('scroll', function() {
