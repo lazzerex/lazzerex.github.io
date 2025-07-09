@@ -1,7 +1,10 @@
 // quotes.js - Collection of inspirational quotes for developers and creators
 const quotes = [
 
-
+    {
+        text: "The wind blew through and everything became quiet. How awkward it was for the two of us.",
+        author: "Sakurazaka46「Blue Moon Kiss」"
+    },
     {
         text: "To my future self right now, what kind of life are you living over there? To my current self now while I'm here, what should I do to keep on living?",
         author: "Yuika「17 Sai no uta」"
