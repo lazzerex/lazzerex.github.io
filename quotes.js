@@ -2,6 +2,11 @@
 const quotes = [
 
     {
+        text: "Love is something that makes you feel at ease. As if the threads of our hearts have loosened, distance has grown between us. I want to look only at you once more. Can you give me some time?",
+        author: "Keyakizaka46「Concentration」"
+    },
+
+    {
         text: "The wind blew through and everything became quiet. How awkward it was for the two of us.",
         author: "Sakurazaka46「Blue Moon Kiss」"
     },
