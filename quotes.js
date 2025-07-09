@@ -36,9 +36,23 @@ const quotes = [
 ];
 
 // Function to get a random quote
+let shuffledQuotes = [];
+let currentIndex = 0;
+
+function shuffleQuotes() {
+    shuffledQuotes = quotes.slice(); // copy
+    for (let i = shuffledQuotes.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledQuotes[i], shuffledQuotes[j]] = [shuffledQuotes[j], shuffledQuotes[i]];
+    }
+    currentIndex = 0;
+}
+
 function getRandomQuote() {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    return quotes[randomIndex];
+    if (shuffledQuotes.length === 0 || currentIndex >= shuffledQuotes.length) {
+        shuffleQuotes();
+    }
+    return shuffledQuotes[currentIndex++];
 }
 
 // Function to display quote in the designated element
