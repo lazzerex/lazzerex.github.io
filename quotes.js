@@ -2,6 +2,17 @@
 const quotes = [
 
     {
+        text: "There's something I want to show you. Thousands of stars which continue to glow far away even on lonely nights. Losing something, remaining unconvinced, being repelled, things that won't come true. But to still flounder, to continue believing. Raise your head and move on.",
+        author: "RAM WIRE「Bokura no Te ni wa Nanimo Nai kedo」"
+    },
+
+
+    {
+        text: "Unclarified issues yet to be solved. Grab me by the collar, asking if this is really necessary. Airships that take flight one after another. Beyond the wafting dust, rises a spreading sky.",
+        author: "Daichi Miura「Hikousen」"
+    },
+
+    {
         text: "I'm ready to be somebody else. I'll forget how to feel the things I've felt.",
         author: "Last Dinosaurs「Apollo」"
     },
