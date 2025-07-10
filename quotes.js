@@ -2,6 +2,11 @@
 const quotes = [
 
     {
+        text: "I'm ready to be somebody else. I'll forget how to feel the things I've felt.",
+        author: "Last Dinosaurs「Apollo」"
+    },
+
+    {
         text: "Love is something that makes you feel at ease. As if the threads of our hearts have loosened, distance has grown between us. I want to look only at you once more. Can you give me some time?",
         author: "Keyakizaka46「Concentration」"
     },
