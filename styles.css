@@ -38,6 +38,38 @@
     --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Mobile app cards styling */
+.mobile-card {
+    border-left: 4px solid #22d3ee;
+    transition: all 0.3s ease;
+}
+
+.mobile-card:hover {
+    border-left-color: #06b6d4;
+    transform: translateY(-2px);
+}
+
+.mobile-card .project-icon {
+    color: #000000;
+}
+
+.mobile-card .card-glow {
+    background: radial-gradient(circle at center, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
+}
+
+/* Dark mode support for mobile cards */
+[data-theme="dark"] .mobile-card {
+    border-left-color: #67e8f9;
+}
+
+[data-theme="dark"] .mobile-card:hover {
+    border-left-color: #22d3ee;
+}
+
+[data-theme="dark"] .mobile-card .project-icon {
+    color: #67e8f9;
+}
+
 body {
     font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.7;

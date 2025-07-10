@@ -127,8 +127,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .highlight {
@@ -158,202 +165,203 @@
         }
 
         .quotes-section {
-    padding: 4rem 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
-    position: relative;
-    overflow: hidden;
-}
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-.quotes-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="quote-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23e2e8f0" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23quote-pattern)"/></svg>');
-    opacity: 0.5;
-}
+        .quotes-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="quote-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23e2e8f0" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23quote-pattern)"/></svg>');
+            opacity: 0.5;
+        }
 
-.quote-showcase {
-    position: relative;
-    z-index: 2;
-}
+        .quote-showcase {
+            position: relative;
+            z-index: 2;
+        }
 
-.quote-container {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px;
-    padding: 3rem;
-    margin: 0 auto;
-    max-width: 800px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
+        .quote-container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 0 auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
 
-.quote-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
-}
+        .quote-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
+        }
 
-.quote-content {
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
+        .quote-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
 
-.quote-icon {
-    font-size: 2rem;
-    color: #3b82f6;
-    margin-bottom: 1.5rem;
-    opacity: 0.7;
-}
+        .quote-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
 
-.quote-text {
-    font-size: 1.5rem;
-    font-style: italic;
-    color: #1f2937;
-    margin: 0 0 1.5rem 0;
-    line-height: 1.7;
-    font-weight: 500;
-    position: relative;
-}
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #1f2937;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.7;
+            font-weight: 500;
+            position: relative;
+        }
 
-.quote-author {
-    font-size: 1.1rem;
-    color: #6b7280;
-    margin: 0;
-    font-weight: 600;
-    position: relative;
-}
+        .quote-author {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin: 0;
+            font-weight: 600;
+            position: relative;
+        }
 
-.quote-refresh {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(59, 130, 246, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #3b82f6;
-    z-index: 3;
-}
+        .quote-refresh {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #3b82f6;
+            z-index: 3;
+        }
 
-.quote-refresh:hover {
-    background: rgba(59, 130, 246, 0.2);
-    transform: rotate(180deg) scale(1.1);
-    color: #2563eb;
-}
+        .quote-refresh:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: rotate(180deg) scale(1.1);
+            color: #2563eb;
+        }
 
-/* Dark mode styles for quotes */
-/* Dark mode styles for quotes */
-[data-theme="dark"] .quotes-section {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    position: relative;
-}
+        /* Dark mode styles for quotes */
+        /* Dark mode styles for quotes */
+        [data-theme="dark"] .quotes-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            position: relative;
+        }
 
-[data-theme="dark"] .quotes-section::before {
-    background: none; /* Remove the pattern in dark mode */
-    /* Or use a different pattern that works better with dark theme */
-    background: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        [data-theme="dark"] .quotes-section::before {
+            background: none;
+            /* Remove the pattern in dark mode */
+            /* Or use a different pattern that works better with dark theme */
+            background: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
-}
+        }
 
-[data-theme="dark"] .quote-container {
-    background: rgba(15, 23, 42, 0.8);
-    border-color: rgba(71, 85, 105, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-}
+        [data-theme="dark"] .quote-container {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: rgba(71, 85, 105, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
 
-[data-theme="dark"] .quote-container::before {
-    background: linear-gradient(90deg, #60a5fa, #a78bfa, #34d399);
-}
+        [data-theme="dark"] .quote-container::before {
+            background: linear-gradient(90deg, #60a5fa, #a78bfa, #34d399);
+        }
 
-[data-theme="dark"] .quote-text {
-    color: #e2e8f0;
-}
+        [data-theme="dark"] .quote-text {
+            color: #e2e8f0;
+        }
 
-[data-theme="dark"] .quote-author {
-    color: #94a3b8;
-}
+        [data-theme="dark"] .quote-author {
+            color: #94a3b8;
+        }
 
-[data-theme="dark"] .quote-icon {
-    color: #8b5cf6;
-}
+        [data-theme="dark"] .quote-icon {
+            color: #8b5cf6;
+        }
 
-[data-theme="dark"] .quote-refresh {
-    background: rgba(139, 92, 246, 0.1);
-    color: #8b5cf6;
-}
+        [data-theme="dark"] .quote-refresh {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
 
-[data-theme="dark"] .quote-refresh:hover {
-    background: rgba(139, 92, 246, 0.2);
-    color: #a855f7;
-}
+        [data-theme="dark"] .quote-refresh:hover {
+            background: rgba(139, 92, 246, 0.2);
+            color: #a855f7;
+        }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .quotes-section {
-        padding: 3rem 0;
-    }
-    
-    .quote-container {
-        padding: 2rem;
-        margin: 0 1rem;
-    }
-    
-    .quote-text {
-        font-size: 1.2rem;
-    }
-    
-    .quote-refresh {
-        width: 36px;
-        height: 36px;
-        top: 1rem;
-        right: 1rem;
-    }
-}
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quotes-section {
+                padding: 3rem 0;
+            }
 
-/* Dark mode styles for intro text elements */
-[data-theme="dark"] .highlight {
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+            .quote-container {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
 
-[data-theme="dark"] .external-link-icon {
-    stroke: #9ca3af;
-    opacity: 0.8;
-}
+            .quote-text {
+                font-size: 1.2rem;
+            }
 
-[data-theme="dark"] .highlight:hover .external-link-icon {
-    stroke: #e5e7eb;
-    opacity: 1;
-}
+            .quote-refresh {
+                width: 36px;
+                height: 36px;
+                top: 1rem;
+                right: 1rem;
+            }
+        }
 
-/* Additional dark mode improvements for the intro section */
-[data-theme="dark"] .intro {
-    color: var(--text-secondary);
-}
+        /* Dark mode styles for intro text elements */
+        [data-theme="dark"] .highlight {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-[data-theme="dark"] .fade-in-text {
-    color: var(--text-secondary);
-}
+        [data-theme="dark"] .external-link-icon {
+            stroke: #9ca3af;
+            opacity: 0.8;
+        }
+
+        [data-theme="dark"] .highlight:hover .external-link-icon {
+            stroke: #e5e7eb;
+            opacity: 1;
+        }
+
+        /* Additional dark mode improvements for the intro section */
+        [data-theme="dark"] .intro {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .fade-in-text {
+            color: var(--text-secondary);
+        }
     </style>
 
     <script>
@@ -417,7 +425,7 @@
                 <a href="https://lazzerex-blog.vercel.app/" target="_blank" class="link-github">Blog</a>
                 <a href="https://github.com/lazzerex" target="_blank" class="link-github">Github</a>
                 <a href="#about" class="nav-link" data-section="about">About</a>
-                <a href="#games" class="nav-link" data-section="games">Games</a> 
+                <a href="#games" class="nav-link" data-section="games">Games</a>
                 <a href="#projects" class="nav-link" data-section="projects">Projects</a>
                 <a href="#skills" class="nav-link" data-section="skills">Skills</a>
                 <a href="#contact" class="nav-link" data-section="contact">Contact</a>
@@ -447,16 +455,17 @@
                 <h1 class="typewriter" id="main-title"></h1>
                 <p class="title glitch-text" data-text="Future Full Stack Developer & Game Creator">Future Full Stack
                     Developer & Game Creator</p>
-              <p class="intro fade-in-text">Building scalable digital experiences that blend modern technology with
-        classic gaming nostalgia. Creator of <a class="highlight"
-            href="https://digital-labs-nine.vercel.app/" target="_blank">Lazzerex Digital Labs
-            <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15,3 21,3 21,9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-        </a>.</p>
-                        
+                <p class="intro fade-in-text">Building scalable digital experiences that blend modern technology with
+                    classic gaming nostalgia. Creator of <a class="highlight"
+                        href="https://digital-labs-nine.vercel.app/" target="_blank">Lazzerex Digital Labs
+                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15,3 21,3 21,9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>.</p>
+
 
                 <div class="stats-container">
                     <div class="stat-item" data-count="15">
@@ -494,29 +503,29 @@
     </header>
 
     <!-- Quotes Section -->
-<section id="quotes" class="quotes-section">
-    <div class="container">
-        <!-- <div class="section-header">
+    <section id="quotes" class="quotes-section">
+        <div class="container">
+            <!-- <div class="section-header">
             <h2 class="section-title">Daily Inspiration</h2>
             <p class="section-subtitle">Words that fuel creativity and innovation</p>
         </div> -->
-        
-        <div class="quote-showcase">
-            <div class="quote-container" id="dynamic-quote">
-                <div class="quote-content">
-                    <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
+
+            <div class="quote-showcase">
+                <div class="quote-container" id="dynamic-quote">
+                    <div class="quote-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="quote-text" id="quote-text">"Loading inspiration..."</p>
+                        <p class="quote-author" id="quote-author">- System</p>
                     </div>
-                    <p class="quote-text" id="quote-text">"Loading inspiration..."</p>
-                    <p class="quote-author" id="quote-author">- System</p>
-                </div>
-                <div class="quote-refresh" onclick="displayQuote()" title="Get new quote">
-                    <i class="fas fa-sync-alt"></i>
+                    <div class="quote-refresh" onclick="displayQuote()" title="Get new quote">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <main class="main-content">
         <div class="container">
@@ -921,6 +930,7 @@
 
                 <div class="project-tabs">
                     <button class="project-tab active" data-tab="apps">Web Apps</button>
+                    <button class="project-tab" data-tab="mobile">Mobile Apps</button>
                     <button class="project-tab" data-tab="tools">Dev Tools</button>
                     <button class="project-tab" data-tab="experiments">Experiments</button>
                 </div>
@@ -964,6 +974,52 @@
                                 </div>
                                 <div class="card-actions">
                                     <button class="github-btn" data-url="https://github.com/lazzerex/task-flow">
+                                        <i class="fab fa-github"></i>
+                                        View Code
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="mobile-content">
+                        <div class="grid three-column">
+                            <div class="project-card mobile-card">
+                                <div class="card-glow"></div>
+                                <div class="project-icon-container">
+                                    <i class="project-icon fas fa-mobile-alt"></i>
+                                </div>
+                                <h3>Flutter TaskFlow</h3>
+                                <p>Mobile companion to the web-based TaskFlow with offline capability, push
+                                    notifications, and optimized mobile UX.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">Flutter</span>
+                                    <span class="tech-pill">Dart</span>
+                                
+                                </div>
+                                <div class="card-actions">
+                                    <button class="github-btn" data-url="https://github.com/lazzerex/taskflow-flutter">
+                                        <i class="fab fa-github"></i>
+                                        View Code
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="project-card mobile-card">
+                                <div class="card-glow"></div>
+                                <div class="project-icon-container">
+                                    <i class="project-icon fas fa-utensils"></i>
+                                </div>
+                                <h3>FlavorLink</h3>
+                                <p>Modern recipe and cooking app with ingredient tracking, meal planning, and other
+                                    features for food enthusiasts.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">Flutter</span>
+                                    <span class="tech-pill">Dart</span>
+                                    
+                                    <span class="tech-pill">Cloud Storage</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="github-btn" data-url="https://github.com/lazzerex/flavor-link">
                                         <i class="fab fa-github"></i>
                                         View Code
                                     </button>
@@ -1091,8 +1147,8 @@
                                     <div class="skill-progress"></div>
                                 </div>
                             </div>
-                            <div class="skill-item" data-skill="vue" data-level="75">
-                                <span class="skill-name">Vue.js</span>
+                            <div class="skill-item" data-skill="flutter" data-level="75">
+                                <span class="skill-name">Flutter</span>
                                 <div class="skill-bar">
                                     <div class="skill-progress"></div>
                                 </div>
