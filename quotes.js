@@ -1,5 +1,19 @@
-// quotes.js - Collection of inspirational quotes for developers and creators
 const quotes = [
+
+        {
+        text: "See the flowers breathing in the rain. Try growing to the edge of light. It's so far away to reach out to the sky... I'll seize the roses. With my wings, we'll fly",
+        author: "YOSHIKI, HYDE「Red Swan」"
+    },
+
+    {
+        text: "You still are blind if you see a winding road. 'Cause there's always a straight way to the point you seek",
+        author: "Akebori「Wind」"
+    },
+
+    {
+        text: "So I take shelter from the rain in my heart. And wait here for the sun to break through the clouds.",
+        author: "Sakurazaka46「Samidare yo」"
+    },
 
     {
         text: "There's something I want to show you. Thousands of stars which continue to glow far away even on lonely nights. Losing something, remaining unconvinced, being repelled, things that won't come true. But to still flounder, to continue believing. Raise your head and move on.",
