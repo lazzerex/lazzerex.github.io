@@ -1,6 +1,16 @@
 const quotes = [
 
-        {
+    {
+        text: "Far-off, childhood memories hold a warmth like the sunlight. Awakening from a transient dream, loneliness realizes it's all alone",
+        author: "Minori Chihara「Michishirube」"
+    },
+
+    {
+        text: "Far-off, childhood memories hold a warmth like the sunlight. Awakening from a transient dream, loneliness realizes it's all alone",
+        author: "Minori Chihara「Michishirube」"
+    },
+
+    {
         text: "See the flowers breathing in the rain. Try growing to the edge of light. It's so far away to reach out to the sky... I'll seize the roses. With my wings, we'll fly",
         author: "YOSHIKI, HYDE「Red Swan」"
     },

@@ -1,8 +1,3 @@
-/**
- * Awesome Loading Animation with Anime.js
- * Integration file for Lazzerex Portfolio
- */
-
 class AwesomeLoader {
     constructor() {
         this.progress = 0;
