@@ -1,22 +1,34 @@
 const quotes = [
 
     {
-        text: "Far-off, childhood memories hold a warmth like the sunlight. Awakening from a transient dream, loneliness realizes it's all alone",
-        author: "Minori Chihara「Michishirube」"
+        text: "The saber in your hand, is a pen to write it down. Words to save this world.",
+        author: "Tokyo Ska Paradise Orchestra, Yoohei Kawakami「ALMIGHTY ~ Kamen no Yakusoku」"
+    },
+
+
+    {
+        text: "Even when I'm lost in the darkness as the sun fades away, I close my eyes and listen to the voice in my heart so I can move forward.",
+        author: "Rica Matsumoto「Alive A Life」"
     },
 
     {
-        text: "Far-off, childhood memories hold a warmth like the sunlight. Awakening from a transient dream, loneliness realizes it's all alone",
-        author: "Minori Chihara「Michishirube」"
+        text: "I want to pursue my dreams in my own still-clumsy way. Feeling for the first time the rush running through me that comes from being alive.",
+        author: "Rica Matsumoto「Alive A Life」"
     },
 
     {
-        text: "See the flowers breathing in the rain. Try growing to the edge of light. It's so far away to reach out to the sky... I'll seize the roses. With my wings, we'll fly",
+        text: "Far-off, childhood memories hold a warmth like the sunlight. Awakening from a transient dream, loneliness realizes it's all alone.",
+        author: "Minori Chihara「Michishirube」"
+    },
+
+
+    {
+        text: "See the flowers breathing in the rain. Try growing to the edge of light. It's so far away to reach out to the sky... I'll seize the roses. With my wings, we'll fly.",
         author: "YOSHIKI, HYDE「Red Swan」"
     },
 
     {
-        text: "You still are blind if you see a winding road. 'Cause there's always a straight way to the point you seek",
+        text: "You still are blind if you see a winding road. 'Cause there's always a straight way to the point you seek.",
         author: "Akebori「Wind」"
     },
 
