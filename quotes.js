@@ -1,6 +1,11 @@
 const quotes = [
 
     {
+        text: "Look at the sky, I'm still here. I'll be alive next year.",
+        author: "Porter Robinson「Look At The Sky」"
+    },
+
+    {
         text: "The saber in your hand, is a pen to write it down. Words to save this world.",
         author: "Tokyo Ska Paradise Orchestra, Yoohei Kawakami「ALMIGHTY ~ Kamen no Yakusoku」"
     },
