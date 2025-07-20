@@ -2062,10 +2062,16 @@ function openGitHubEnhanced() {
     }
 }
 
-// function openLinkedInEnhanced() {
-//     window.open('https://linkedin.com/in/lazzerex', '_blank');
-//     showEnhancedNotification('💼 Opening LinkedIn profile for professional networking...', 'info');
-// }
+function openLinkedInEnhanced() {
+    window.open('https://www.linkedin.com/in/hsnbinh/', '_blank');
+    showEnhancedNotification('💼 Opening LinkedIn profile for professional networking...', 'info');
+
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'contact_method_click', {
+            method: 'linkedin'
+        });
+    }
+}
 
 function copyDiscordEnhanced() {
     const discordHandle = 'rubiachaaaan'; // Replace with your Discord
