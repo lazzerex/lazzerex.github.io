@@ -1,6 +1,16 @@
 const quotes = [
 
     {
+        text: "We'll see creation come undone, these bones that bound us will be gone. We'll stir our spirits 'till we're one, then soft as shadows we'll become.",
+        author: "Porter Robinson「Sea of Voices」"
+    },
+
+    {
+        text: "'Cause I'm not the same as I was. As I shoulder the weight of the world.",
+        author: "Porter Robinson「Unfold」"
+    },
+
+    {
         text: "Look at the sky, I'm still here. I'll be alive next year.",
         author: "Porter Robinson「Look At The Sky」"
     },
