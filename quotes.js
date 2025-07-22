@@ -1,6 +1,11 @@
 const quotes = [
 
     {
+        text: "Running to Horizon, break away from yesterday. Climbing on Loneliness, under the sky without constellations.",
+        author: "Tetsuya Komuro「RUNNING TO HORIZON」"
+    },
+
+    {
         text: "We'll see creation come undone, these bones that bound us will be gone. We'll stir our spirits 'till we're one, then soft as shadows we'll become.",
         author: "Porter Robinson「Sea of Voices」"
     },
