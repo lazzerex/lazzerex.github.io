@@ -1,6 +1,11 @@
 const quotes = [
 
     {
+        text: "I’ve thought about it, but I still don’t understand. Under the blue sky, I waited for you. On that breezy afternoon, my imagination escaped the confines of the day.",
+        author: "Yorushika「Dakara Boku wa Ongaku o Yameta」"
+    },
+
+    {
         text: "Running to Horizon, break away from yesterday. Climbing on Loneliness, under the sky without constellations.",
         author: "Tetsuya Komuro「RUNNING TO HORIZON」"
     },
