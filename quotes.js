@@ -1,7 +1,12 @@
 const quotes = [
 
     {
-        text: "I’ve thought about it, but I still don’t understand. Under the blue sky, I waited for you. On that breezy afternoon, my imagination escaped the confines of the day.",
+        text: "I'm sure the white butterfly was flying, fluttering in the deep blue sky, and wandering into a street corner. My own slightly vague memories",
+        author: "Sakurazaka46「Monshirochou ga Tashika Tondeta」"
+    },
+
+    {
+        text: "I've thought about it, but I still don't understand. Under the blue sky, I waited for you. On that breezy afternoon, my imagination escaped the confines of the day.",
         author: "Yorushika「Dakara Boku wa Ongaku o Yameta」"
     },
 
