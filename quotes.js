@@ -1,7 +1,12 @@
 const quotes = [
 
     {
-        text: "I'm sure the white butterfly was flying, fluttering in the deep blue sky, and wandering into a street corner. My own slightly vague memories",
+        text: "Momentary lights overlap, and their various colors create the four seasons. If any of them were missing, eternity would not be born.",
+        author: "Keyakizaka46「Futari Saison」"
+    },
+
+    {
+        text: "I'm sure the white butterfly was flying, fluttering in the deep blue sky, and wandering into a street corner. My own slightly vague memories.",
         author: "Sakurazaka46「Monshirochou ga Tashika Tondeta」"
     },
 
