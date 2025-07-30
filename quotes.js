@@ -1,5 +1,6 @@
 const quotes = [
 
+
     {
         text: "For now, fear nothing. And be the only one to understand the meaning of pain.",
         author: "Kenshi Yonezu「M87」"
