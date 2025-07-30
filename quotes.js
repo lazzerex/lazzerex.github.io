@@ -1,6 +1,11 @@
 const quotes = [
 
     {
+        text: "For now, fear nothing. And be the only one to understand the meaning of pain.",
+        author: "Kenshi Yonezu「M87」"
+    },
+
+    {
         text: "Momentary lights overlap, and their various colors create the four seasons. If any of them were missing, eternity would not be born.",
         author: "Keyakizaka46「Futari Saison」"
     },
