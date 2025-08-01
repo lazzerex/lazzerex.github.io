@@ -1,5 +1,10 @@
 const quotes = [
 
+    {
+        text: "Do you still remember? The sky full of tears. That pain once protected you, that pain is still protecting you.",
+        author: "FLOW「Sign」"
+    },
+
 
     {
         text: "For now, fear nothing. And be the only one to understand the meaning of pain.",
