@@ -1,5 +1,10 @@
 const quotes = [
 
+     {
+        text: "We looked up at the stars that year with so many brilliant dreams. As least memories will last forever by my side like the unchanging starry sky. In the end, the starry sky is all that's left, by my side like my unchaning memories.",
+        author: "Mayday「Starry Sky」"
+    },
+
     {
         text: "Do you still remember? The sky full of tears. That pain once protected you, that pain is still protecting you.",
         author: "FLOW「Sign」"
