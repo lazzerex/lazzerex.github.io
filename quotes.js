@@ -1,6 +1,11 @@
 const quotes = [
 
-     {
+    {
+        text: "If you wish for happiness, sadness overflows. Even the cherry blossoms in full bloom get blown away by the wind. I thought I understood that shining youth isn't eternal. But I didn't really understand it at all, did I?",
+        author: "Sakurazaka46「Zutto Haru Dattarana」"
+    },
+
+    {
         text: "We looked up at the stars that year with so many brilliant dreams. As least memories will last forever by my side like the unchanging starry sky. In the end, the starry sky is all that's left, by my side like my unchaning memories.",
         author: "Mayday「Starry Sky」"
     },
