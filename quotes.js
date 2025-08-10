@@ -1,4 +1,8 @@
 const quotes = [
+    {
+        text: "'Cause getting made you want more. And hoping made you hurt more.",
+        author: "Porter Robinson「Something Comforting」"
+    },
 
     {
         text: "If you wish for happiness, sadness overflows. Even the cherry blossoms in full bloom get blown away by the wind. I thought I understood that shining youth isn't eternal. But I didn't really understand it at all, did I?",
