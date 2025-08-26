@@ -1,4 +1,20 @@
 const quotes = [
+
+    {
+        text: "Out there in the wood, you're lost just counting trees. You could always just be. This has already happened.",
+        author: "Bitbeak「Wanderer」"
+    },
+
+    {
+        text: "Run on empty and drain the well. I'm not above losing, just sick of losing myself.",
+        author: "Bitbeak「Hollowing」"
+    },
+
+    {
+        text: "And there's less time with each passing day. To get pulled out, to not lose yourself in things... And there's less time to go around. To catch your breath before you start another round.",
+        author: "Bitbeak「Hollowing」"
+    },
+
     {
         text: "'Cause getting made you want more. And hoping made you hurt more.",
         author: "Porter Robinson「Something Comforting」"
