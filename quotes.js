@@ -62,7 +62,7 @@ const quotes = [
     },
 
     {
-        text: "We'll see creation come undone, these bones that bound us will be gone. We'll stir our spirits 'till we're one, then soft as shadows we'll become.",
+        text: "We'll see creation come undone. These bones that bound us will be gone. We'll stir our spirits 'till we're one, then soft as shadows we'll become.",
         author: "Porter Robinson「Sea of Voices」"
     },
 
