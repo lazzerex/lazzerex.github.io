@@ -1,6 +1,21 @@
 const quotes = [
 
     {
+        text: "The trains are passing one by one before I even take a step. And in my ears are just the deafening sound of another breath.",
+        author: "Cloudier「FEAR;Life」"
+    },
+    
+    {
+        text: "Gazed out far, into the violet skies. In front of my own eyes, a thousand butterflies. There stood I, standing in paradise.",
+        author: "Cloudfield「Dream」"
+    },
+
+    {
+        text: "The powdered snow falls, dancing around us. And the dream you'd given up on starts to make waves again.",
+        author: "Ray「Ebb and Flow」"
+    },
+
+    {
         text: "Out there in the wood, you're lost just counting trees. You could always just be. This has already happened.",
         author: "Bitbeak「Wanderer」"
     },
