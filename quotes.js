@@ -1,6 +1,11 @@
 const quotes = [
 
     {
+        text: "I still remember this feeling in my heart. In a breeze, we're frozen in time like an endless dream.",
+        author: "N-buna, Sarah Furukawa「Silence」"
+    },
+
+    {
         text: "The trains are passing one by one before I even take a step. And in my ears are just the deafening sound of another breath.",
         author: "Cloudier「FEAR;Life」"
     },
