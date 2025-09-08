@@ -1,6 +1,11 @@
 const quotes = [
 
     {
+        text: "The time loop keeps repeating, endlessly circling through the endless years. The time loop still remains, Where to find the way out to end it forever?",
+        author: "Bluemore, Jeremie Potier「Vòng Lặp」"
+    },
+
+    {
         text: "I still remember this feeling in my heart. In a breeze, we're frozen in time like an endless dream.",
         author: "N-buna, Sarah Furukawa「Silence」"
     },
