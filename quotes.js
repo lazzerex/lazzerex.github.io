@@ -1,5 +1,10 @@
 const quotes = [
 
+     {
+        text: "I'm a victim of my own delusions. It's not fair, trapped in the city with no real conclusions. I feel broken in a thousand places, my life's a one-man show. Dying to be somebody else, now there's nowhere else to go.",
+        author: "Last Dinosaurs「Wurl」"
+    },
+
     {
         text: "The time loop keeps repeating, endlessly circling through the endless years. The time loop still remains, Where to find the way out to end it forever?",
         author: "Bluemore, Jeremie Potier「Vòng Lặp」"
