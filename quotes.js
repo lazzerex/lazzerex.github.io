@@ -1,6 +1,16 @@
 const quotes = [
 
-     {
+    {
+        text: "You continue to run with the fragrance of the rice and the flowing river. Slightly smile, dream of childhood, I know. Don't cry, let the fireflies lead you to escape. Forever relying on village folk song. Go home, back to the beginning of happiness.",
+        author: "Jay Chou「Fragrant of Rice」"
+    },
+
+    {
+        text: "The small yellow flower from the story has been drifting in the wind since the year of its birth. The swing from childhood, swinging with the memories until now... I'm staring at the sky, whistling the intro of the songs. I think of petals trying to fall. The missing rainy day, I want it to experience it again.",
+        author: "Jay Chou「Sunny Day」"
+    },
+
+    {
         text: "I'm a victim of my own delusions. It's not fair, trapped in the city with no real conclusions. I feel broken in a thousand places, my life's a one-man show. Dying to be somebody else, now there's nowhere else to go.",
         author: "Last Dinosaurs「Wurl」"
     },
