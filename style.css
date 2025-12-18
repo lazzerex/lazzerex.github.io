@@ -1,3 +1,56 @@
+/* Loading Screen Styles */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-cream, #f5f1e8);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s;
+}
+
+#loading-overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    background: #fff;
+    border-radius: 2rem;
+    box-shadow: 0 8px 32px rgba(45,55,72,0.10);
+    padding: 2.5rem 3.5rem;
+    border: 3px solid #2d3748;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--lime, #86efac);
+    border-top: 5px solid var(--navy, #2d3748);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0.5rem 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: var(--navy, #2d3748);
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
 * {
     margin: 0;
     padding: 0;

@@ -1,9 +1,17 @@
 
 // Animate progress bar on load
 window.addEventListener('load', () => {
+	// Hide loading overlay
 	setTimeout(() => {
-		document.querySelector('.progress-bar').style.width = '85%';
-	}, 500);
+		const overlay = document.getElementById('loading-overlay');
+		if (overlay) {
+			overlay.classList.add('hide');
+			setTimeout(() => overlay.style.display = 'none', 400);
+		}
+		// Animate progress bar if present
+		const bar = document.querySelector('.progress-bar');
+		if (bar) bar.style.width = '85%';
+	}, 600);
 });
 
 // Smooth scroll for all links
