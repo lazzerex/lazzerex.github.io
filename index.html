@@ -4,1450 +4,837 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lazzerex - Future Full Stack Developer & Game Creator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Lazzerex - Developer & Game Creator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="loading-animation.css">
+    <link rel="stylesheet" href="style.css">
+
+
+
 </head>
 
 <body>
-
-    <div id="page-cover" class="page-cover">
-        <div class="cover-content">
-
-            <div class="cover-logo">LX</div>
-            <div class="cover-spinner"></div>
-        </div>
-    </div>
-
-    <style>
-        /* prevent scrolling while loading */
-        body.loading-active {
-            overflow: hidden;
-            height: 100vh;
-            position: fixed;
-            width: 100%;
-        }
-
-        .page-cover {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            z-index: 999999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .page-cover.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .cover-content {
-            text-align: center;
-            color: white;
-        }
-
-        .cover-logo {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            animation: coverPulse 2s ease-in-out infinite;
-        }
-
-        .cover-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(59, 130, 246, 0.3);
-            border-top: 3px solid #3b82f6;
-            border-radius: 50%;
-            margin: 0 auto;
-            animation: coverSpin 1s linear infinite;
-        }
-
-        @keyframes coverPulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-        }
-
-        @keyframes coverSpin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* hide the cover on mobile if needed */
-        @media (max-width: 768px) {
-            .cover-logo {
-                font-size: 2rem;
-            }
-
-            .cover-spinner {
-                width: 30px;
-                height: 30px;
-            }
-        }
-
-        .intro {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #333;
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .fade-in-text {
-            opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .highlight {
-            color: #007acc;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .highlight:hover {
-            color: #005a99;
-            text-decoration: underline;
-        }
-
-        .external-link-icon {
-            width: 14px;
-            height: 14px;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .highlight:hover .external-link-icon {
-            opacity: 1;
-        }
-
-        .quotes-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quotes-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="quote-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23e2e8f0" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23quote-pattern)"/></svg>');
-            opacity: 0.5;
-        }
-
-        .quote-showcase {
-            position: relative;
-            z-index: 2;
-        }
-
-        .quote-container {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 3rem;
-            margin: 0 auto;
-            max-width: 800px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .quote-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
-        }
-
-        .quote-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .quote-icon {
-            font-size: 2rem;
-            color: #3b82f6;
-            margin-bottom: 1.5rem;
-            opacity: 0.7;
-        }
-
-        .quote-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            color: #1f2937;
-            margin: 0 0 1.5rem 0;
-            line-height: 1.7;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .quote-author {
-            font-size: 1.1rem;
-            color: #6b7280;
-            margin: 0;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .quote-refresh {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #3b82f6;
-            z-index: 3;
-        }
-
-        .quote-refresh:hover {
-            background: rgba(59, 130, 246, 0.2);
-            transform: rotate(180deg) scale(1.1);
-            color: #2563eb;
-        }
-
-        /* Dark mode styles for quotes */
-        /* Dark mode styles for quotes */
-        [data-theme="dark"] .quotes-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            position: relative;
-        }
-
-        [data-theme="dark"] .quotes-section::before {
-            background: none;
-            /* Remove the pattern in dark mode */
-            /* Or use a different pattern that works better with dark theme */
-            background: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
-        }
-
-        [data-theme="dark"] .quote-container {
-            background: rgba(15, 23, 42, 0.8);
-            border-color: rgba(71, 85, 105, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-        }
-
-        [data-theme="dark"] .quote-container::before {
-            background: linear-gradient(90deg, #60a5fa, #a78bfa, #34d399);
-        }
-
-        [data-theme="dark"] .quote-text {
-            color: #e2e8f0;
-        }
-
-        [data-theme="dark"] .quote-author {
-            color: #94a3b8;
-        }
-
-        [data-theme="dark"] .quote-icon {
-            color: #8b5cf6;
-        }
-
-        [data-theme="dark"] .quote-refresh {
-            background: rgba(139, 92, 246, 0.1);
-            color: #8b5cf6;
-        }
-
-        [data-theme="dark"] .quote-refresh:hover {
-            background: rgba(139, 92, 246, 0.2);
-            color: #a855f7;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .quotes-section {
-                padding: 3rem 0;
-            }
-
-            .quote-container {
-                padding: 2rem;
-                margin: 0 1rem;
-            }
-
-            .quote-text {
-                font-size: 1.2rem;
-            }
-
-            .quote-refresh {
-                width: 36px;
-                height: 36px;
-                top: 1rem;
-                right: 1rem;
-            }
-        }
-
-        /* Dark mode styles for intro text elements */
-        [data-theme="dark"] .highlight {
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        [data-theme="dark"] .external-link-icon {
-            stroke: #9ca3af;
-            opacity: 0.8;
-        }
-
-        [data-theme="dark"] .highlight:hover .external-link-icon {
-            stroke: #e5e7eb;
-            opacity: 1;
-        }
-
-        /* Additional dark mode improvements for the intro section */
-        [data-theme="dark"] .intro {
-            color: var(--text-secondary);
-        }
-
-        [data-theme="dark"] .fade-in-text {
-            color: var(--text-secondary);
-        }
-    </style>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const pageCover = document.getElementById('page-cover');
-
-
-            document.body.classList.add('loading-active');
-
-            if (pageCover) {
-                setTimeout(function () {
-                    pageCover.classList.add('fade-out');
-
-
-                    setTimeout(function () {
-                        if (pageCover.parentNode) {
-                            pageCover.parentNode.removeChild(pageCover);
-                        }
-                    }, 500);
-                }, 1000);
-            }
-        });
-
-
-        window.preventScrolling = function () {
-            document.body.classList.add('loading-active');
-        };
-
-        window.allowScrolling = function () {
-            document.body.classList.remove('loading-active');
-        };
-    </script>
-    <!-- Cursor trail effect -->
-    <div id="cursor-trail"></div>
-
-    <!-- Floating particles -->
-    <div id="particles-container"></div>
-
-    <!-- Loading screen -->
-    <!-- <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="code-animation">
-                <div class="code-line">&lt;developer&gt;</div>
-                <div class="code-line">&nbsp;&nbsp;passion = true;</div>
-                <div class="code-line">&nbsp;&nbsp;creativity++;</div>
-                <div class="code-line">&lt;/developer&gt;</div>
-            </div>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-        </div>
-    </div> -->
-
     <!-- Navigation -->
-    <nav id="navbar" class="navbar">
+    <nav>
         <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">LX</span>
+            <div class="logo">
+                <div class="logo-icon">LX</div>
+                <span class="logo-text">LazzereX</span>
             </div>
-            <div class="nav-links">
-                <a href="https://lazzerex-blog.vercel.app/" target="_blank" class="link-github">Blog</a>
-                <a href="https://github.com/lazzerex" target="_blank" class="link-github">Github</a>
-                <a href="#about" class="nav-link" data-section="about">About</a>
-                <a href="#games" class="nav-link" data-section="games">Games</a>
-                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
-            </div>
-            <div class="theme-toggle" id="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Progress indicator -->
-    <div class="scroll-progress" id="scroll-progress"></div>
+            </footer>
 
-    <header id="home" class="hero-section">
-        <div class="container">
-            <div class="profile-section">
-                <div class="profile-img" id="profile-img">
-                    <div class="profile-inner">
-                        <img src="images/my-avatar.jpg" alt="Lazzerex" class="profile-avatar">
-                    </div>
-                    <div class="profile-rings">
-                        <div class="ring ring-1"></div>
-                        <div class="ring ring-2"></div>
-                        <div class="ring ring-3"></div>
-                    </div>
-                </div>
-                <h1 class="typewriter" id="main-title"></h1>
-                <p class="title glitch-text" data-text="Future Full Stack Developer & Game Creator">Future Full Stack
-                    Developer & Game Creator</p>
-                <p class="intro fade-in-text">Building scalable digital experiences that blend modern technology with
-                    classic gaming nostalgia. Creator of <a class="highlight"
-                        href="https://digital-labs-nine.vercel.app/" target="_blank">Lazzerex Digital Labs
-                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15,3 21,3 21,9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>.</p>
-
-
-                <div class="stats-container">
-                    <div class="stat-item" data-count="15">
-                        <div class="stat-number">0</div>
-                        <div class="stat-label">Projects Built</div>
-                    </div>
-                    <div class="stat-item" data-count="6">
-                        <div class="stat-number">0</div>
-                        <div class="stat-label">Games Live</div>
-                    </div>
-                    <div class="stat-item" data-count="100">
-                        <div class="stat-number">0</div>
-                        <div class="stat-label">LeetCode Solved</div>
-                    </div>
-                </div>
-
-                <div class="cta-buttons">
-                    <button class="cta-button primary" id="explore-btn">
-                        <span>Explore</span>
-                        <div class="button-particles"></div>
-                    </button>
-                    <button class="cta-button secondary" id="projects-btn">
-                        <span>View Games</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll indicator -->
-        <div class="scroll-indicator" id="scroll-indicator">
-            <div class="scroll-arrow">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-    </header>
-
-    <!-- Quotes Section -->
-    <section id="quotes" class="quotes-section">
-        <div class="container">
-            <!-- <div class="section-header">
-            <h2 class="section-title">Daily Inspiration</h2>
-            <p class="section-subtitle">Words that fuel creativity and innovation</p>
-        </div> -->
-
-            <div class="quote-showcase">
-                <div class="quote-container" id="dynamic-quote">
-                    <div class="quote-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="quote-text" id="quote-text">"Loading inspiration..."</p>
-                        <p class="quote-author" id="quote-author">- System</p>
-                    </div>
-                    <div class="quote-refresh" onclick="displayQuote()" title="Get new quote">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <main class="main-content">
-        <div class="container">
-            <section id="about" class="section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">About Me</h2>
-                        <p class="section-subtitle">Passionate about creating digital experiences that matter</p>
-                    </div>
-
-                    <div class="about-layout">
-                        <!-- Left side - Main content with interactive elements -->
-                        <div class="about-main">
-                            <div class="about-card interactive-card">
-                                <div class="card-icon">
-                                    <i class="fas fa-user-code"></i>
-                                </div>
-                                <div class="about-text-content">
-                                    <div class="text-block">
-                                        <p>I'm currently a <span class="highlight-text">university student</span> whose
-                                            dream is to become a <span class="typing-text" id="typing-roles"></span> in
-                                            the future. I believe that the best games and applications transcend time.
-                                        </p>
-                                    </div>
-
-                                    <div class="text-block">
-                                        <p>Through <a href="#" class="digital-labs-link">
-                                                <span class="labs-text">Lazzerex Digital Labs:</span>
-                                                <div class="labs-tooltip">
-                                                    <div class="tooltip-content">
-                                                        <strong>My Digital Playground</strong>
-                                                        <p>Where I reimagine classic games with modern technology</p>
-                                                        <div class="tooltip-stats">
-                                                            <span>🎮 6 Games Live</span>
-                                                            <span>⚡ 15+ Projects</span>
-                                                            <span>💻 Full Stack</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>- I reimagine beloved classics with modern technology, creating
-                                            experiences that honor the past while embracing the future.</p>
-                                    </div>
-
-                                    <div class="text-block">
-                                        <p>My approach combines <span class="skill-highlight"
-                                                data-skill="technical">technical expertise</span> with a deep
-                                            understanding of <span class="skill-highlight" data-skill="ux">user
-                                                experience</span>, ensuring that every solution I build delivers both
-                                            <span class="emoji-word" data-emoji="💫">value</span> and <span
-                                                class="emoji-word" data-emoji="🎮">enjoyment</span>.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="about-card interactive-card">
-                                <div class="card-icon">
-                                    <i class="fas fa-heart"></i>
-                                </div>
-                                <div class="about-text-content">
-                                    <div class="text-block">
-                                        <p>When I'm not coding, I enjoy contributing to <span class="github-link">open
-                                                source projects</span>, experimenting with new technologies, and
-                                            building tools that solve real-world problems.</p>
-                                    </div>
-
-                                    <div class="text-block">
-                                        <p>I believe in writing <span class="code-snippet-inline">clean()</span>, <span
-                                                class="code-snippet-inline">documented()</span> code and following
-                                            established patterns that make collaboration seamless.</p>
-                                    </div>
-
-                                    <div class="text-block">
-                                        <p>I'm passionate about making technology accessible and creating games that are
-                                            not just entertaining, but <span class="meaningful-text">meaningful to
-                                                everyone</span> who plays them.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Right side - Interactive elements and stats -->
-                        <div class="about-sidebar">
-                            <!-- Personal info card -->
-                            <div class="info-card">
-                                <div class="info-header">
-                                    <div class="info-avatar">
-                                        <img src="images/my-avatar.jpg" alt="Lazzerex" class="avatar-image">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div class="info-details">
-                                        <h3>Lazzerex</h3>
-                                        <p class="status-text">🟢 Available for projects</p>
-                                    </div>
-                                </div>
-
-                                <div class="info-stats">
-                                    <div class="stat-row">
-                                        <span class="stat-label">🎓 Status</span>
-                                        <span class="stat-value">University Student</span>
-                                    </div>
-                                    <div class="stat-row">
-                                        <span class="stat-label">🎯 Focus</span>
-                                        <span class="stat-value">Full-Stack Development</span>
-                                    </div>
-                                    <div class="stat-row">
-                                        <span class="stat-label">🌍 Location</span>
-                                        <span class="stat-value">Building the Future</span>
-                                    </div>
-                                    <div class="stat-row">
-                                        <span class="stat-label">☕ Fuel</span>
-                                        <span class="stat-value">Coffee & Creativity</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Journey timeline -->
-                            <div class="journey-card">
-                                <h4>My Journey</h4>
-                                <div class="timeline">
-                                    <div class="timeline-item future">
-                                        <div class="timeline-dot"></div>
-                                        <div class="timeline-content">
-                                            <span class="timeline-date">Future</span>
-                                            <p>Senior Full-Stack Developer</p>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-item active">
-                                        <div class="timeline-dot"></div>
-                                        <div class="timeline-content">
-                                            <span class="timeline-date">Now</span>
-                                            <p>Building Lazzerex Digital Labs</p>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-item active">
-                                        <div class="timeline-dot"></div>
-                                        <div class="timeline-content">
-                                            <span class="timeline-date">2024</span>
-                                            <p>Launched 6 interactive games</p>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-item active">
-                                        <div class="timeline-dot"></div>
-                                        <div class="timeline-content">
-                                            <span class="timeline-date">2023</span>
-                                            <p>Started university & coding journey</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- Fun facts -->
-                            <div class="fun-facts-card">
-                                <h4>Fun Facts</h4>
-                                <div class="facts-grid">
-                                    <div class="fact-item" data-fact="games">
-                                        <div class="fact-icon">🧩</div>
-                                        <div class="fact-text">
-                                            <span class="fact-number">100+</span>
-                                            <span class="fact-label">LeetCode Solved</span>
-                                        </div>
-                                    </div>
-                                    <div class="fact-item" data-fact="commits">
-                                        <div class="fact-icon">💻</div>
-                                        <div class="fact-text">
-                                            <span class="fact-number">500+</span>
-                                            <span class="fact-label">Commits</span>
-                                        </div>
-                                    </div>
-                                    <div class="fact-item" data-fact="coffee">
-                                        <div class="fact-icon">☕</div>
-                                        <div class="fact-text">
-                                            <span class="fact-number">∞</span>
-                                            <span class="fact-label">Cups of Coffee</span>
-                                        </div>
-                                    </div>
-                                    <div class="fact-item" data-fact="learning">
-                                        <div class="fact-icon">📚</div>
-                                        <div class="fact-text">
-                                            <span class="fact-number">24/7</span>
-                                            <span class="fact-label">Learning Mode</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Current focus -->
-                            <div class="focus-card">
-                                <h4>Currently Learning</h4>
-                                <div class="learning-items">
-                                    <div class="learning-item">
-                                        <div class="learning-progress">
-                                            <div class="progress-bar" style="--progress: 75%"></div>
-                                        </div>
-                                        <span>Advanced React Patterns</span>
-                                    </div>
-                                    <div class="learning-item">
-                                        <div class="learning-progress">
-                                            <div class="progress-bar" style="--progress: 60%"></div>
-                                        </div>
-                                        <span>Rust Programming</span>
-                                    </div>
-                                    <div class="learning-item">
-                                        <div class="learning-progress">
-                                            <div class="progress-bar" style="--progress: 85%"></div>
-                                        </div>
-                                        <span>Game Development</span>
-                                    </div>
-                                    <div class="learning-item">
-                                        <div class="learning-progress">
-                                            <div class="progress-bar" style="--progress: 70%"></div>
-                                        </div>
-                                        <span>System Design</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="games" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Games</h2>
-                    <p class="section-subtitle">Modern reimaginations of classic games, playable directly in your
-                        browser</p>
-
-                    <!-- Game filter -->
-                    <div class="filter-tabs" id="game-filter">
-                        <button class="filter-tab active" data-filter="all">All Games</button>
-                        <!-- <button class="filter-tab" data-filter="puzzle">Puzzle</button>
-                        <button class="filter-tab" data-filter="card">Card</button>
-                        <button class="filter-tab" data-filter="skill">Skill</button> -->
-                    </div>
-                </div>
-
-                <div class="games-grid" id="games-grid">
-                    <div class="project-card game-card" data-category="puzzle" data-game="neosweeper">
-                        <div class="card-glow"></div>
-                        <div class="project-icon-container">
-                            <i class="project-icon fas fa-bomb"></i>
-                            <div class="icon-particles"></div>
-                        </div>
-                        <h3>NeoSweeper <span class="badge pulse">Live</span></h3>
-                        <p>Modern twist on classic minesweeper with enhanced visuals, smooth animations, and intelligent
-                            gameplay mechanics.</p>
-                        <div class="tech-stack">
-                            <span class="tech-pill">HTML5</span>
-                            <span class="tech-pill">HTML Canvas</span>
-                            <span class="tech-pill">CSS3</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="play-btn" data-url="https://neo-sweeper.vercel.app/">
-                                <i class="fas fa-play"></i>
-                                Play Now
-                            </button>
-                            <button class="demo-btn" data-demo="minesweeper">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="project-card game-card" data-category="puzzle" data-game="neosudoku">
-                        <div class="card-glow"></div>
-                        <div class="project-icon-container">
-                            <i class="project-icon fas fa-border-all"></i>
-                            <div class="icon-particles"></div>
-                        </div>
-                        <h3>NeoSudoku <span class="badge pulse">Live</span></h3>
-                        <p>Intelligent number puzzle game featuring multiple difficulty levels, smart hint system, and
-                            elegant design.</p>
-                        <div class="tech-stack">
-                            <span class="tech-pill">HTML5</span>
-                            <span class="tech-pill">CSS</span>
-                            <span class="tech-pill">Algorithm</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="play-btn" data-url="https://neo-sudoku.vercel.app/">
-                                <i class="fas fa-play"></i>
-                                Play Now
-                            </button>
-                            <button class="demo-btn" data-demo="sudoku">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="project-card game-card" data-category="puzzle" data-game="neo2048">
-                        <div class="card-glow"></div>
-                        <div class="project-icon-container">
-                            <i class="project-icon fas fa-superscript"></i>
-                            <div class="icon-particles"></div>
-                        </div>
-                        <h3>Neo2048 <span class="badge pulse">Live</span></h3>
-                        <p>Reimagined sliding block puzzle with smooth animations, responsive controls, and satisfying
-                            visual feedback.</p>
-                        <div class="tech-stack">
-                            <span class="tech-pill">HTML5</span>
-                            <span class="tech-pill">CSS</span>
-                            <span class="tech-pill">GSAP</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="play-btn" data-url="https://neo-2048.vercel.app/">
-                                <i class="fas fa-play"></i>
-                                Play Now
-                            </button>
-                            <button class="demo-btn" data-demo="2048">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="project-card game-card" data-category="card" data-game="neosolitaire">
-                        <div class="card-glow"></div>
-                        <div class="project-icon-container">
-                            <i class="project-icon fas fa-diamond"></i>
-                            <div class="icon-particles"></div>
-                        </div>
-                        <h3>NeoSolitaire <span class="badge pulse">Live</span></h3>
-                        <p>Modern solitaire card game with sleek design, fluid animations, and intuitive drag-and-drop
-                            mechanics.</p>
-                        <div class="tech-stack">
-                            <span class="tech-pill">HTML5</span>
-                            <span class="tech-pill">CSS</span>
-                            <span class="tech-pill">Game Logic</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="play-btn" data-url="https://neo-solitaire.vercel.app/">
-                                <i class="fas fa-play"></i>
-                                Play Now
-                            </button>
-                            <button class="demo-btn" data-demo="solitaire">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="project-card game-card" data-category="card" data-game="neotetris">
-                        <div class="card-glow"></div>
-                        <div class="project-icon-container">
-                            <i class="project-icon fas fa-cube"></i>
-                            <div class="icon-particles"></div>
-                        </div>
-                        <h3>NeoTetris<span class="badge pulse">Live</span></h3>
-                        <p>A modern implementation of the classic Tetris game with a sleek neon aesthetic.</p>
-                        <div class="tech-stack">
-                            <span class="tech-pill">HTML5</span>
-                            <span class="tech-pill">CSS</span>
-                            <span class="tech-pill">Game Logic</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="play-btn" data-url="https://neo-tetris.vercel.app/">
-                                <i class="fas fa-play"></i>
-                                Play Now
-                            </button>
-                            <button class="demo-btn" data-demo="tetris">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="project-card game-card" data-category="puzzle" data-game="memomix">
-                        <div class="card-glow"></div>
-                        <div class="project-icon-container">
-                            <i class="project-icon fas fa-shuffle"></i>
-                            <div class="icon-particles"></div>
-                        </div>
-                        <h3>MemoMix <span class="badge pulse">Live</span></h3>
-                        <p>Memory challenge game with dynamic patterns, progressive difficulty, and engaging visual
-                            design.</p>
-                        <div class="tech-stack">
-                            <span class="tech-pill">Next.js</span>
-                            <span class="tech-pill">React</span>
-                            <span class="tech-pill">Memory Game</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="play-btn" data-url="https://memomix.vercel.app/">
-                                <i class="fas fa-play"></i>
-                                Play Now
-                            </button>
-                            <button class="demo-btn" data-demo="memory">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="project-card game-card" data-category="skill" data-game="wordrush">
-                        <div class="card-glow"></div>
-                        <div class="project-icon-container">
-                            <i class="project-icon fas fa-keyboard"></i>
-                            <div class="icon-particles"></div>
-                        </div>
-                        <h3>WordRush <span class="badge pulse">Live</span></h3>
-                        <p>Interactive typing test web application featuring real-time WPM tracking and accuracy
-                            measurement.</p>
-                        <div class="tech-stack">
-                            <span class="tech-pill">Next.js</span>
-                            <span class="tech-pill">React</span>
-                            <span class="tech-pill">Real-time</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="play-btn" data-url="https://word-rush-six.vercel.app/">
-                                <i class="fas fa-play"></i>
-                                Play Now
-                            </button>
-                            <button class="demo-btn" data-demo="typing">
-                                <i class="fas fa-eye"></i>
-                                Preview
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projects" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Projects & Tools</h2>
-                    <p class="section-subtitle">Practical solutions and development tools</p>
-                </div>
-
-                <div class="project-tabs">
-                    <button class="project-tab active" data-tab="apps">Web Apps</button>
-                    <button class="project-tab" data-tab="mobile">Mobile Apps</button>
-                    <button class="project-tab" data-tab="tools">Dev Tools</button>
-                    <button class="project-tab" data-tab="experiments">Experiments</button>
-                </div>
-
-                <div class="project-content">
-                    <div class="tab-content active" id="apps-content">
-                        <div class="grid three-column">
-                            <div class="project-card app-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-laptop"></i>
-                                </div>
-                                <h3>LapInsight <span class="badge pulse">Live</span></h3>
-                                <p>Comprehensive laptop comparison platform with advanced filtering and real-time price
-                                    tracking.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Next.js</span>
-                                    <span class="tech-pill">Firebase</span>
-                                    <span class="tech-pill">REST API</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="visit-btn" data-url="https://lap-insight-sigma.vercel.app/">
-                                        <i class="fas fa-external-link-alt"></i>
-                                        Visit Site
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="project-card app-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-tasks"></i>
-                                </div>
-                                <h3>TaskFlow</h3>
-                                <p>Full-featured task management system with collaborative workspaces and team
-                                    coordination.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Laravel</span>
-                                    <span class="tech-pill">MySQL</span>
-                                    <span class="tech-pill">Tailwind CSS</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn" data-url="https://github.com/lazzerex/task-flow">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="project-card experiment-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-hospital"></i>
-                                </div>
-                                <h3>Medical Appointment</h3>
-                                <p>A clean and customizable Laravel-based template designed for managing medical appointments.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Laravel</span>
-                                    <span class="tech-pill">MySQL</span>
-                                    <span class="tech-pill">PHP</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn"
-                                        data-url="https://github.com/lazzerex/next-appointment-booking">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="mobile-content">
-                        <div class="grid three-column">
-                            <div class="project-card mobile-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-mobile-alt"></i>
-                                </div>
-                                <h3>Flutter TaskFlow</h3>
-                                <p>Mobile companion to the web-based TaskFlow with offline capability, push
-                                    notifications, and optimized mobile UX.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Flutter</span>
-                                    <span class="tech-pill">Dart</span>
-
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn" data-url="https://github.com/lazzerex/taskflow-flutter">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="project-card mobile-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-utensils"></i>
-                                </div>
-                                <h3>FlavorLink</h3>
-                                <p>Modern recipe and cooking app with ingredient tracking, meal planning, and other
-                                    features for food enthusiasts.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Flutter</span>
-                                    <span class="tech-pill">Dart</span>
-
-                                    <span class="tech-pill">Cloud Storage</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn" data-url="https://github.com/lazzerex/flavor-link">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-content" id="tools-content">
-                        <div class="grid three-column">
-                            <div class="project-card tool-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-folder-open"></i>
-                                </div>
-                                <h3>File Organizer</h3>
-                                <p>Fast, efficient command-line tool written in Rust for organizing files by type, date,
-                                    or custom rules.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Rust</span>
-                                    <span class="tech-pill">CLI Tool</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn"
-                                        data-url="https://github.com/lazzerex/forg-file-organizer">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="project-card tool-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-image"></i>
-                                </div>
-                                <h3>PixelForge</h3>
-                                <p>An image converter supporting batch processing, multiple formats, and resizing. Including Rust CLI and Windows GUI.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">C#</span>
-                                     <span class="tech-pill">WinForms</span>
-                                    <span class="tech-pill">Rust</span>
-                                    <span class="tech-pill">CLI Tool</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn"
-                                        data-url="https://github.com/lazzerex/pixel-forge">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="project-card tool-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-file-code"></i>
-                                </div>
-                                <h3>Ferris Language</h3>
-                                <p>Simple programming language interpreter written in Rust for educational purposes.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Rust</span>
-                                    <span class="tech-pill">Interpreter</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn" data-url="https://github.com/lazzerex/ferris-lang">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="tab-content" id="experiments-content">
-                        <div class="grid three-column">
-                            <div class="project-card experiment-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-laptop-code"></i>
-                                </div>
-                                <h3>Portfolio Architect</h3>
-                                <p>Modern portfolio template system with dynamic content loading and interactive
-                                    elements.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Alpine.js</span>
-                                    <span class="tech-pill">Laravel</span>
-                                    <span class="tech-pill">Tailwind CSS</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn" data-url="https://github.com/lazzerex/portfolio-layout">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="project-card experiment-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-chart-line"></i>
-                                </div>
-                                <h3>Math Visualizer</h3>
-                                <p>A mathematical visualization tool combining Python's computational
-                                    power with JavaScript's interactive capabilities.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Python</span>
-                                    <span class="tech-pill">JavaScript</span>
-                                    <span class="tech-pill">Matplotlib</span>
-                                    <span class="tech-pill">NumPy</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn" data-url="https://github.com/lazzerex/math-visualizer">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="project-card experiment-card">
-                                <div class="card-glow"></div>
-                                <div class="project-icon-container">
-                                    <i class="project-icon fas fa-hospital"></i>
-                                </div>
-                                <h3>Appointment Booking</h3>
-                                <p>A modern, responsive appointment booking system template that can be easily
-                                    customized. Built with Next.js and React.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Next.js</span>
-                                    <span class="tech-pill">React</span>
-                                    <span class="tech-pill">Node.js</span>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="github-btn"
-                                        data-url="https://github.com/lazzerex/next-appointment-booking">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="skills" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Skills & Technologies</h2>
-                    <p class="section-subtitle">Interactive showcase of my technical expertise</p>
-                </div>
-
-                <div class="skills-interactive">
-                    <div class="skill-category" data-category="frontend">
-                        <div class="category-header">
-                            <i class="fas fa-laptop-code"></i>
-                            <h3>Frontend</h3>
-                        </div>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill="nextjs" data-level="90">
-                                <span class="skill-name">Next.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="react" data-level="85">
-                                <span class="skill-name">React</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="flutter" data-level="75">
-                                <span class="skill-name">Flutter</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="tailwind" data-level="80">
-                                <span class="skill-name">Tailwind CSS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category" data-category="backend">
-                        <div class="category-header">
-                            <i class="fas fa-server"></i>
-                            <h3>Backend</h3>
-                        </div>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill="laravel" data-level="85">
-                                <span class="skill-name">Laravel</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="nodejs" data-level="80">
-                                <span class="skill-name">Node.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="python" data-level="75">
-                                <span class="skill-name">C#/.NET</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="rust" data-level="70">
-                                <span class="skill-name">Rust</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="skill-category" data-category="database">
-                        <div class="category-header">
-                            <i class="fas fa-database"></i>
-                            <h3>Database & Cloud</h3>
-                        </div>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill="mysql" data-level="85">
-                                <span class="skill-name">MySQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="firebase" data-level="80">
-                                <span class="skill-name">Firebase</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="postgresql" data-level="75">
-                                <span class="skill-name">SQLite</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill="vercel" data-level="90">
-                                <span class="skill-name">Vercel</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive code editor simulation -->
-                <div class="code-demo" id="code-demo">
-                    <div class="code-editor">
-                        <div class="editor-header">
-                            <div class="editor-tabs">
-                                <div class="tab active">skills.js</div>
-
-                            </div>
-                            <div class="editor-controls">
-                                <i class="fas fa-play" id="run-code"></i>
-                            </div>
-                        </div>
-                        <div class="editor-content">
-                            <div class="line-numbers"></div>
-                            <div class="code-content" id="code-content"></div>
-                        </div>
-                    </div>
-                    <div class="code-output" id="code-output">
-                        <div class="output-header">Console Output</div>
-                        <div class="output-content"></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <section id="contact" class="contact-section">
-        <div class="container">
-
-
-            <div class="contact-hub">
-                <h3>Let's Connect!</h3>
-                <p class="contact-intro">Ready to collaborate? Choose your preferred way to reach out:</p>
-
-                <div class="contact-methods">
-                    <div class="contact-method" data-method="email">
-                        <div class="method-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="method-info">
-                            <h4>Email Me</h4>
-                            <p>Quick response guaranteed</p>
-                            <button class="method-btn" onclick="copyEmailEnhanced()">
-                                <span>nambinh236@gmail.com</span>
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="contact-method" data-method="github">
-                        <div class="method-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="method-info">
-                            <h4>GitHub</h4>
-                            <p>Check out my code</p>
-                            <button class="method-btn" onclick="openGitHub()">
-                                <span>@lazzerex</span>
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="contact-method" data-method="linkedin">
-            <div class="method-icon">
-                <i class="fab fa-linkedin"></i>
-            </div>
-            <div class="method-info">
-                <h4>LinkedIn</h4>
-                <p>Professional networking</p>
-                <button class="method-btn" onclick="openLinkedInEnhanced()">
-                    <span>Connect with me</span>
-                    <i class="fas fa-external-link-alt"></i>
-                </button>
-            </div>
-        </div>
-
-                    <div class="contact-method" data-method="discord">
-                        <div class="method-icon">
-                            <i class="fab fa-discord"></i>
-                        </div>
-                        <div class="method-info">
-                            <h4>Discord</h4>
-                            <p>Casual chat</p>
-                            <button class="method-btn" onclick="copyDiscord()">
-                                <span>rubiachaaaan</span>
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-cta">
-                    <p>🚀 <strong>Open to opportunities!</strong> Always excited to discuss new projects and
-                        collaborations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Game Preview Modal -->
-    <div id="preview-modal" class="preview-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="preview-title">Game Preview</h3>
-                <button class="close-btn" id="close-preview">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="preview-content" id="preview-content">
-                    <!-- Preview content will be dynamically inserted -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Back to top button -->
-    <button id="back-to-top" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="quotes.js"></script>
-    <script src="loading-animation.js"></script>
-    <script src="about-animations.js"></script>
-    <script src="skills-animations.js"></script>
-    <script src="contact-animations.js"></script>
-    <script src="script.js"></script>
+            <script src="main.js"></script>
 </body>
 
 </html>
+<div class="nav-links">
+    <a href="#games">Games</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="https://github.com/lazzerex" target="_blank">Github</a>
+    <a href="#contact" class="btn-primary">Contact</a>
+</div>
+</div>
+</nav>
+
+    <!-- Theme toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+
+        <h1>
+            Build Anything,<br>
+            <span class="highlight-green">Anytime,</span><br>
+            Anywhere!
+        </h1>
+        <p>Future Full Stack Developer & Game Creator. Building scalable digital experiences that blend modern
+            technology with classic gaming nostalgia.
+
+        </p>
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="document.getElementById('games').scrollIntoView({behavior: 'smooth'})">
+                Explore Games →
+            </button>
+            <button class="btn-secondary"
+                onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                View Projects
+            </button>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Games Live</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">LeetCode</div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-card" style="position: relative;">
+        <div class="floating-icons">
+            <div class="float-icon icon-1"><i class="fas fa-bullseye"></i></div>
+            <div class="float-icon icon-2"><i class="fas fa-star"></i></div>
+        </div>
+        <div class="progress-demo">
+            <div class="progress-header">
+                <div class="course-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="progress-info">
+                    <h3>Future Full Stack Development</h3>
+                    <p>Building modern web experiences.</p>
+                </div>
+            </div>
+            <div class="progress-bar-container hero-progress-container">
+                <div class="hero-progress-track">
+                    <div class="hero-progress-fill" data-target="85"></div>
+                </div>
+                <div class="hero-progress-percent"></div>
+            </div>
+            <button class="continue-btn"
+                onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                View My Work
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Games Section -->
+<!-- About Section -->
+<section id="about">
+    <div style="text-align:center;">
+        <div class="section-badge">About Me</div>
+        <h2 class="section-title">Passionate about creating digital experiences that matter</h2>
+        <p class="section-subtitle">A brief snapshot of who I am, what I build, and what I'm learning.</p>
+    </div>
+
+    <div class="about-layout">
+        <!-- Left side - Main content -->
+        <div class="about-main">
+            <div class="about-card interactive-card">
+                <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
+                <div class="about-text-content">
+                    <div class="text-block">
+                        <p>I'm currently a <span class="highlight-text">university student</span> whose dream is to become a <span class="typing-text" id="typing-roles">game creator</span> in the future. I believe the best games and applications transcend time.</p>
+                    </div>
+
+                    <div class="text-block">
+                        <p>Through <a href="#" class="digital-labs-link">Lazzerex Digital Labs</a>, I reimagine beloved classics with modern technology, creating experiences that honor the past while embracing the future.</p>
+                    </div>
+
+                    <div class="text-block">
+                        <p>My approach combines <span class="skill-highlight">technical expertise</span> with a deep understanding of <span class="skill-highlight">user experience</span>, ensuring that every solution I build delivers both value and enjoyment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-card interactive-card">
+                <div class="card-icon"><i class="fas fa-heart"></i></div>
+                <div class="about-text-content">
+                    <div class="text-block">
+                        <p>When I'm not coding, I enjoy contributing to <a href="https://github.com/lazzerex" target="_blank">open source projects</a>, experimenting with new technologies, and building tools that solve real-world problems.</p>
+                    </div>
+
+                    <div class="text-block">
+                        <p>I believe in writing <span class="code-snippet-inline">clean</span>, <span class="code-snippet-inline">documented</span> code and following established patterns that make collaboration seamless.</p>
+                    </div>
+
+                    <div class="text-block">
+                        <p>I'm passionate about making technology accessible and creating games that are not just entertaining, but <span class="meaningful-text">meaningful to everyone</span> who plays them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side - Sidebar -->
+        <div class="about-sidebar">
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-avatar">
+                        <img src="images/my-avatar.jfif" alt="Lazzerex" class="avatar-image">
+                        <!-- <div class="status-indicator"></div> -->
+                    </div>
+                    <div class="info-details">
+                        <h3>Lazzerex</h3>
+                        <p class="status-text">Available for projects</p>
+                    </div>
+                </div>
+
+                <div class="info-stats">
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value">University Student</span></div>
+                    <div class="stat-row"><span class="stat-label">Focus</span><span class="stat-value">Full-Stack Development</span></div>
+                    <div class="stat-row"><span class="stat-label">Location</span><span class="stat-value">Building the Future</span></div>
+                    <div class="stat-row"><span class="stat-label">Fuel</span><span class="stat-value">Coffee & Creativity</span></div>
+                </div>
+            </div>
+
+            <div class="journey-card">
+                <h4>My Journey</h4>
+                <div class="timeline">
+                    <div class="timeline-item future">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content"><span class="timeline-date">Future</span><p>Senior Full-Stack Developer</p></div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content"><span class="timeline-date">Now</span><p>Building Lazzerex Digital Labs</p></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content"><span class="timeline-date">2024</span><p>Launched 6 interactive games</p></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content"><span class="timeline-date">2023</span><p>Started university & coding journey</p></div>
+                    </div>
+                </div>
+            </div>
+
+        
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <div class="section-header" style="text-align:center;">
+        <h2 class="section-title">Projects & Tools</h2>
+        <p class="section-subtitle">Practical solutions and development tools</p>
+    </div>
+
+    <div class="project-tabs" style="text-align:center; margin-top:1rem;">
+        <button class="project-tab active" data-tab="apps">Web Apps</button>
+        <button class="project-tab" data-tab="mobile">Mobile Apps</button>
+        <button class="project-tab" data-tab="tools">Dev Tools</button>
+        <button class="project-tab" data-tab="experiments">Experiments</button>
+    </div>
+
+    <div class="project-content">
+        <div class="tab-content active" id="apps-content">
+            <div class="grid three-column">
+
+                <!-- WordRush Project Card -->
+                <div class="project-card app-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-keyboard"></i></div>
+                    <h3>WordRush</h3>
+                    <p>A modern, feature-rich typing test app with real-time leaderboards, gamification, and multiplayer duels.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Next.js</span>
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">TypeScript</span>
+                        <span class="tech-pill">Tailwind CSS</span>
+                        <span class="tech-pill">Supabase</span>
+                        <span class="tech-pill">Upstash Redis</span>
+                        <span class="tech-pill">Recharts</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="visit-btn" data-url="https://wordrush-io.vercel.app/"><i class="fas fa-external-link-alt"></i> Visit Site</button>
+                    </div>
+                </div>
+                <div class="project-card app-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-laptop"></i></div>
+                    <h3>LapInsight</h3>
+                    <p>Comprehensive laptop comparison platform with advanced filtering and real-time price tracking.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Next.js</span>
+                        <span class="tech-pill">Firebase</span>
+                        <span class="tech-pill">REST API</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="visit-btn" data-url="https://lap-insight-sigma.vercel.app/"><i class="fas fa-external-link-alt"></i> Visit Site</button>
+                    </div>
+                </div>
+
+                <!-- Unimerch Project Card -->
+                <div class="project-card app-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-store"></i></div>
+                    <h3>Unimerch</h3>
+                    <p>Unimerch is a modern e-commerce platform for UEH students, offering online shopping solutions for the school's related products: clothing, accessories, and study supplies.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Node.js (No Express)</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">Supabase</span>
+                        <span class="tech-pill">Bootstrap</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/leedontbeshy/Unimerch"><i class="fab fa-github"></i> Backend</button>
+                        <button class="github-btn" data-url="https://github.com/snag21205/Unimerch_FE"><i class="fab fa-github"></i> Frontend</button>
+                    </div>
+                </div>
+
+                
+
+                <div class="project-card app-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-tasks"></i></div>
+                    <h3>TaskFlow</h3>
+                    <p>Full-featured task management system with collaborative workspaces and team coordination.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Laravel</span>
+                        <span class="tech-pill">MySQL</span>
+                        <span class="tech-pill">Tailwind CSS</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/task-flow"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+
+                <div class="project-card experiment-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-hospital"></i></div>
+                    <h3>Medical Appointment</h3>
+                    <p>A clean and customizable Laravel-based template designed for managing medical appointments.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Laravel</span>
+                        <span class="tech-pill">MySQL</span>
+                        <span class="tech-pill">PHP</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/next-appointment-booking"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="mobile-content">
+            <div class="grid three-column">
+                <div class="project-card mobile-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-mobile-alt"></i></div>
+                    <h3>Flutter TaskFlow</h3>
+                    <p>Mobile companion to the web-based TaskFlow with offline capability, push notifications, and optimized mobile UX.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Flutter</span>
+                        <span class="tech-pill">Dart</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/taskflow-flutter"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+
+                <div class="project-card mobile-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-utensils"></i></div>
+                    <h3>FlavorLink</h3>
+                    <p>Modern recipe and cooking app with ingredient tracking, meal planning, and other features for food enthusiasts.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Flutter</span>
+                        <span class="tech-pill">Dart</span>
+                        <span class="tech-pill">Cloud Storage</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/flavor-link"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="tools-content">
+            <div class="grid three-column">
+                <div class="project-card tool-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-folder-open"></i></div>
+                    <h3>File Organizer</h3>
+                    <p>Fast, efficient command-line tool written in Rust for organizing files by type, date, or custom rules.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Rust</span>
+                        <span class="tech-pill">CLI Tool</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/forg-file-organizer"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+
+                <div class="project-card tool-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-image"></i></div>
+                    <h3>PixelForge</h3>
+                    <p>An image converter supporting batch processing, multiple formats, and resizing. Including Rust CLI and Windows GUI.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">C#</span>
+                        <span class="tech-pill">WinForms</span>
+                        <span class="tech-pill">Rust</span>
+                        <span class="tech-pill">CLI Tool</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/pixel-forge"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+
+                <div class="project-card tool-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-file-code"></i></div>
+                    <h3>Ferris Language</h3>
+                    <p>Simple programming language interpreter written in Rust for educational purposes.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Rust</span>
+                        <span class="tech-pill">Interpreter</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/ferris-lang"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="experiments-content">
+            <div class="grid three-column">
+
+                <!-- Rustrial OS Project Card -->
+                <div class="project-card experiment-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-microchip"></i></div>
+                    <h3>Rustrial OS</h3>
+                    <p>A hobby x86-64 bare-metal OS kernel in Rust. Features async multitasking, custom shell, RAMfs, VGA graphics, scripting, and hardware detection. Boots on real hardware and QEMU.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Rust</span>
+                        <span class="tech-pill">x86-64</span>
+                        <span class="tech-pill">Bare Metal</span>
+                        <span class="tech-pill">VGA</span>
+                        <span class="tech-pill">Async</span>
+                        <span class="tech-pill">Custom Shell</span>
+                        <span class="tech-pill">RustrialScript</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/rustrial-os"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+
+                <div class="project-card experiment-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-laptop-code"></i></div>
+                    <h3>Portfolio Architect</h3>
+                    <p>Modern portfolio template system with dynamic content loading and interactive elements.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Alpine.js</span>
+                        <span class="tech-pill">Laravel</span>
+                        <span class="tech-pill">Tailwind CSS</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/portfolio-layout"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+
+                
+
+                <div class="project-card experiment-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-chart-line"></i></div>
+                    <h3>Math Visualizer</h3>
+                    <p>A mathematical visualization tool combining Python's computational power with JavaScript's interactive capabilities.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">JavaScript</span>
+                        <span class="tech-pill">Matplotlib</span>
+                        <span class="tech-pill">NumPy</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/math-visualizer"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+
+                <div class="project-card experiment-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-hospital"></i></div>
+                    <h3>Appointment Booking</h3>
+                    <p>A modern, responsive appointment booking system template that can be easily customized. Built with Next.js and React.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Next.js</span>
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">Node.js</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/next-appointment-booking"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="games">
+    <div style="text-align: center;">
+        <div class="section-badge">Popular Games</div>
+        <h2 class="section-title">Explore Top-Rated Games</h2>
+        <p class="section-subtitle">Modern reimaginations of classic games, playable directly in your browser</p>
+    </div>
+    <div class="games-grid">
+        <div class="game-card">
+            <div class="game-icon-container">
+                <i class="fas fa-bomb"></i>
+            </div>
+            <h3>NeoSweeper <span class="live-badge">Live</span></h3>
+            <p>Modern twist on classic minesweeper with enhanced visuals and smooth animations</p>
+            <div class="tech-pills">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">Canvas</span>
+                <span class="tech-pill">CSS3</span>
+            </div>
+            <div class="game-actions">
+                <button class="play-btn" onclick="window.open('https://neo-sweeper.vercel.app/', '_blank')">
+                    <i class="fas fa-play"></i>
+                    Play Now
+                </button>
+                <button class="preview-btn">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-icon-container">
+                <i class="fas fa-border-all"></i>
+            </div>
+            <h3>NeoSudoku <span class="live-badge">Live</span></h3>
+            <p>Intelligent puzzle game with multiple difficulty levels and smart hint system</p>
+            <div class="tech-pills">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">Algorithm</span>
+                <span class="tech-pill">CSS</span>
+            </div>
+            <div class="game-actions">
+                <button class="play-btn" onclick="window.open('https://neo-sudoku.vercel.app/', '_blank')">
+                    <i class="fas fa-play"></i>
+                    Play Now
+                </button>
+                <button class="preview-btn">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-icon-container">
+                <i class="fas fa-superscript"></i>
+            </div>
+            <h3>Neo2048 <span class="live-badge">Live</span></h3>
+            <p>Reimagined sliding puzzle with smooth animations and satisfying feedback</p>
+            <div class="tech-pills">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS</span>
+                <span class="tech-pill">GSAP</span>
+            </div>
+            <div class="game-actions">
+                <button class="play-btn" onclick="window.open('https://neo-2048.vercel.app/', '_blank')">
+                    <i class="fas fa-play"></i>
+                    Play Now
+                </button>
+                <button class="preview-btn">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-icon-container">
+                <i class="fas fa-diamond"></i>
+            </div>
+            <h3>NeoSolitaire <span class="live-badge">Live</span></h3>
+            <p>Modern solitaire with sleek design and intuitive drag-and-drop</p>
+            <div class="tech-pills">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS</span>
+                <span class="tech-pill">Logic</span>
+            </div>
+            <div class="game-actions">
+                <button class="play-btn" onclick="window.open('https://neo-solitaire.vercel.app/', '_blank')">
+                    <i class="fas fa-play"></i>
+                    Play Now
+                </button>
+                <button class="preview-btn">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-icon-container">
+                <i class="fas fa-cube"></i>
+            </div>
+            <h3>NeoTetris <span class="live-badge">Live</span></h3>
+            <p>Classic Tetris reimagined with sleek neon aesthetic and smooth gameplay</p>
+            <div class="tech-pills">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS</span>
+                <span class="tech-pill">Logic</span>
+            </div>
+            <div class="game-actions">
+                <button class="play-btn" onclick="window.open('https://neo-tetris.vercel.app/', '_blank')">
+                    <i class="fas fa-play"></i>
+                    Play Now
+                </button>
+                <button class="preview-btn">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-icon-container">
+                <i class="fas fa-shuffle"></i>
+            </div>
+            <h3>MemoMix <span class="live-badge">Live</span></h3>
+            <p>Memory challenge with dynamic patterns and progressive difficulty</p>
+            <div class="tech-pills">
+                <span class="tech-pill">Next.js</span>
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Memory</span>
+            </div>
+            <div class="game-actions">
+                <button class="play-btn" onclick="window.open('https://memomix.vercel.app/', '_blank')">
+                    <i class="fas fa-play"></i>
+                    Play Now
+                </button>
+                <button class="preview-btn">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="skills">
+    <div style="text-align: center;">
+        <div class="section-badge">What I Offer</div>
+        <h2 class="section-title">Practical skills for scalable projects</h2>
+        <p class="section-subtitle">I focus on approachable, maintainable solutions and steady improvement.</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Full-Stack Development</h3>
+            <p>Experience with Next.js, React, Laravel and modern web tools.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <h3>Game & Interactive Prototypes</h3>
+            <p>I enjoy building interactive experiences and small prototypes that explore ideas.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Mobile Apps</h3>
+            <p>Familiar with Flutter for building simple, cross-platform mobile experiences.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h3>Dev Tools</h3>
+            <p>I build small, practical CLI tools and utilities (often using Rust).</p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills & Technologies Section -->
+<section id="skills-tech" class="skills-section">
+    <div style="text-align:center;">
+        <div class="section-badge">Skills & Technologies</div>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-subtitle">Interactive showcase of my technical expertise</p>
+    </div>
+
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-header">
+                <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Frontend</h3>
+            </div>
+
+            <div class="skill-list">
+                <div class="skill-item">
+                    <div class="skill-label">Next.js</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="90" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">React</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="75" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Flutter</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="65" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Tailwind CSS</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="80" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-header">
+                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                <h3>Backend</h3>
+            </div>
+            <div class="skill-list">
+                <div class="skill-item">
+                    <div class="skill-label">Laravel</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="80" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Node.js</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="75" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">C#/.NET</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="70" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Rust</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="75" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-header">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3>Database & Cloud</h3>
+            </div>
+            <div class="skill-list">
+                <div class="skill-item">
+                    <div class="skill-label">MySQL</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="85" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Firebase</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="75" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">PostgreSQL</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="70" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Supabase</div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-percent="80" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- CTA Section -->
+<section id="contact">
+    <div class="cta-section">
+        <h2>Ready to Start Collaborating?</h2>
+        <p>Join me in building amazing digital experiences.</p>
+        <div class="cta-buttons">
+            <button class="btn-primary" onclick="window.location.href='mailto:nambinh236@gmail.com'">
+                Get In Touch →
+            </button>
+            <button class="btn-secondary" onclick="window.open('https://github.com/lazzerex', '_blank')">
+                View GitHub
+            </button>
+        </div>
+        <div class="cta-features">
+            <div class="cta-feature">
+                <i class="fas fa-check-circle"></i>
+                Fast Response Time
+            </div>
+            <div class="cta-feature">
+                <i class="fas fa-check-circle"></i>
+                Quality Code
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-about">
+            <h3>
+                <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.2rem;">LX</div>
+                Lazzerex
+            </h3>
+            <p>Empowering digital experiences worldwide with quality games and applications accessible to everyone.</p>
+            <div class="social-links">
+                <a href="https://github.com/lazzerex" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/hsnbinh/" target="_blank" class="social-link" style="background: var(--sky);">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="rubiachaaaan" class="social-link" style="background: var(--lavender);">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://lazzerex-blog.vercel.app/" target="_blank" class="social-link"
+                    style="background: var(--mint);">
+                    <i class="fas fa-blog"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Games</h4>
+            <ul>
+                <li><a href="https://neo-sweeper.vercel.app/" target="_blank">NeoSweeper</a></li>
+                <li><a href="https://neo-sudoku.vercel.app/" target="_blank">NeoSudoku</a></li>
+                <li><a href="https://neo-2048.vercel.app/" target="_blank">Neo2048</a></li>
+                <li><a href="https://neo-tetris.vercel.app/" target="_blank">NeoTetris</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Projects</h4>
+            <ul>
+                <li><a href="https://lap-insight-sigma.vercel.app/" target="_blank">LapInsight</a></li>
+                <li><a href="https://github.com/lazzerex/task-flow" target="_blank">TaskFlow</a></li>
+                <li><a href="https://github.com/lazzerex/flavor-link" target="_blank">FlavorLink</a></li>
+                <li><a href="https://github.com/lazzerex/pixel-forge" target="_blank">PixelForge</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Connect</h4>
+            <ul>
+                <li><a href="https://lazzerex-blog.vercel.app/" target="_blank">Blog</a></li>
+                <li><a href="https://github.com/lazzerex" target="_blank">GitHub</a></li>
+                <li><a href="mailto:nambinh236@gmail.com">Email</a></li>
+                <li><a href="https://digital-labs-nine.vercel.app/" target="_blank">Digital Labs</a></li>
+
+            </ul>
+        </div>
+        <!-- footer-bottom moved to footer below -->
+        <div class="footer-bottom">
+            <p>© 2025 Lazzerex. Building the future.</p>
+        </div>
+    </div>
