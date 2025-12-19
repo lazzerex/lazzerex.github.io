@@ -1086,6 +1086,42 @@ h1 { font-weight: 800; }
     .grid.three-column { grid-template-columns: 1fr; }
 }
 
+/* Mobile / small screens improvements */
+@media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; margin: 60px auto 30px; gap: 2rem; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content p { font-size: 1rem; }
+    .nav-container { padding: 0.5rem 1rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 1rem; }
+    .project-tab { min-width: 92px; padding: 0.45rem 0.6rem; font-size: 0.95rem; }
+    .grid.three-column { gap: 1rem; }
+    .project-card, .game-card { padding: 1rem; border-radius: 18px; }
+    .project-icon-container, .game-icon-container { width: 56px; height: 56px; font-size: 1.4rem; }
+    .game-actions { flex-direction: column; }
+    .play-btn, .github-btn, .visit-btn { width: 100%; display: block; }
+    .play-btn { padding: 0.85rem; }
+    .tech-pill { font-size: 0.78rem; padding: 0.2rem 0.6rem; }
+    .section { margin: 40px auto; padding: 0 1rem; }
+    .section-title { font-size: 1.6rem; }
+    .section-subtitle { font-size: 1rem; }
+    .btn-primary { padding: 0.8rem 1.6rem; font-size: 1rem; }
+    .theme-toggle { top: 12px; right: 12px; padding: 0.35rem 0.5rem; }
+}
+
+@media (max-width: 420px) {
+    .hero-content h1 { font-size: 1.6rem; }
+    .hero { margin: 40px auto 24px; padding: 0 1rem; }
+    .logo-text { font-size: 1.1rem; }
+    nav { top: 0.6rem; padding: 0.4rem 0; }
+    .nav-container { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    .nav-links { flex-wrap: wrap; gap: 0.6rem; }
+    .games-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .game-card h3 { font-size: 1.15rem; }
+    .project-card h3 { font-size: 1.05rem; }
+    .footer-content { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+
 /* Games Grid */
 .games-grid {
     display: grid;
