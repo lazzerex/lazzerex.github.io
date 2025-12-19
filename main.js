@@ -298,3 +298,99 @@ document.addEventListener('DOMContentLoaded', () => {
 		applyTheme(isDark);
 	});
 });
+
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', () => {
+	const mobileBtn = document.getElementById('mobileMenuBtn');
+	const navLinks = document.querySelector('.nav-links');
+	if (!mobileBtn || !navLinks) return;
+
+	const backdropId = 'mobileMenuBackdrop';
+	const ensureBackdrop = () => {
+		let b = document.getElementById(backdropId);
+		if (!b) {
+			b = document.createElement('div');
+			b.id = backdropId;
+			// minimal styling here; CSS handles visual appearance
+			b.style.position = 'fixed';
+			b.style.inset = '0';
+			b.style.zIndex = '15000';
+			b.style.background = 'rgba(11,20,34,0.12)';
+			b.style.pointerEvents = 'none';
+			b.style.opacity = '0';
+			b.style.transition = 'opacity 220ms ease';
+			document.body.appendChild(b);
+		}
+		return b;
+	};
+
+	// we'll mount the `.nav-links` to <body> while open so it escapes any stacking context
+	let originalParent = null;
+	let originalNext = null;
+	const setExpanded = (expanded) => {
+		mobileBtn.setAttribute('aria-expanded', String(expanded));
+		mobileBtn.innerHTML = expanded ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+		const firstLink = navLinks.querySelector('a');
+		const b = ensureBackdrop();
+
+		if (expanded) {
+			// remember original location so we can restore later
+			if (!originalParent) {
+				originalParent = navLinks.parentNode;
+				originalNext = navLinks.nextSibling;
+			}
+			// move to body so it's above backdrop and other stacking contexts
+			document.body.appendChild(navLinks);
+			navLinks.classList.add('open');
+
+			// position near the button
+			const btnRect = mobileBtn.getBoundingClientRect();
+			navLinks.style.position = 'fixed';
+			navLinks.style.top = (btnRect.bottom + 8) + 'px';
+			navLinks.style.right = (window.innerWidth - btnRect.right) + 'px';
+			// ensure width matches CSS target
+			navLinks.style.width = navLinks.style.width || '260px';
+
+			// show backdrop
+			b.style.opacity = '1';
+			b.style.pointerEvents = 'auto';
+			b.addEventListener('click', () => setExpanded(false), { once: true });
+
+			// focus first link for accessibility
+			if (firstLink) firstLink.focus({ preventScroll: true });
+		} else {
+			// hide menu
+			navLinks.classList.remove('open');
+			b.style.opacity = '0';
+			b.style.pointerEvents = 'none';
+
+			// restore DOM position
+			if (originalParent) {
+				if (originalNext) originalParent.insertBefore(navLinks, originalNext);
+				else originalParent.appendChild(navLinks);
+				// clear inline positioning
+				navLinks.style.position = '';
+				navLinks.style.top = '';
+				navLinks.style.right = '';
+				navLinks.style.width = '';
+			}
+
+			mobileBtn.focus();
+		}
+	};
+
+	mobileBtn.addEventListener('click', (e) => {
+		const isOpen = navLinks.classList.contains('open');
+		setExpanded(!isOpen);
+	});
+
+	// Close when a nav link is clicked (helpful on mobile)
+	navLinks.querySelectorAll('a').forEach(a => {
+		a.addEventListener('click', () => setExpanded(false));
+	});
+
+	// Close on escape key
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') setExpanded(false);
+	});
+});
