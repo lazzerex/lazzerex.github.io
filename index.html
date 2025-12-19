@@ -30,7 +30,7 @@
                 <span class="logo-text">LazzereX</span>
             </div>
 
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
             <a href="#games">Games</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
@@ -40,6 +40,9 @@
             <a href="https://github.com/lazzerex" target="_blank">Github</a>
             <a href="#contact" class="btn-primary" id="contact-nav-btn">Contact</a>
             </div>
+            <button id="mobileMenuBtn" class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         </nav>
 
@@ -397,6 +400,21 @@
                         <button class="github-btn" data-url="https://github.com/lazzerex/ferris-lang"><i class="fab fa-github"></i> View Code</button>
                     </div>
                 </div>
+
+                <div class="project-card experiment-card">
+                    <div class="card-glow"></div>
+                    <div class="project-icon-container"><i class="project-icon fas fa-project-diagram"></i></div>
+                    <h3>Codebase Knowledge Map</h3>
+                    <p>Interactive visualization of repository relationships and module dependencies using D3. Useful for exploring large codebases and spotting hotspots.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">D3.js</span>
+                        <span class="tech-pill">Babel</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="github-btn" data-url="https://github.com/lazzerex/codebase-knowledge-map"><i class="fab fa-github"></i> View Code</button>
+                    </div>
+                </div>
                 
             </div>
         </div>
@@ -485,20 +503,7 @@
                     </div>
                 </div>
 
-                <div class="project-card experiment-card">
-                    <div class="card-glow"></div>
-                    <div class="project-icon-container"><i class="project-icon fas fa-project-diagram"></i></div>
-                    <h3>Codebase Knowledge Map</h3>
-                    <p>Interactive visualization of repository relationships and module dependencies using D3. Useful for exploring large codebases and spotting hotspots.</p>
-                    <div class="tech-stack">
-                        <span class="tech-pill">Node.js</span>
-                        <span class="tech-pill">D3.js</span>
-                        <span class="tech-pill">Babel</span>
-                    </div>
-                    <div class="card-actions">
-                        <button class="github-btn" data-url="https://github.com/lazzerex/codebase-knowledge-map"><i class="fab fa-github"></i> View Code</button>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
