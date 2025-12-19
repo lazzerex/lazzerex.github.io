@@ -1,3 +1,22 @@
+// Discord copy to clipboard functionality for footer with animated message
+document.addEventListener('DOMContentLoaded', function() {
+	var discordBtn = document.getElementById('discord-copy-btn');
+	var copiedMsg = document.getElementById('discord-copied-msg');
+	if (discordBtn && copiedMsg) {
+		discordBtn.addEventListener('click', function(e) {
+			e.preventDefault();
+			var username = 'rubiachaaaan';
+			if (navigator.clipboard) {
+				navigator.clipboard.writeText(username).then(function() {
+					copiedMsg.classList.add('visible');
+					setTimeout(function() {
+						copiedMsg.classList.remove('visible');
+					}, 1600);
+				});
+			}
+		});
+	}
+});
 
 // Animate progress bar on load
 window.addEventListener('load', () => {
@@ -14,15 +33,43 @@ window.addEventListener('load', () => {
 	}, 600);
 });
 
-// Smooth scroll for all links
+
+// Smooth scroll for all links (except Contact in nav, which gets custom logic)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-	anchor.addEventListener('click', function (e) {
+	if (anchor.id !== 'contact-nav-btn') {
+		anchor.addEventListener('click', function (e) {
+			e.preventDefault();
+			const target = document.querySelector(this.getAttribute('href'));
+			if (target) {
+				target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}
+		});
+	}
+});
+
+// Smooth scroll for Contact button in nav (ensures nav closes if mobile, etc.)
+const contactBtn = document.getElementById('contact-nav-btn');
+if (contactBtn) {
+	contactBtn.addEventListener('click', function (e) {
 		e.preventDefault();
-		const target = document.querySelector(this.getAttribute('href'));
-		if (target) {
-			target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		const contactSection = document.getElementById('contact');
+		if (contactSection) {
+			contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	});
+}
+
+// Scroll to Top Button logic
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 300) {
+		scrollToTopBtn.style.display = 'block';
+	} else {
+		scrollToTopBtn.style.display = 'none';
+	}
+});
+scrollToTopBtn.addEventListener('click', () => {
+	window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Add parallax effect to floating icons
@@ -37,15 +84,7 @@ document.addEventListener('mousemove', (e) => {
 	});
 });
 
-// Add hover effect to game cards
-document.querySelectorAll('.game-card').forEach(card => {
-	card.addEventListener('mouseenter', function() {
-		this.style.transform = 'translateY(-12px) rotate(1deg)';
-	});
-	card.addEventListener('mouseleave', function() {
-		this.style.transform = 'translateY(0) rotate(0deg)';
-	});
-});
+// Hover effect for game cards handled by CSS (.game-card:hover) — no JS needed
 
 // Animate stats on scroll
 const observerOptions = {
@@ -58,16 +97,17 @@ const observer = new IntersectionObserver((entries) => {
 		if (entry.isIntersecting) {
 			const statNumbers = entry.target.querySelectorAll('.stat-number');
 			statNumbers.forEach(stat => {
+				const hadPlus = stat.textContent.includes('+');
 				const finalValue = parseInt(stat.textContent);
 				let currentValue = 0;
 				const increment = finalValue / 50;
 				const timer = setInterval(() => {
 					currentValue += increment;
 					if (currentValue >= finalValue) {
-						stat.textContent = finalValue + (stat.textContent.includes('+') ? '+' : '');
+						stat.textContent = finalValue + (hadPlus ? '+' : '');
 						clearInterval(timer);
 					} else {
-						stat.textContent = Math.floor(currentValue);
+						stat.textContent = Math.floor(currentValue) + (hadPlus ? '' : '');
 					}
 				}, 30);
 			});
@@ -82,7 +122,7 @@ if (statsSection) {
 }
 
 // Add scroll reveal animation
-const revealElements = document.querySelectorAll('.game-card, .feature-card');
+const revealElements = document.querySelectorAll('.game-card, .feature-card, .project-card, .skill-card');
 const revealObserver = new IntersectionObserver((entries) => {
 	entries.forEach((entry, index) => {
 		if (entry.isIntersecting) {
