@@ -1,3 +1,98 @@
+/* Discord copied message styling */
+.discord-copied-msg {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 110%;
+    transform: translateX(-50%) translateY(0);
+    padding: 0.4em 1.1em;
+    border-radius: 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    background: var(--lavender, #d6c7ff);
+    color: #4b2676;
+    box-shadow: 0 2px 12px 0 rgba(80, 60, 160, 0.10);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(.4,2,.6,1), transform 0.35s cubic-bezier(.4,2,.6,1);
+    z-index: 10;
+}
+
+.theme-dark .discord-copied-msg {
+    background: #4b2676;
+    color: #e6d6ff;
+    box-shadow: 0 2px 12px 0 rgba(80, 60, 160, 0.25);
+}
+
+.discord-copied-msg.visible {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(10px);
+}
+/* --- Custom: Scroll to Top Button --- */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 9999;
+    background: #6fb6ff;
+    color: #111;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+    opacity: 0.85;
+}
+#scrollToTopBtn:hover {
+    background: #9ef7be;
+    color: #222b3a;
+    opacity: 1;
+}
+/* --- End Custom: Scroll to Top Button --- */
+/* --- Custom: Project Tabs Dark Mode Visibility --- */
+.theme-dark .project-tab {
+    color: #111 !important;
+    background: #fff !important;
+    border-color: #6fb6ff !important;
+    font-weight: 700;
+}
+.theme-dark .project-tab.active {
+    background: linear-gradient(90deg, #6fb6ff 60%, #9ef7be 100%) !important;
+    color: #111 !important;
+    border-color: #6fb6ff !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+/* --- End Custom: Project Tabs Dark Mode Visibility --- */
+/* --- Custom: My Journey Section Improvements --- */
+.journey-card h4 {
+    color: #fff !important;
+    font-weight: 800;
+    font-size: 1.18em;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+}
+
+.timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2.5px solid #fff;
+    background: #2d9cdb;
+    box-shadow: 0 0 6px #2d9cdb, 0 0 0 2px #071227;
+    margin-top: 6px;
+    transition: background 0.2s, border 0.2s;
+}
+.timeline-item.active .timeline-dot {
+    background: #6fffbe;
+    border-color: #6fffbe;
+    box-shadow: 0 0 10px #6fffbe, 0 0 0 2px #071227;
+}
+/* --- End Custom: My Journey Section Improvements --- */
 /* Loading Screen Styles */
 #loading-overlay {
     position: fixed;
@@ -613,6 +708,16 @@ section {
     will-change: transform, box-shadow;
 }
 
+    /* Lift partner project cards slightly on hover for subtle emphasis */
+    #partner-projects .project-card {
+        transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
+    }
+
+    #partner-projects .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 14px 14px 0 rgba(45,55,72,0.14);
+    }
+
 .project-card::before {
     content: '';
     position: absolute;
@@ -771,6 +876,15 @@ h1 { font-weight: 800; }
     border: 1px solid rgba(255,255,255,0.02);
 }
 
+/* Slightly more rounded outer hero card in both themes for the dark rectangle effect */
+.hero-card {
+    border-radius: 28px;
+}
+
+.theme-dark .hero-card {
+    border-radius: 32px;
+}
+
 .theme-dark .clay-card .progress-info h3,
 .theme-dark .hero-card h3,
 .theme-dark .course-icon,
@@ -798,6 +912,9 @@ h1 { font-weight: 800; }
     font-weight: 800;
     text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
+
+/* Ensure the continue button text is pure black in dark theme */
+.theme-dark .continue-btn { color: #000 !important; }
 
 .theme-dark .play-btn,
 .theme-dark .visit-btn,
@@ -1000,6 +1117,13 @@ h1 { font-weight: 800; }
 .game-card:hover {
     transform: translateY(-8px);
     box-shadow: 12px 12px 0 rgba(45, 55, 72, 0.2);
+}
+
+/* Reveal defaults: ensure project and skill cards are hidden/offscreen until revealed */
+.project-card, .skill-card, .feature-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
 }
 
 .game-icon-container {
