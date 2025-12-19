@@ -730,9 +730,9 @@ section {
 }
 
 .project-card:hover {
-    /* remove vertical lift; apply subtle highlight instead */
-    transform: none;
-    box-shadow: 0 18px 40px rgba(45,55,72,0.07), 0 4px 14px rgba(255,166,158,0.07);
+    /* combine vertical lift with highlight/shadow */
+    transform: translateY(-10px) scale(1.025);
+    box-shadow: 0 24px 48px rgba(45,55,72,0.13), 0 6px 18px rgba(255,166,158,0.10);
     border-color: var(--coral);
     z-index: 10; /* slightly above siblings so highlight is visible */
 }
@@ -1158,8 +1158,12 @@ h1 { font-weight: 800; }
 /* Reveal defaults: ensure project and skill cards are hidden/offscreen until revealed */
 .project-card, .skill-card, .feature-card {
     opacity: 0;
-    transform: translateY(30px);
     transition: all 0.6s ease;
+}
+
+.project-card.revealed {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .game-icon-container {
@@ -1565,4 +1569,57 @@ footer {
     .cta-section {
         padding: 2rem;
     }
+}
+
+/* Mobile menu button and responsive right-side sliding panel */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: 3px solid var(--navy);
+    color: var(--navy);
+    padding: 0.5rem 0.65rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* backdrop inserted dynamically */
+#mobileMenuBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(11,20,34,0.45);
+    z-index: 1500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 260ms ease;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn { display: block; }
+    .nav-container { align-items: center; gap: 0.75rem; position: relative; }
+    /* compact dropdown anchored to the right of the nav */
+    .nav-links {
+        display: flex;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        width: min(260px, 84vw);
+        background: white;
+        border-radius: 12px;
+        padding: 0.6rem 0.6rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        z-index: 20000; /* ensure menu sits above the backdrop */
+        box-shadow: 0 12px 30px rgba(45,55,72,0.12);
+        transform-origin: top right;
+        transform: translateY(-6px) scale(.98);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 260ms cubic-bezier(.22,.9,.3,1), opacity 200ms ease;
+        overflow: hidden;
+    }
+    .nav-links.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+    .nav-links a { padding: 0.9rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.04); display:block; color:var(--navy); }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-links a.btn-primary { margin: 0.4rem auto 0 auto; }
 }
