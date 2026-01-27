@@ -1,75 +1,20 @@
-// Discord copy to clipboard functionality for footer with animated message
-document.addEventListener('DOMContentLoaded', function() {
-	var discordBtn = document.getElementById('discord-copy-btn');
-	var copiedMsg = document.getElementById('discord-copied-msg');
-	if (discordBtn && copiedMsg) {
-		discordBtn.addEventListener('click', function(e) {
-			e.preventDefault();
-			var username = 'rubiachaaaan';
-			if (navigator.clipboard) {
-				navigator.clipboard.writeText(username).then(function() {
-					copiedMsg.classList.add('visible');
-					setTimeout(function() {
-						copiedMsg.classList.remove('visible');
-					}, 1600);
-				});
-			}
-		});
-	}
-});
 
 // Animate progress bar on load
 window.addEventListener('load', () => {
-	// Hide loading overlay
 	setTimeout(() => {
-		const overlay = document.getElementById('loading-overlay');
-		if (overlay) {
-			overlay.classList.add('hide');
-			setTimeout(() => overlay.style.display = 'none', 400);
-		}
-		// Animate progress bar if present
-		const bar = document.querySelector('.progress-bar');
-		if (bar) bar.style.width = '85%';
-	}, 600);
+		document.querySelector('.progress-bar').style.width = '85%';
+	}, 500);
 });
 
-
-// Smooth scroll for all links (except Contact in nav, which gets custom logic)
+// Smooth scroll for all links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-	if (anchor.id !== 'contact-nav-btn') {
-		anchor.addEventListener('click', function (e) {
-			e.preventDefault();
-			const target = document.querySelector(this.getAttribute('href'));
-			if (target) {
-				target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-			}
-		});
-	}
-});
-
-// Smooth scroll for Contact button in nav (ensures nav closes if mobile, etc.)
-const contactBtn = document.getElementById('contact-nav-btn');
-if (contactBtn) {
-	contactBtn.addEventListener('click', function (e) {
+	anchor.addEventListener('click', function (e) {
 		e.preventDefault();
-		const contactSection = document.getElementById('contact');
-		if (contactSection) {
-			contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		const target = document.querySelector(this.getAttribute('href'));
+		if (target) {
+			target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	});
-}
-
-// Scroll to Top Button logic
-const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-window.addEventListener('scroll', () => {
-	if (window.scrollY > 300) {
-		scrollToTopBtn.style.display = 'block';
-	} else {
-		scrollToTopBtn.style.display = 'none';
-	}
-});
-scrollToTopBtn.addEventListener('click', () => {
-	window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Add parallax effect to floating icons
@@ -84,7 +29,15 @@ document.addEventListener('mousemove', (e) => {
 	});
 });
 
-// Hover effect for game cards handled by CSS (.game-card:hover) — no JS needed
+// Add hover effect to game cards
+document.querySelectorAll('.game-card').forEach(card => {
+	card.addEventListener('mouseenter', function() {
+		this.style.transform = 'translateY(-12px) rotate(1deg)';
+	});
+	card.addEventListener('mouseleave', function() {
+		this.style.transform = 'translateY(0) rotate(0deg)';
+	});
+});
 
 // Animate stats on scroll
 const observerOptions = {
@@ -97,17 +50,16 @@ const observer = new IntersectionObserver((entries) => {
 		if (entry.isIntersecting) {
 			const statNumbers = entry.target.querySelectorAll('.stat-number');
 			statNumbers.forEach(stat => {
-				const hadPlus = stat.textContent.includes('+');
 				const finalValue = parseInt(stat.textContent);
 				let currentValue = 0;
 				const increment = finalValue / 50;
 				const timer = setInterval(() => {
 					currentValue += increment;
 					if (currentValue >= finalValue) {
-						stat.textContent = finalValue + (hadPlus ? '+' : '');
+						stat.textContent = finalValue + (stat.textContent.includes('+') ? '+' : '');
 						clearInterval(timer);
 					} else {
-						stat.textContent = Math.floor(currentValue) + (hadPlus ? '' : '');
+						stat.textContent = Math.floor(currentValue);
 					}
 				}, 30);
 			});
@@ -122,7 +74,7 @@ if (statsSection) {
 }
 
 // Add scroll reveal animation
-const revealElements = document.querySelectorAll('.game-card, .feature-card, .project-card, .skill-card');
+const revealElements = document.querySelectorAll('.game-card, .feature-card');
 const revealObserver = new IntersectionObserver((entries) => {
 	entries.forEach((entry, index) => {
 		if (entry.isIntersecting) {
@@ -296,101 +248,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	toggle.addEventListener('click', () => {
 		const isDark = !root.classList.contains('theme-dark');
 		applyTheme(isDark);
-	});
-});
-
-// Mobile nav toggle
-document.addEventListener('DOMContentLoaded', () => {
-	const mobileBtn = document.getElementById('mobileMenuBtn');
-	const navLinks = document.querySelector('.nav-links');
-	if (!mobileBtn || !navLinks) return;
-
-	const backdropId = 'mobileMenuBackdrop';
-	const ensureBackdrop = () => {
-		let b = document.getElementById(backdropId);
-		if (!b) {
-			b = document.createElement('div');
-			b.id = backdropId;
-			// minimal styling here; CSS handles visual appearance
-			b.style.position = 'fixed';
-			b.style.inset = '0';
-			b.style.zIndex = '15000';
-			b.style.background = 'rgba(11,20,34,0.12)';
-			b.style.pointerEvents = 'none';
-			b.style.opacity = '0';
-			b.style.transition = 'opacity 220ms ease';
-			document.body.appendChild(b);
-		}
-		return b;
-	};
-
-	// we'll mount the `.nav-links` to <body> while open so it escapes any stacking context
-	let originalParent = null;
-	let originalNext = null;
-	const setExpanded = (expanded) => {
-		mobileBtn.setAttribute('aria-expanded', String(expanded));
-		mobileBtn.innerHTML = expanded ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-		const firstLink = navLinks.querySelector('a');
-		const b = ensureBackdrop();
-
-		if (expanded) {
-			// remember original location so we can restore later
-			if (!originalParent) {
-				originalParent = navLinks.parentNode;
-				originalNext = navLinks.nextSibling;
-			}
-			// move to body so it's above backdrop and other stacking contexts
-			document.body.appendChild(navLinks);
-			navLinks.classList.add('open');
-
-			// position near the button
-			const btnRect = mobileBtn.getBoundingClientRect();
-			navLinks.style.position = 'fixed';
-			navLinks.style.top = (btnRect.bottom + 8) + 'px';
-			navLinks.style.right = (window.innerWidth - btnRect.right) + 'px';
-			// ensure width matches CSS target
-			navLinks.style.width = navLinks.style.width || '260px';
-
-			// show backdrop
-			b.style.opacity = '1';
-			b.style.pointerEvents = 'auto';
-			b.addEventListener('click', () => setExpanded(false), { once: true });
-
-			// focus first link for accessibility
-			if (firstLink) firstLink.focus({ preventScroll: true });
-		} else {
-			// hide menu
-			navLinks.classList.remove('open');
-			b.style.opacity = '0';
-			b.style.pointerEvents = 'none';
-
-			// restore DOM position
-			if (originalParent) {
-				if (originalNext) originalParent.insertBefore(navLinks, originalNext);
-				else originalParent.appendChild(navLinks);
-				// clear inline positioning
-				navLinks.style.position = '';
-				navLinks.style.top = '';
-				navLinks.style.right = '';
-				navLinks.style.width = '';
-			}
-
-			mobileBtn.focus();
-		}
-	};
-
-	mobileBtn.addEventListener('click', (e) => {
-		const isOpen = navLinks.classList.contains('open');
-		setExpanded(!isOpen);
-	});
-
-	// Close when a nav link is clicked (helpful on mobile)
-	navLinks.querySelectorAll('a').forEach(a => {
-		a.addEventListener('click', () => setExpanded(false));
-	});
-
-	// Close on escape key
-	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape') setExpanded(false);
 	});
 });
