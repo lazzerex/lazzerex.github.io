@@ -1,190 +1,3 @@
-/* --- Mobile iPhone-specific header/logo fix --- */
-@media (max-width: 430px) {
-    nav, .nav-container, .logo, .logo-icon, .logo-text {
-        max-width: 100vw !important;
-        min-width: 0 !important;
-        box-sizing: border-box;
-    }
-    nav {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
-    }
-    .nav-container {
-        flex-wrap: wrap;
-        gap: 0.3rem;
-    }
-    .logo {
-        flex-shrink: 1;
-        min-width: 0;
-        gap: 0.3rem;
-    }
-    .logo-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
-        border-radius: 12px;
-    }
-    .logo-text {
-        font-size: 1rem !important;
-        word-break: break-word;
-        margin-left: 0.2rem;
-        margin-right: 0.2rem;
-    }
-    .mobile-menu-btn {
-        margin-left: auto;
-    }
-    body {
-        overflow-x: hidden;
-    }
-}
-/* Discord copied message styling */
-.discord-copied-msg {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 110%;
-    transform: translateX(-50%) translateY(0);
-    padding: 0.4em 1.1em;
-    border-radius: 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    background: var(--lavender, #d6c7ff);
-    color: #4b2676;
-    box-shadow: 0 2px 12px 0 rgba(80, 60, 160, 0.10);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s cubic-bezier(.4,2,.6,1), transform 0.35s cubic-bezier(.4,2,.6,1);
-    z-index: 10;
-}
-
-.theme-dark .discord-copied-msg {
-    background: #4b2676;
-    color: #e6d6ff;
-    box-shadow: 0 2px 12px 0 rgba(80, 60, 160, 0.25);
-}
-
-.discord-copied-msg.visible {
-    display: block;
-    opacity: 1;
-    transform: translateX(-50%) translateY(10px);
-}
-/* --- Custom: Scroll to Top Button --- */
-#scrollToTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    z-index: 9999;
-    background: #6fb6ff;
-    color: #111;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, opacity 0.2s;
-    opacity: 0.85;
-}
-#scrollToTopBtn:hover {
-    background: #9ef7be;
-    color: #222b3a;
-    opacity: 1;
-}
-/* --- End Custom: Scroll to Top Button --- */
-/* --- Custom: Project Tabs Dark Mode Visibility --- */
-.theme-dark .project-tab {
-    color: #111 !important;
-    background: #fff !important;
-    border-color: #6fb6ff !important;
-    font-weight: 700;
-}
-.theme-dark .project-tab.active {
-    background: linear-gradient(90deg, #6fb6ff 60%, #9ef7be 100%) !important;
-    color: #111 !important;
-    border-color: #6fb6ff !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-}
-/* --- End Custom: Project Tabs Dark Mode Visibility --- */
-/* --- Custom: My Journey Section Improvements --- */
-.journey-card h4 {
-    color: #fff !important;
-    font-weight: 800;
-    font-size: 1.18em;
-    margin-bottom: 12px;
-    letter-spacing: 0.01em;
-}
-
-.timeline-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2.5px solid #fff;
-    background: #2d9cdb;
-    box-shadow: 0 0 6px #2d9cdb, 0 0 0 2px #071227;
-    margin-top: 6px;
-    transition: background 0.2s, border 0.2s;
-}
-.timeline-item.active .timeline-dot {
-    background: #6fffbe;
-    border-color: #6fffbe;
-    box-shadow: 0 0 10px #6fffbe, 0 0 0 2px #071227;
-}
-/* --- End Custom: My Journey Section Improvements --- */
-/* Loading Screen Styles */
-#loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: var(--bg-cream, #f5f1e8);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.4s;
-}
-
-#loading-overlay.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.loading-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-    background: #fff;
-    border-radius: 2rem;
-    box-shadow: 0 8px 32px rgba(45,55,72,0.10);
-    padding: 2.5rem 3.5rem;
-    border: 3px solid #2d3748;
-}
-
-.loading-spinner {
-    width: 48px;
-    height: 48px;
-    border: 5px solid var(--lime, #86efac);
-    border-top: 5px solid var(--navy, #2d3748);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0.5rem 0;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.loading-text {
-    color: var(--navy, #2d3748);
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-}
 * {
     margin: 0;
     padding: 0;
@@ -246,17 +59,22 @@ body {
         -12px -12px 24px rgba(255, 255, 255, 0.9);
 }
 
-/* Navigation */
+/* Navigation with Glassmorphism */
 nav {
     /* make nav stick to the viewport while scrolling */
     position: sticky;
     top: 1rem;
     margin: 2rem auto 0 auto;
-    max-width: 96vw;
-    background: #fff;
+    max-width: min(96vw, 1200px); /* Limit max width on ultra-wide screens */
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 2rem;
-    box-shadow: 4px 8px 0 0 #2d3748, 0 2px 16px 0 rgba(163, 177, 198, 0.10);
-    border: 3px solid #2d3748;
+    box-shadow: 
+        0 8px 32px rgba(45, 55, 72, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 1px 0 rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0.5rem 0;
     z-index: 1000;
 }
@@ -747,16 +565,6 @@ section {
     will-change: transform, box-shadow;
 }
 
-    /* Lift partner project cards slightly on hover for subtle emphasis */
-    #partner-projects .project-card {
-        transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
-    }
-
-    #partner-projects .project-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 14px 14px 0 rgba(45,55,72,0.14);
-    }
-
 .project-card::before {
     content: '';
     position: absolute;
@@ -769,9 +577,9 @@ section {
 }
 
 .project-card:hover {
-    /* combine vertical lift with highlight/shadow */
-    transform: translateY(-10px) scale(1.025);
-    box-shadow: 0 24px 48px rgba(45,55,72,0.13), 0 6px 18px rgba(255,166,158,0.10);
+    /* remove vertical lift; apply subtle highlight instead */
+    transform: none;
+    box-shadow: 0 18px 40px rgba(45,55,72,0.07), 0 4px 14px rgba(255,166,158,0.07);
     border-color: var(--coral);
     z-index: 10; /* slightly above siblings so highlight is visible */
 }
@@ -915,15 +723,6 @@ h1 { font-weight: 800; }
     border: 1px solid rgba(255,255,255,0.02);
 }
 
-/* Slightly more rounded outer hero card in both themes for the dark rectangle effect */
-.hero-card {
-    border-radius: 28px;
-}
-
-.theme-dark .hero-card {
-    border-radius: 32px;
-}
-
 .theme-dark .clay-card .progress-info h3,
 .theme-dark .hero-card h3,
 .theme-dark .course-icon,
@@ -951,9 +750,6 @@ h1 { font-weight: 800; }
     font-weight: 800;
     text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
-
-/* Ensure the continue button text is pure black in dark theme */
-.theme-dark .continue-btn { color: #000 !important; }
 
 .theme-dark .play-btn,
 .theme-dark .visit-btn,
@@ -1125,42 +921,6 @@ h1 { font-weight: 800; }
     .grid.three-column { grid-template-columns: 1fr; }
 }
 
-/* Mobile / small screens improvements */
-@media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; margin: 60px auto 30px; gap: 2rem; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-content p { font-size: 1rem; }
-    .nav-container { padding: 0.5rem 1rem; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 1rem; }
-    .project-tab { min-width: 92px; padding: 0.45rem 0.6rem; font-size: 0.95rem; }
-    .grid.three-column { gap: 1rem; }
-    .project-card, .game-card { padding: 1rem; border-radius: 18px; }
-    .project-icon-container, .game-icon-container { width: 56px; height: 56px; font-size: 1.4rem; }
-    .game-actions { flex-direction: column; }
-    .play-btn, .github-btn, .visit-btn { width: 100%; display: block; }
-    .play-btn { padding: 0.85rem; }
-    .tech-pill { font-size: 0.78rem; padding: 0.2rem 0.6rem; }
-    .section { margin: 40px auto; padding: 0 1rem; }
-    .section-title { font-size: 1.6rem; }
-    .section-subtitle { font-size: 1rem; }
-    .btn-primary { padding: 0.8rem 1.6rem; font-size: 1rem; }
-    .theme-toggle { top: 12px; right: 12px; padding: 0.35rem 0.5rem; }
-}
-
-@media (max-width: 420px) {
-    .hero-content h1 { font-size: 1.6rem; }
-    .hero { margin: 40px auto 24px; padding: 0 1rem; }
-    .logo-text { font-size: 1.1rem; }
-    nav { top: 0.6rem; padding: 0.4rem 0; }
-    .nav-container { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
-    .nav-links { flex-wrap: wrap; gap: 0.6rem; }
-    .games-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .game-card h3 { font-size: 1.15rem; }
-    .project-card h3 { font-size: 1.05rem; }
-    .footer-content { grid-template-columns: 1fr; gap: 1.2rem; }
-}
-
 /* Games Grid */
 .games-grid {
     display: grid;
@@ -1192,17 +952,6 @@ h1 { font-weight: 800; }
 .game-card:hover {
     transform: translateY(-8px);
     box-shadow: 12px 12px 0 rgba(45, 55, 72, 0.2);
-}
-
-/* Reveal defaults: ensure project and skill cards are hidden/offscreen until revealed */
-.project-card, .skill-card, .feature-card {
-    opacity: 0;
-    transition: all 0.6s ease;
-}
-
-.project-card.revealed {
-    transform: translateY(0);
-    opacity: 1;
 }
 
 .game-icon-container {
@@ -1608,57 +1357,4 @@ footer {
     .cta-section {
         padding: 2rem;
     }
-}
-
-/* Mobile menu button and responsive right-side sliding panel */
-.mobile-menu-btn {
-    display: none;
-    background: transparent;
-    border: 3px solid var(--navy);
-    color: var(--navy);
-    padding: 0.5rem 0.65rem;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
-
-/* backdrop inserted dynamically */
-#mobileMenuBackdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(11,20,34,0.45);
-    z-index: 1500;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 260ms ease;
-}
-
-@media (max-width: 768px) {
-    .mobile-menu-btn { display: block; }
-    .nav-container { align-items: center; gap: 0.75rem; position: relative; }
-    /* compact dropdown anchored to the right of the nav */
-    .nav-links {
-        display: flex;
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 0;
-        width: min(260px, 84vw);
-        background: white;
-        border-radius: 12px;
-        padding: 0.6rem 0.6rem;
-        flex-direction: column;
-        gap: 0.3rem;
-        z-index: 20000; /* ensure menu sits above the backdrop */
-        box-shadow: 0 12px 30px rgba(45,55,72,0.12);
-        transform-origin: top right;
-        transform: translateY(-6px) scale(.98);
-        opacity: 0;
-        pointer-events: none;
-        transition: transform 260ms cubic-bezier(.22,.9,.3,1), opacity 200ms ease;
-        overflow: hidden;
-    }
-    .nav-links.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
-    .nav-links a { padding: 0.9rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.04); display:block; color:var(--navy); }
-    .nav-links a:last-child { border-bottom: none; }
-    .nav-links a.btn-primary { margin: 0.4rem auto 0 auto; }
 }
