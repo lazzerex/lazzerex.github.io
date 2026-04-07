@@ -70,6 +70,26 @@ const quotes = [
 ];
 
 let currentQuoteIndex = -1;
+let quotePool = [];
+
+function refillQuotePool() {
+	quotePool = quotes.map((_, index) => index);
+
+	// Fisher-Yates shuffle for an unbiased cycle order.
+	for (let i = quotePool.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[quotePool[i], quotePool[j]] = [quotePool[j], quotePool[i]];
+	}
+
+	// Avoid an immediate repeat when rolling into a new cycle.
+	if (quotes.length > 1 && quotePool[quotePool.length - 1] === currentQuoteIndex) {
+		const swapWith = Math.floor(Math.random() * (quotePool.length - 1));
+		[quotePool[swapWith], quotePool[quotePool.length - 1]] = [
+			quotePool[quotePool.length - 1],
+			quotePool[swapWith]
+		];
+	}
+}
 
 function loadQuote() {
 	const quoteText = document.getElementById('quoteText');
@@ -81,11 +101,9 @@ function loadQuote() {
 	quoteText.classList.add('loading');
 	quoteAuthor.classList.add('loading');
 	
-	// Get a random quote (different from current one)
-	let newIndex;
-	do {
-		newIndex = Math.floor(Math.random() * quotes.length);
-	} while (newIndex === currentQuoteIndex && quotes.length > 1);
+	// Serve one shuffled quote at a time so each appears once per cycle.
+	if (quotePool.length === 0) refillQuotePool();
+	const newIndex = quotePool.pop();
 	
 	currentQuoteIndex = newIndex;
 	const quote = quotes[currentQuoteIndex];
