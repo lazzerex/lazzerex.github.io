@@ -19,7 +19,9 @@ window.addEventListener('load', () => {
 
 // Quote functionality
 const quotes = [
-    { text: "Cold wintry wind doesn't cry,it just gently rustles the trees. Although it actually wants to cry aloud. People pass by with their coat collars turned up. Without saying anything, they each hurry home.", author: "Sakurazaka46「Kogarashi wa Nakanai」" },
+	{ text: "I hope this dream is the sequel to the book I read that day.", author: "Yorushika「Aporia」" },
+	{ text: "Is the rustling forest a memory of the wind? What secrets lay hidden in the heart of the sundered fruit? What truths await the wanderer upon distant paths, and will the silent stars ever conspire to fulfill that dream?", author: "Yui Makino「Touch of Hope」" },
+	{ text: "Cold wintry wind doesn't cry,it just gently rustles the trees. Although it actually wants to cry aloud. People pass by with their coat collars turned up. Without saying anything, they each hurry home.", author: "Sakurazaka46「Kogarashi wa Nakanai」" },
     { text: "The brightest star in the night sky, I don't even know its name. Billions of light years away, we're only watching eternity. Among countless lights out there, what we can see from here must be nothing but coincidence. And yet, it's precious.", author: "Sakurazaka46「Yozora de Ichiban Kagayaiteru Hoshi no Namae wo Boku wa Shiranai」" },
     { text: "Wave goodbye to the past when hope and faith have grown so strong and sound. Unfold this pair of wings for me again, to soar above this world.", author: "HOYO-MiX ft. 茶理理, TetraCalyx & Hanser「Moon Halo」" },
     { text: "This world is conveniently imperfect, so I really want to know.", author: "Sakanaction「Kaiju」" },
