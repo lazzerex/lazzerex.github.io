@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
 // Quote functionality
 const quotes = [
+	{ text: "Can someone tell me how I use to picture the scenes that I used to dream of? I can’t seem to feel a thing from this scenery. The more I look back, the more I feel like the person I am is empty inside.", author: "Survive Said The Prophet「MUKANJYO」" },
 	{ text: "I hope this dream is the sequel to the book I read that day.", author: "Yorushika「Aporia」" },
 	{ text: "Is the rustling forest a memory of the wind? What secrets lay hidden in the heart of the sundered fruit? What truths await the wanderer upon distant paths, and will the silent stars ever conspire to fulfill that dream?", author: "Yui Makino「Touch of Hope」" },
 	{ text: "Cold wintry wind doesn't cry,it just gently rustles the trees. Although it actually wants to cry aloud. People pass by with their coat collars turned up. Without saying anything, they each hurry home.", author: "Sakurazaka46「Kogarashi wa Nakanai」" },
