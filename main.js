@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
 // Quote functionality
 const quotes = [
+	{ text: "Even with skills and talents that I lack, and with my fragile heart that can't hold back, but you know, the most importantly, is my strength to push my dream right on track.", author: "Official HIGE DANdism「Rashisa」" },
 	{ text: "Can someone tell me how I use to picture the scenes that I used to dream of? I can’t seem to feel a thing from this scenery. The more I look back, the more I feel like the person I am is empty inside.", author: "Survive Said The Prophet「MUKANJYO」" },
 	{ text: "I hope this dream is the sequel to the book I read that day.", author: "Yorushika「Aporia」" },
 	{ text: "Is the rustling forest a memory of the wind? What secrets lay hidden in the heart of the sundered fruit? What truths await the wanderer upon distant paths, and will the silent stars ever conspire to fulfill that dream?", author: "Yui Makino「Touch of Hope」" },
