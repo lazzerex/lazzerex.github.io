@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
 // Quote 
 const quotes = [
+	{ text: "Even in days of agony, simply and honestly, I just kept on running and didn't stop.", author: "Sakurazaka46「The growing up train」" },
 	{ text: "Balancing a moment of kindness with a lifetime of regret, this is how we live our lives.", author: "Sakurazaka46「Zutto Haru Dattara naa」" },
 	{ text: "Even with skills and talents that I lack, and with my fragile heart that can't hold back, but you know, the most importantly, is my strength to push my dream right on track.", author: "Official HIGE DANdism「Rashisa」" },
 	{ text: "Can someone tell me how I use to picture the scenes that I used to dream of? I can’t seem to feel a thing from this scenery. The more I look back, the more I feel like the person I am is empty inside.", author: "Survive Said The Prophet「MUKANJYO」" },
