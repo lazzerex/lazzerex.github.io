@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
 // Quote 
 const quotes = [
+	{ text: "Keep walking until it is granted. The light form that day is still pushing you from behind. Running past without noticing even the setting sun.", author: "Chotokkyu「Starlight」" },
 	{ text: "Someday, just a little more. When the gеntle wind blows through the world, will anything change?", author: "Mrs. GREEN APPLE「lulu.」" },
 	{ text: "Sound of the teardrop is the sound of raindrop on the flower petal, give sorrow a blue sky. If shadow looms ahead on this ongoing road, think of an idea to get by.", author: "Gen Hoshino「Idea」" },
 	{ text: "Even in days of agony, simply and honestly, I just kept on running and didn't stop.", author: "Sakurazaka46「The growing up train」" },
