@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
 // Quote 
 const quotes = [
+	{ text: "Maybe it's a gift that I couldn't recognize. Maybe I don't really need to feel satisfied. Maybe it's a gift that I spend all this time. Just trying to feel alive.", author: "Porter Robinson「Trying to Feel Alive」" },
 	{ text: "I'll go beyond until the unknown end.", author: "Miyano Mamoru「ZERO to INFINITY」" },
 	{ text: "Keep walking until it is granted. The light form that day is still pushing you from behind. Running past without noticing even the setting sun.", author: "Chotokkyu「Starlight」" },
 	{ text: "Someday, just a little more. When the gеntle wind blows through the world, will anything change?", author: "Mrs. GREEN APPLE「lulu.」" },
